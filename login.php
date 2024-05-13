@@ -48,8 +48,8 @@
                                 <label for="pass">Password </label>
                                     <input id="pass" type="password" v-model="password" placeholder="Enter password..." />
                                 <button class="site-btn red w-100" type="submit">Login Now</button>
-                                <div class="or-divide"><span>or</span></div>
-                                <button class="site-btn w-100">Sign Up Here</button>
+                                <!-- <div class="or-divide"><span>or</span></div>
+                                <button class="site-btn w-100">Sign Up Here</button> -->
                             </form>
                         </div>
                     </div>

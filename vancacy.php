@@ -1,11 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html class="no-js" lang="zxx">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <?php include 'includes/header_link.php'; ?>
 </head>
+
 <body>
-    <h5>Job Vacancy Page</h5>
+
+    <!-- preloader  -->
+    <?php include 'includes/preloader.php'; ?>
+    <!-- preloader end -->
+
+    <!-- header start -->
+    <?php include 'includes/header.php'; ?>
+    <!-- header end -->
+
+    <!-- breadcrumb area start -->
+    <section class="breadcrumb-area bg_img pb-160" data-overlay="8" data-background="assets/images/about.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb-content">
+                        <h2 class="title">Join Our Team</h2>
+                        <ul>
+                            <li><a href="index.php">Home</a></li>
+                            <li>|</li>
+                            <li>Join Our Team</li>
+                        </ul>
+                        <h1 class="back-title">Vancacy</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb area end -->
+
+
+    <!-- footer start -->
+    <?php include 'includes/footer.php'; ?>
+    <!-- footer end -->
+
+    <!--========= Footer Link =========-->
+    <?php include 'includes/footer_link.php'; ?>
+
 </body>
+
 </html>

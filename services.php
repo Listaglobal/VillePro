@@ -42,7 +42,7 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
+                <!-- <div class="col-lg-6">
                     <div class="about-thumb-wrap about-thumb-wrap-3 mt-60">
                         <div class="about-thumb-big">
                             <div class="about-thumb-small">
@@ -54,8 +54,8 @@
                             </span>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-6">
+                </div> -->
+                <div class="col-lg-12">
                     <div class="about-content about-content-3">
                         <div class="section-heading mb-35">
                             <h2 class="section-title">Domicilliary Care

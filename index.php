@@ -86,6 +86,35 @@
     </section>
     <!-- feature area end -->
 
+    <!-- service carousel area start -->
+    <div class="service-area service-area-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="service-text">
+                        <div class="section-heading mt-80 mb-35">
+                            <h2 class="section-title">24hrs Supported living accommodation</h2>
+                        </div>
+                        <p>We provide Supported living accommodation and trained staff to help individuals to maintain a 
+                            stable mental health, tenancy, develop independent living skills and access community services.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-12 mt-20 mb-20">
+                    <div class="service-text">
+                        <p>At Dorchester Services Limited we Understand that Service Users recovery journey progress at different paces and Service 
+                            Users need different levels of support along the way. We provide a range of care packages to help Service Users bridge 
+                            the move from hospitals or residential care home recovery setting to living independently in their own homes. Although we 
+                            have a standard, core provision, the precise facilities and support we offer is flexible and tailored to meet local needs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- service carousel area end -->
+
     <!-- footer start -->
     <?php include 'includes/footer.php'; ?>
     <!-- footer end -->

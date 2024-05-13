@@ -14,12 +14,15 @@
                                 <li><a href="index.php">Home </a></li>
                                 <li><a href="about.php">About</a></li>
                                 <li><a href="services.php">Our Services </a></li>
-                                <li><a href="">Supported Living </a></li>
-                                <li><a href="">Contact Us </a></li>
+                                <li><a href="living.php">Supported Living </a></li>
+                                <li><a href="contant.php">Contact Us </a></li>
                             </ul>
                         </nav>
                     </div>
                 </div>
+                <a href="login.php" class="col-lg-3 my-auto">
+                    <button class="site-btn" type="submit">Login</button>
+                </a>
             </div>
         </div>
     </header>

@@ -106,11 +106,8 @@
                                             <img src="assets/images/others/faq-1.jpg" alt="">
                                         </div>
                                         <div class="content">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod
-                                                tempor incididunt ut labore et
-                                                dolore magna
-                                                aliqua. Ut enim ad minim veniam, quis nostrud.
-                                            </p>
+                                            <p>Text will about the Goal will be needed for the part  
+                                           </p>
                                         </div>
                                     </div>
                                 </div>

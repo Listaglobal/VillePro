@@ -14,7 +14,7 @@
                                 <li><a href="index.php">Home </a></li>
                                 <li><a href="about.php">About</a>
                                     <ul class="sub-menu">
-                                        <li><a href="vancancy.php">Join Our Team</a></li>
+                                        <li><a href="vancacy.php">Join Our Team</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="services.php">Our Services </a></li>

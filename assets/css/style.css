@@ -4806,7 +4806,7 @@ img {
 
 .breadcrumb-area::before {
 	z-index: -1;
-	background: #003242;
+	background: #003242a6;
 }
 
 .breadcrumb-content {

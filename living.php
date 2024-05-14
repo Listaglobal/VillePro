@@ -7,10 +7,6 @@
 
 <body>
 
-    <!-- preloader  -->
-    <?php include 'includes/preloader.php'; ?>
-    <!-- preloader end -->
-
     <!-- header start -->
     <?php include 'includes/header.php'; ?>
     <!-- header end -->

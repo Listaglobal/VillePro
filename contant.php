@@ -192,6 +192,12 @@
     </section>
     <!-- contact info area end -->
 
+    <!-- google map area start -->
+    <div class="map-area">
+        <div id="contact-map" class="contact-map"></div>
+    </div>
+    <!-- google map area end -->
+
 
 
     <!-- footer start -->

@@ -60,12 +60,11 @@
 
                         <div class="expert-box-right">
                             <div class="content">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisi cing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequ at. Duis aute irure
-                                    dolor in reprehenderit in volutate velit esse cillum dolore.</p>
+                                <p>Join our team in domiciliary care, where every day is a chance to make a positive 
+                                    impact in people's lives and provide compassionate support in the comfort of their homes.
+                                </p>
                                 <div class="expert-box-buttons">
-                                    <a href="" class="site-btn white">Contact Now</a>
+                                    <a href="#joinUs" class="site-btn white">Contact Now</a>
                                 </div>
                             </div>
                         </div>
@@ -83,13 +82,10 @@
                         </div>
                         <div class="expert-box-right">
                             <div class="content">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisi cing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequ at. Duis aute irure
-                                    dolor in reprehenderit in volutate velit esse cillum dolore.</p>
+                                <p>Join our team and become a travel buddy, exploring new destinations and creating unforgettable experiences together!</p>
                                 <div class="expert-box-buttons">
-                                    <a href="" class="site-btn white">Contact Now</a>
-                                    <span class="comments-btn"><i class="fal fa-comments"></i></span>
+                                    <a href="#joinUs" class="site-btn white">Contact Now</a>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -107,12 +103,34 @@
                         </div>
                         <div class="expert-box-right">
                             <div class="content">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisi cing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequ at. Duis aute irure
-                                    dolor in reprehenderit in volutate velit esse cillum dolore.</p>
+                                <p>Join our team in supported living care, where we empower individuals to live independently 
+                                    while providing them with the personalized support and care they need to thrive.
+                                </p>
                                 <div class="expert-box-buttons">
-                                    <a href="" class="site-btn white">Contact Now</a>
+                                    <a href="#joinUs" class="site-btn white">Contact Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-12">
+                    <div class="single-expert-box">
+                        <div class="expert-box-left">
+                            <div class="thumb">
+                                <img src="assets/images/faq-1.jpg" alt="">
+                            </div>
+                            <div class="content">
+                                <h5 class="name">Post-Incident Assistant</h5>
+                            </div>
+                        </div>
+                        <div class="expert-box-right">
+                            <div class="content">
+                                <p>Join our team as a post-incident assistant, where you'll play a crucial role in providing 
+                                    timely support and assistance to individuals and organizations during challenging situations, 
+                                    ensuring a smooth recovery process.
+                                </p>
+                                <div class="expert-box-buttons">
+                                    <a href="#joinUs" class="site-btn white">Contact Now</a>
                                 </div>
                             </div>
                         </div>
@@ -124,7 +142,7 @@
     <!-- our-expert area end -->
 
     <!-- contact area start -->
-    <div class="contact-area pt-110 pb-110 bg_img" data-overlay="94" data-background="assets/images/bg/contact-bg-1.jpg">
+    <div class="contact-area pt-110 pb-110 bg_img" id="joinUs" data-overlay="94" data-background="assets/images/bg/contact-bg-1.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -141,7 +159,7 @@
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade active show" id="appointment" role="tabpanel" aria-labelledby="appointment-tab">
                                     <div class="contact-form">
-                                        <form action="">
+                                        <form>
                                             <div class="row">
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
@@ -172,10 +190,11 @@
                                                 <div class="col-lg-6">
                                                     <div class="form-group">
                                                         <select name="subject">
-                                                            <option data-display="Select Department">Select Department</option>
+                                                            <option data-display="Select Department">Select Team to Join</option>
                                                             <option value="1">Supported Living Care</option>
                                                             <option value="2">Travel Buddy</option>
                                                             <option value="3">Post-Incident Assistant Team</option>
+                                                            <option value="4">Domicillary Care</option>
                                                         </select>
                                                     </div>
                                                 </div>

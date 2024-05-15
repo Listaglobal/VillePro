@@ -18,4 +18,4 @@
     <script src="assets/js/waypoint.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="scripts/general_functions.js"></script>
-    <script src="vuejs/user.js"></script>
+    <script src="vuejs/admin.js"></script>

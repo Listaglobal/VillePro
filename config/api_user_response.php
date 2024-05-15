@@ -55,6 +55,8 @@ class API_User_Response
     public static $userNotAllowed = "User not allowed";
     public static $deletedAccount = "(401) Your account has been deleted";
     public static $errorAdded = "Error Occured";
+    public static $getRequestFetched = "Request fetched successfully";
+    public static $getRequestNoRecords = "No records found";
 
     // login status
     public static $accountSuspended = "Your account has been suspended";

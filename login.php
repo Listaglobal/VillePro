@@ -6,11 +6,8 @@
 </head>
 
 <body>
-    <div id="user" v-cloak>
-        <!-- preloader  -->
-        <?php include 'includes/preloader.php'; ?>
-        <!-- preloader end -->
-
+    <div id="admin" v-cloak>
+        
         <!-- header start -->
         <?php include 'includes/header.php'; ?>
         <!-- header end -->
@@ -44,12 +41,10 @@
                             <h3 class="text-center mb-60">Login From Here</h3>
                             <form @submit.prevent="Login">
                                 <label for="name">Email Address </label>
-                                    <input id="name" type="text" v-model="email" placeholder="Enter Username or Email address..." />
+                                    <input id="name" type="text" v-model="email" placeholder="Enter Email address..." />
                                 <label for="pass">Password </label>
                                     <input id="pass" type="password" v-model="password" placeholder="Enter password..." />
                                 <button class="site-btn red w-100" type="submit">Login Now</button>
-                                <!-- <div class="or-divide"><span>or</span></div>
-                                <button class="site-btn w-100">Sign Up Here</button> -->
                             </form>
                         </div>
                     </div>
@@ -65,8 +60,6 @@
         <!--========= Footer Link =========-->
         <?php include 'includes/footer_link.php'; ?>
     </div>
-
-
 </body>
 
 </html>

@@ -6,7 +6,7 @@
 </head>
 
 <body>
-    <div class="container-scroller">
+    <div id="admin" v-cloak class="container-scroller">
         <!-- Header Start -->
         <?php include 'includes/header.php' ?>
         <!-- Header End  -->

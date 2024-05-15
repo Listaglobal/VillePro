@@ -1,5 +1,5 @@
 <?php
-require_once '../../config/bootstrap_file.php';
+require_once '../../../config/bootstrap_file.php';
 //allow only post method
 if (getenv('REQUEST_METHOD') === 'POST') {
 
@@ -26,7 +26,7 @@ if (getenv('REQUEST_METHOD') === 'POST') {
         $api_status_code_class_call->respondBadRequest($maindata, $text, $hint, $linktosolve, $errorcode);
     }
 
-    $checkUser = $utility_class_call::getColumsFromField("users", "*", "email = ? OR email = ?", [$email, $email]);
+    $checkUser = $utility_class_call::getColumsFromField("admin", "*", "email = ? OR email = ?", [$email, $email]);
 
     if (!$checkUser) {
         $text = $api_response_class_call::$invalidUserDetail;

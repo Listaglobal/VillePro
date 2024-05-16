@@ -74,6 +74,12 @@ let app = Vue.createApp({
             name : null,
             details : null,
             locations : null,
+
+            // staff
+            staff: null,
+
+            //booking 
+            bookings: null,
         }
     },
     methods: {
@@ -210,6 +216,41 @@ let app = Vue.createApp({
             }, 1);
         },
 
+        //Staff 
+        async getAllStaff(load = 1) {
+            const url = `staff/getAllStaff.php`;
+            let headers = {
+              "Content-type": "application/json",
+              "Authorization": `Bearer ${this.token}`
+            };
+
+            await this.callGetRequest(url, headers, (successStatus, successData) => {
+
+            if (!successData) {
+                return;
+            }
+              this.staff = successData.staff;
+          });
+        },
+
+        //booking 
+        async getAllBooking(load = 1) {
+            const url = `booking/getAllBooking.php`;
+            let headers = {
+              "Content-type": "application/json",
+              "Authorization": `Bearer ${this.token}`
+            };
+
+            await this.callGetRequest(url, headers, (successStatus, successData) => {
+
+            if (!successData) {
+                return;
+            }
+              this.bookings = successData.bookings;
+            })
+
+        },
+
         // jobs
         async getAllJobs(load = 1) {
             const url = `jobs/getAllJobs.php`;
@@ -269,7 +310,7 @@ let app = Vue.createApp({
             
         }
 
-        if (webPage === 'job.php' || webPage === 'job') {
+        if (webPage === 'jobs.php' || webPage === 'jobs') {
             await this.getAllJobs();
         }
 

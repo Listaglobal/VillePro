@@ -25,7 +25,7 @@ class Users_Table extends Config\DB_Connect
 
      */
     // APi functions
-    public const  tableName = "users";
+    public const  tableName = "staff";
     public static $supportMail = "support@light.ng";
     public static $imagesPath = "staff";
     public static $defaultProfilePath = "web";

@@ -179,6 +179,12 @@
                                                         <span class="icon"><i class="fal fa-phone"></i></span>
                                                     </div>
                                                 </div>
+                                                <div class="col-lg-4">
+                                                    <div class="form-group">
+                                                        <input type="tel" placeholder="Enter your phone number">
+                                                        <span class="icon"><i class="fal fa-phone"></i></span>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-4">

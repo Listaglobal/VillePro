@@ -71,6 +71,9 @@ let app = Vue.createApp({
 
             //jobs
             jobs: null,
+            name : null,
+            details : null,
+            locations : null,
         }
     },
     methods: {
@@ -222,7 +225,29 @@ let app = Vue.createApp({
               }
               this.jobs = successData.jobs;
           });
-      },
+        },
+
+        async addJobs() {
+            let data = {
+                "admin_id" : this.admin_id,
+                "name" : this.name,
+                "details" : this.details,
+                "location" : this.locations,            }
+
+            const url = `jobs/getAllJobs.php`;
+
+            const headers = {
+                "Authorization": `Bearer ${this.token}`
+            }
+
+            await this.callPostRequest(data, url, headers, async (successStatus, successData) => {
+                if (successStatus) {
+                    await this.getAllJobs();
+                    document.getElementById("_closedisco").click();
+                    this.admin_id = this.name = this.details = this.locations = null;
+                } 
+            }, 2);
+        },
         
     },
     async beforeMount() {

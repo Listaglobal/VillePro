@@ -40,8 +40,9 @@ class Jobs_Table extends Config\DB_Connect
         $tableName = self::tableName;
 
         // SELECT * FROM `jobs` WHERE 1
+        
 
-        $query = "SELECT * FROM $tableName WHERE $tableName.id > ? $sortQuery $searchQuery";
+        $query = "SELECT $tableName.*, admin.fullname as fullname, admin.profile_pic as profile_pic  FROM $tableName LEFT JOIN admin ON $tableName.admin_id = admin.user_id WHERE $tableName.id > ? $sortQuery $searchQuery";
         $checkdata = $connect->prepare($query);
         $checkdata->bind_param("s$paramString", self::$minId, ...$params);
         $checkdata->execute();
@@ -91,10 +92,10 @@ class Jobs_Table extends Config\DB_Connect
         return false;
     }
 
-    public static function addTask($data)
+    public static function addJobs($data)
     {
         $connect = static::getDB();
-        $trackid =  Utility_Functions::generateUniqueShortKey("task", "trackid");
+        $trackid =  Utility_Functions::generateUniqueShortKey("jobs", "trackid");
         $status = 1;
 
         $params = [];
@@ -104,7 +105,7 @@ class Jobs_Table extends Config\DB_Connect
             $paramString .= "s";
         }
 
-        $query = "INSERT INTO `task`(`trackid`, `status`, `user_id`, `task` ) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO `jobs`(`trackid`, `status`, `admin_id`, `name`, `details`, `location`, ) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $connect->prepare($query);
         $stmt->bind_param("ss$paramString", $trackid, $status, ...$params);
         $executed = $stmt->execute();

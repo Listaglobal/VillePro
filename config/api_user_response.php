@@ -63,5 +63,8 @@ class API_User_Response
     public static $accountFrozen = "Your account has been frozen";
     public static $accountBanned = "Your account has been banned";
     public static $loginFailedError = "Login Failed";
+
+    // Jobs
+    public static $jobAdded = "Job added successfully";
     
 }

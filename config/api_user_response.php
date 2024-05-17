@@ -57,6 +57,11 @@ class API_User_Response
     public static $errorAdded = "Error Occured";
     public static $getRequestFetched = "Request fetched successfully";
     public static $getRequestNoRecords = "No records found";
+    public static $imageNotSent = "Image not sent";
+    public static $fileTooLarge = "File too large";
+    public static $fileTypeNotAllowed = "File type not allowed";
+    public static $unknownErrorFileUpload = "Unable to upload file";
+
 
     // login status
     public static $accountSuspended = "Your account has been suspended";
@@ -66,5 +71,6 @@ class API_User_Response
 
     // Jobs
     public static $jobAdded = "Job added successfully";
+    public static $requestedSent = "Request sent successfully, YOu will be contacted soon";
     
 }

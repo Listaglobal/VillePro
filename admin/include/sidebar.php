@@ -19,6 +19,11 @@
                                 <span class="nav-title">Jobs</span></a> 
                             </li>
                             <li>
+                                <a href="request.php" aria-expanded="false">
+                                <i class="nav-icon ti ti-comment"></i>
+                                <span class="nav-title">Request Jobs</span></a> 
+                            </li>
+                            <li>
                                 <a href="booking.php" aria-expanded="false">
                                 <i class="nav-icon ti ti-calendar"></i>
                                 <span class="nav-title">Booking</span></a> 

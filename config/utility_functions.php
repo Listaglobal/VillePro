@@ -18,7 +18,7 @@ class Utility_Functions  extends DB_Connect
     public static $allowedImages = array('jpg','jpeg','svg','png','gif');
     public static $allowedFileType = array('image/png', 'image/x-png', 'image/jpeg', 'image/pjpeg');
     public static $max_file_size = 2097152;
-    public static $systemInitials = "CHILDVILLE";
+    public static $systemInitials = "DORC";
     public static $notificationBot = "6727269353:AAFRseCdJNEAquh6Q_5b7kXm6rorq7K9MN4";
     public static $crashBot = "6696254602:AAHWEH8pCKdG0c-JMGYwExRqwquLNg9tLEs";
     public static $notificationChatId = "-1002046207147";
@@ -195,6 +195,83 @@ class Utility_Functions  extends DB_Connect
 
         return $alldata;
         
+    }
+
+    public static function uploadDocumentFile($file, $path, $checkExt = true){
+        $file_name = $file['name'];
+        $file_size = $file['size'];
+        $tmp_name = $file['tmp_name'];
+        $error = $file['error'];
+
+        $status_code = new API_Status_Code;       
+
+
+        if ($error === 0){
+            if ($file_size > 10097152) {
+
+                $text = API_User_Response::$fileTooLarge;
+                $errorcode = API_Error_Code::$internalUserWarning;
+                $maindata = [];
+                $hint = ["Ensure to send valid data to the API fields."];
+                $linktosolve = "https://";
+                $status_code->respondBadRequest($maindata,$text,$hint,$linktosolve,$errorcode);
+
+            }else{
+                $file_ex = pathinfo($file_name, PATHINFO_EXTENSION);
+                $file_ex_lc = strtolower($file_ex);
+                
+
+                $allowed_exs = array('pdf','doc','docx','ppt','pptx','txt');
+                
+                if ( $checkExt  ){
+                    if (in_array($file_ex_lc, $allowed_exs)) {
+                        $folderPath = realpath(dirname(__DIR__));
+                        $path = $folderPath."/assets/images/$path/";
+                        // $path = "../../assets/images/$path/";
+                        if ( !is_dir($path) ){
+                            mkdir("$path", 0777, true);
+                        }
+                        $new_file_name = uniqid( self::$systemInitials. "-", true). "." . $file_ex_lc;
+                        $file_upload_path =  $path. $new_file_name;
+                        move_uploaded_file($tmp_name, $file_upload_path);
+    
+                       
+                        return [ 'name' => $new_file_name, 'type' => $file_ex_lc ];
+                    }else{
+    
+                        $text = API_User_Response::$fileTypeNotAllowed;
+                        $errorcode = API_Error_Code::$internalUserWarning;
+                        $maindata = [];
+                        $hint = ["Ensure to send valid data to the API fields."];
+                        $linktosolve = "https://";
+                        $status_code->respondBadRequest($maindata,$text,$hint,$linktosolve,$errorcode);
+    
+                    }
+                }else{
+                    $folderPath = realpath(dirname(__DIR__));
+                    $path = $folderPath."/assets/files/$path/";
+                    // $path = "../../assets/images/$path/";
+                    if ( !is_dir($path) ){
+                        mkdir("$path", 0777, true);
+                    }
+                    $new_file_name = uniqid( self::$systemInitials. "-", true). "." . $file_ex_lc;
+                    $file_upload_path =  $path. $new_file_name;
+                    move_uploaded_file($tmp_name, $file_upload_path);
+
+                    
+                    return [ 'name' => $new_file_name, 'type' => $file_ex_lc ];
+                }
+            }
+        }else{
+
+            $text = API_User_Response::$unknownErrorFileUpload;
+            $errorcode = API_Error_Code::$internalUserWarning;
+            $maindata = [];
+            $hint = ["Ensure to send valid data to the API fields."];
+            $linktosolve = "https://";
+            $status_code->respondBadRequest($maindata,$text,$hint,$linktosolve,$errorcode);
+
+        }
     }
 
     public static function date_duration($date){

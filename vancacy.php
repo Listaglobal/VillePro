@@ -76,7 +76,7 @@
     <!-- our-expert area end -->
 
     <!-- contact area start -->
-    <div class="contact-area pt-110 pb-110 bg_img" id="joinUs" data-overlay="94" data-background="assets/images/bg/contact-bg-1.jpg">
+    <div id="admin" v-cloak class="contact-area pt-110 pb-110 bg_img" id="joinUs" data-overlay="94" data-background="assets/images/bg/contact-bg-1.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -93,29 +93,23 @@
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade active show" id="appointment" role="tabpanel" aria-labelledby="appointment-tab">
                                     <div class="contact-form">
-                                        <form>
+                                        <form >
                                             <div class="row">
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
-                                                        <input type="text" placeholder="Enter your name">
+                                                        <input type="text" v-model="name" placeholder="Enter your name">
                                                         <span class="icon"><i class="fal fa-user"></i></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
-                                                        <input type="text" placeholder="Enter your email">
+                                                        <input type="text" v-model="email" placeholder="Enter your email">
                                                         <span class="icon"><i class="fal fa-envelope"></i></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
-                                                        <input type="tel" placeholder="Enter your phone number">
-                                                        <span class="icon"><i class="fal fa-phone"></i></span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="form-group">
-                                                        <input type="tel" placeholder="Enter your phone number">
+                                                        <input type="tel" v-model="phone" placeholder="Enter your phone number">
                                                         <span class="icon"><i class="fal fa-phone"></i></span>
                                                     </div>
                                                 </div>
@@ -123,14 +117,20 @@
                                             <div class="row">
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
-                                                        <input type="tel" placeholder="Enter your Location">
+                                                        <input type="tel" v-model="location" placeholder="Enter your Location">
                                                         <span class="icon"><i class="fal fa-map-marker"></i></span>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-6">
+                                                <div class="col-lg-4">
+                                                    <div class="form-group">
+                                                        <input type="text" v-model="availabilty" placeholder="Enter your Availabilty">
+                                                        <span class="icon"><i class="fal fa-calander"></i></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4">
                                                     <div class="form-group">
                                                         <select name="subject">
-                                                            <option data-display="Select Department">Select Team to Join</option>
+                                                            <option data-display="Select Department" v-model="job">Select Jobs</option>
                                                             <option value="1">Supported Living Care</option>
                                                             <option value="2">Travel Buddy</option>
                                                             <option value="3">Post-Incident Assistant Team</option>
@@ -141,16 +141,27 @@
                                                 
                                             </div>
                                             <div class="row">
+                                                <div class="col-lg-4">
+                                                    <div class="form-group">
+                                                        <input type="file"  @change='uploadImage' placeholder="Upload Certificate">
+                                                        <span class="icon"><i class="fal fa-upload"></i></span>
+                                                        <small class="form-text text-muted">Upload your Certificate</small>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                            
+                                            <div class="row">
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
-                                                        <textarea placeholder="Your message"></textarea>
+                                                        <textarea v-model="message" placeholder="Your message"></textarea>
                                                         <span class="icon"><i class="fal fa-edit"></i></span>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row justify-content-center">
                                                 <div class="col-lg-4 text-center">
-                                                    <a href="contact.html" class="site-btn red">Submit Request</a>
+                                                    <button @click.prevent="RequestedBooking" class="site-btn red">Submit Request</button>
                                                 </div>
                                             </div>
                                         </form>

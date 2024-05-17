@@ -28,9 +28,9 @@ class Booking_Table extends Config\DB_Connect
     // APi functions
     public const  tableName = "booking";
     public static $baseurl = Constants::APP_BASE_URL;
-    public static $assetUrl = Constants::APP_ASSET_PATH . "task/";
+    public static $assetUrl = Constants::APP_ASSET_PATH . "certificate/";
     private static $minId = 0;
-    // public static $imagePath = "payroll/";
+    public static $imagePath = "certificate/";
 
     public static function getAllBooking($page, $offset, $noPerPage, $searchQuery, $sortQuery, $paramString, $params)
     {

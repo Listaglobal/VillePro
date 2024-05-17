@@ -56,6 +56,10 @@ let app = Vue.createApp({
             monthly: null,
             location: null,
             team: null,
+            locations: null,
+            job: null,
+            message: null,
+            availability: null,
 
             // login details
             email: null,
@@ -80,6 +84,8 @@ let app = Vue.createApp({
 
             //booking 
             bookings: null,
+
+
         }
     },
     methods: {
@@ -295,7 +301,40 @@ let app = Vue.createApp({
             }, 2);
         },
 
-         // staff
+        async RequestedBooking() {
+            console.log("login");
+            if( !this.name || !this.email || !this.locations || !this.job || !this.phoneNumber || !this.message || !this.availability ){
+                this.generalFunctions.swalToast("error","Kindly Enter all Fields")
+                return
+            }
+            let data = {
+                "name" : this.name,
+                "file" : this.imageSent,
+                "email" : this.email,
+                "location" : this.locations, 
+                "job" : this.job,
+                "phone" : this.phoneNumber,
+                "message" : this.message,
+                "availability" : this.availability
+
+            }
+
+            const url = `booking/requestJob.php`;
+
+            const headers = {
+                "Authorization": `Bearer ${this.token}`
+            }
+
+            await this.callPostRequest(data, url, headers, async (successStatus, successData) => {
+                if (successStatus) {
+                    await this.getAllJobs();
+                    window.location = `${this.baseUrl}index.php`;
+                    this.name = this.imageSent = this.email = this.locations = this.job = this.phoneNumber = this.message = null;
+                } 
+            }, 2);
+        },
+
+        // staff
         async getAllStaff(load = 1) {
             let search = (this.search) ? `&search=${this.search}` : "";
             let page = (this.currentPage) ? this.currentPage : 1;

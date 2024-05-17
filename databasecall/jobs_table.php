@@ -115,4 +115,28 @@ class Jobs_Table extends Config\DB_Connect
             return false;
         }
     }
+
+    public static function requestJobs($data)
+    {
+        $connect = static::getDB();
+        $trackid =  Utility_Functions::generateUniqueShortKey("requestjob", "trackid");
+        $status = 1;
+
+        $params = [];
+        $paramString = "";
+        foreach ($data as $key => $val) {
+            $params[] = $val;
+            $paramString .= "s";
+        }
+
+        $query = "INSERT INTO `requestjob`(`trackid`, `status`, `name` ,`email`, `job_id`, `phonenumber`, `availabilty`, `file`, `location`, `message`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $connect->prepare($query);
+        $stmt->bind_param("ss$paramString", $trackid, $status, ...$params);
+        $executed = $stmt->execute();
+        if ($executed) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

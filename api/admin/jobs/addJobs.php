@@ -48,6 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $api_status_code_class_call->respondBadRequest($maindata, $text, $hint, $linktosolve, $errorcode);
     }
 
+    $details = $utility_class_call::showpost($details);
     //inserting into Database 
     $data = [
         "admin_id" => $admin_id,

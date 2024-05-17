@@ -15,8 +15,13 @@
                             </li>
                             <li>
                                 <a href="booking.php" aria-expanded="false">
-                                <i class="nav-icon ti ti-comment"></i>
+                                <i class="nav-icon ti ti-calendar"></i>
                                 <span class="nav-title">Booking</span></a> 
+                            </li>
+                            <li>
+                                <a href="booking.php" aria-expanded="false" @click="logout()">
+                                <i class="nav-icon ti ti-key"></i>
+                                <span class="nav-title">Log Out</span></a> 
                             </li>
                             
                         </ul>

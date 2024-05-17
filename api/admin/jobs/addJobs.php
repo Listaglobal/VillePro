@@ -19,10 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // data sent in the request
-    $admin_id = " ";
-    if (isset($_POST['admin_id'])) {
-        $admin_id = $utility_class_call::escape($_POST['admin_id']);
-    }
+    $admin_id = $adminManager;
 
     $name = " ";
     if (isset($_POST['name'])) {
@@ -41,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // checking all paramater are passed
     if (
-        $utility_class_call::validate_input($admin_id) || $utility_class_call::validate_input($name) || $utility_class_call::validate_input($details) || $utility_class_call::validate_input($location)
+         $utility_class_call::validate_input($name) || $utility_class_call::validate_input($details) || $utility_class_call::validate_input($location)
     ) {
         $text = $api_response_class_call::$invalidDataSent;
         $errorcode = $api_error_code_class_call::$internalUserWarning;

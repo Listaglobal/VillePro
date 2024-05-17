@@ -269,13 +269,18 @@ let app = Vue.createApp({
         },
 
         async addJobs() {
+            if( !this.name || !this.details || !this.locations ){
+                this.generalFunctions.swalToast("error","Kindly Enter all Fields")
+                return
+            }
             let data = {
-                "admin_id" : this.admin_id,
+                // "admin_id" : this.admin_id,
                 "name" : this.name,
                 "details" : this.details,
-                "location" : this.locations,            }
+                "location" : this.locations,            
+            }
 
-            const url = `jobs/getAllJobs.php`;
+            const url = `jobs/addJobs.php`;
 
             const headers = {
                 "Authorization": `Bearer ${this.token}`
@@ -285,7 +290,7 @@ let app = Vue.createApp({
                 if (successStatus) {
                     await this.getAllJobs();
                     document.getElementById("_closedisco").click();
-                    this.admin_id = this.name = this.details = this.locations = null;
+                    this.name = this.details = this.locations = null;
                 } 
             }, 2);
         },

@@ -35,11 +35,11 @@
                         <div class="row">
                             <div class="col-12 col-lg-12">
                                 <div class="card card-statistics">
-                                <div class="card-header">
+                                <div class="card-header d-flex justify-content-between align-items-center">
                                     <div class="card-heading">
                                         <h4 class="card-title">All Available Jobs</h4>
                                     </div>
-                                    <div class="card-body">
+                                    <div>
                                         <button class="btn btn-primary" data-toggle="modal" data-target="#verticalCenter">Add Jobs</button>
                                     </div>
                                 </div>

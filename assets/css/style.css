@@ -6931,11 +6931,21 @@ p.checkout-coupon input[type="text"] {
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 769px) {
   .basic-login {
     padding: 30px;
   }
+
+  .hide {
+	display: none;
+  }
+
+  .yes {
+	display: block;
+  }
 }
+
+
 
 .basic-login h3 {
 	font-size: 30px;

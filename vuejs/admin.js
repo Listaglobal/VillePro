@@ -21,7 +21,7 @@ let app = Vue.createApp({
     data() {
         return {
             // General utilites
-            generalFunctions: new GeneralFunction({ apiPath: "admin" , logoutUrl : "admin/login.php" }),
+            generalFunctions: new GeneralFunction({ apiPath: "admin" , logoutUrl : "login.php" }),
             images: null,
             loading: null,
             currentPage: null,
@@ -316,6 +316,10 @@ let app = Vue.createApp({
         }
 
         if (webPage === 'jobs.php' || webPage === 'jobs') {
+            await this.getAllJobs();
+        }
+
+        if (webPage === 'vancacy.php' || webPage === 'vancacy') {
             await this.getAllJobs();
         }
 

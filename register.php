@@ -12,7 +12,7 @@
     <!-- preloader end -->
 
     <!-- header start -->
-    <?php include 'includes/header.php'; ?>
+    <?php include 'includes/header2.php'; ?>
     <!-- header end -->
 
     <!-- breadcrumb area start -->

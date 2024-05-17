@@ -12,7 +12,7 @@
     <!-- preloader end -->
 
     <!-- header start -->
-    <?php include 'includes/header.php'; ?>
+    <?php include 'includes/header2.php'; ?>
     <!-- header end -->
 
     <!-- breadcrumb area start -->
@@ -36,7 +36,7 @@
     <!-- breadcrumb area end -->
 
     <!-- our-expert area start -->
-    <section class="our-expert-area bg-2 pt-100 pb-110">
+    <section id="admin" v-cloak class="our-expert-area bg-2 pt-100 pb-110">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6 col-md-8 text-center">
@@ -46,88 +46,22 @@
                     </div>
                 </div>
             </div>
-            <div class="row no-gutters expert-box-wrap">
-                <div class="col-xl-6 col-lg-12">
+            <div v-for="jobs" class="row no-gutters expert-box-wrap">
+                <div v-for="(item, index) in jobs" class="col-xl-6 col-lg-12">
                     <div class="single-expert-box">
                         <div class="expert-box-left">
                             <div class="thumb">
                                 <img src="assets/images/faq-1.jpg" alt="">
                             </div>
                             <div class="content">
-                                <h5 class="name">Domicillary Care.</h5>
+                                <h5 class="name">{{item.name}}</h5>
+                                <h5 class="name">{{item.location}}</h5>
                             </div>
                         </div>
 
                         <div class="expert-box-right">
                             <div class="content">
-                                <p>Join our team in domiciliary care, where every day is a chance to make a positive 
-                                    impact in people's lives and provide compassionate support in the comfort of their homes.
-                                </p>
-                                <div class="expert-box-buttons">
-                                    <a href="#joinUs" class="site-btn white">Contact Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-12">
-                    <div class="single-expert-box">
-                        <div class="expert-box-left">
-                            <div class="thumb">
-                                <img src="assets/images/faq-1.jpg" alt="">
-                            </div>
-                            <div class="content">
-                                <h5 class="name">Travel Buddy</h5>
-                            </div>
-                        </div>
-                        <div class="expert-box-right">
-                            <div class="content">
-                                <p>Join our team and become a travel buddy, exploring new destinations and creating unforgettable experiences together!</p>
-                                <div class="expert-box-buttons">
-                                    <a href="#joinUs" class="site-btn white">Contact Now</a>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-12">
-                    <div class="single-expert-box">
-                        <div class="expert-box-left">
-                            <div class="thumb">
-                                <img src="assets/images/faq-1.jpg" alt="">
-                            </div>
-                            <div class="content">
-                                <h5 class="name">Supported Living Care</h5>
-                            </div>
-                        </div>
-                        <div class="expert-box-right">
-                            <div class="content">
-                                <p>Join our team in supported living care, where we empower individuals to live independently 
-                                    while providing them with the personalized support and care they need to thrive.
-                                </p>
-                                <div class="expert-box-buttons">
-                                    <a href="#joinUs" class="site-btn white">Contact Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-12">
-                    <div class="single-expert-box">
-                        <div class="expert-box-left">
-                            <div class="thumb">
-                                <img src="assets/images/faq-1.jpg" alt="">
-                            </div>
-                            <div class="content">
-                                <h5 class="name">Post-Incident Assistant</h5>
-                            </div>
-                        </div>
-                        <div class="expert-box-right">
-                            <div class="content">
-                                <p>Join our team as a post-incident assistant, where you'll play a crucial role in providing 
-                                    timely support and assistance to individuals and organizations during challenging situations, 
-                                    ensuring a smooth recovery process.
+                                <p>J{{item.details}}
                                 </p>
                                 <div class="expert-box-buttons">
                                     <a href="#joinUs" class="site-btn white">Contact Now</a>

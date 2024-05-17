@@ -6,6 +6,7 @@
 </head>
 
 <body>
+    <div id="admin" v-cloak>
 
     <!-- preloader  -->
     <?php include 'includes/preloader.php'; ?>
@@ -55,13 +56,13 @@
                             </div>
                             <div class="content">
                                 <h5 class="name">{{item.name}}</h5>
-                                <h5 class="name">{{item.location}}</h5>
+                                <h5 class="name">{{item.details}}</h5>
                             </div>
                         </div>
 
                         <div class="expert-box-right">
                             <div class="content">
-                                <p>J{{item.details}}
+                                <p>{{item.location}}
                                 </p>
                                 <div class="expert-box-buttons">
                                     <a href="#joinUs" class="site-btn white">Contact Now</a>
@@ -76,12 +77,12 @@
     <!-- our-expert area end -->
 
     <!-- contact area start -->
-    <div id="admin" v-cloak class="contact-area pt-110 pb-110 bg_img" id="joinUs" data-overlay="94" data-background="assets/images/bg/contact-bg-1.jpg">
+    <div class="contact-area pt-110 pb-110 bg_img" id="joinUs" data-overlay="94" data-background="assets/images/bg/contact-bg-1.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="contact-buttons">
-                        <ul class="nav text-center" id="myTab" role="tablist">
+                        <ul class="nav text-center">
                             <li class="nav-item">
                                 <a class="nav-link active show" id="appointment-tab" data-toggle="tab" href="#appointment" role="tab"
                                     aria-controls="appointment" aria-selected="true">Fill to Join Our Team</a>
@@ -90,82 +91,79 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade active show" id="appointment" role="tabpanel" aria-labelledby="appointment-tab">
-                                    <div class="contact-form">
-                                        <form >
-                                            <div class="row">
-                                                <div class="col-lg-4">
-                                                    <div class="form-group">
-                                                        <input type="text" v-model="name" placeholder="Enter your name">
-                                                        <span class="icon"><i class="fal fa-user"></i></span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="form-group">
-                                                        <input type="text" v-model="email" placeholder="Enter your email">
-                                                        <span class="icon"><i class="fal fa-envelope"></i></span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="form-group">
-                                                        <input type="tel" v-model="phone" placeholder="Enter your phone number">
-                                                        <span class="icon"><i class="fal fa-phone"></i></span>
-                                                    </div>
+                            <div class="tab-pane fade active show" id="appointment" role="tabpanel" aria-labelledby="appointment-tab">
+                                <div class="contact-form">
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <input type="text" v-model="name" placeholder="Enter your name">
+                                                    <span class="icon"><i class="fal fa-user"></i></span>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-lg-4">
-                                                    <div class="form-group">
-                                                        <input type="tel" v-model="location" placeholder="Enter your Location">
-                                                        <span class="icon"><i class="fal fa-map-marker"></i></span>
-                                                    </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <input type="email" v-model="email" placeholder="Enter your email">
+                                                    <span class="icon"><i class="fal fa-envelope"></i></span>
                                                 </div>
-                                                <div class="col-lg-4">
-                                                    <div class="form-group">
-                                                        <input type="text" v-model="availabilty" placeholder="Enter your Availabilty">
-                                                        <span class="icon"><i class="fal fa-calander"></i></span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-4">
-                                                    <div class="form-group">
-                                                        <select name="subject">
-                                                            <option data-display="Select Department" v-model="job">Select Jobs</option>
-                                                            <option value="1">Supported Living Care</option>
-                                                            <option value="2">Travel Buddy</option>
-                                                            <option value="3">Post-Incident Assistant Team</option>
-                                                            <option value="4">Domicillary Care</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                
                                             </div>
-                                            <div class="row">
-                                                <div class="col-lg-4">
-                                                    <div class="form-group">
-                                                        <input type="file"  @change='uploadImage' placeholder="Upload Certificate">
-                                                        <span class="icon"><i class="fal fa-upload"></i></span>
-                                                        <small class="form-text text-muted">Upload your Certificate</small>
-                                                    </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <input type="tel" v-model="phoneNumber" placeholder="Enter your phone number">
+                                                    <span class="icon"><i class="fal fa-phone"></i></span>
                                                 </div>
-                                                
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <input type="text" v-model="locations" placeholder="Enter your Location">
+                                                    <span class="icon"><i class="fal fa-map-marker"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <input type="text" v-model="availability" placeholder="Enter your Availabilty">
+                                                    <span class="icon"><i class="fal fa-calander"></i></span>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <select v-model="job">
+                                                        <option value="null">Select Jobs</option>
+                                                        <option value="Supported Living Care">Supported Living Care</option>
+                                                        <option value="Travel Buddy">Travel Buddy</option>
+                                                        <option value="Post-Incident Assistant Team">Post-Incident Assistant Team</option>
+                                                        <option value="Domicillary Care">Domicillary Care</option>
+                                                    </select>
+                                                </div>
+                                            </div> -->
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <input type="file"  @change='uploadImage' placeholder="Upload Certificate">
+                                                    <span class="icon"><i class="fal fa-upload"></i></span>
+                                                    <small class="form-text text-muted">Upload your Certificate</small>
+                                                </div>
                                             </div>
                                             
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <div class="form-group">
-                                                        <textarea v-model="message" placeholder="Your message"></textarea>
-                                                        <span class="icon"><i class="fal fa-edit"></i></span>
-                                                    </div>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <textarea v-model="message" placeholder="Your message"></textarea>
+                                                    <span class="icon"><i class="fal fa-edit"></i></span>
                                                 </div>
                                             </div>
-                                            <div class="row justify-content-center">
-                                                <div class="col-lg-4 text-center">
-                                                    <button @click.prevent="RequestedBooking" class="site-btn red">Submit Request</button>
-                                                </div>
+                                        </div>
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-4 text-center">
+                                                <button @click.prevent="RequestedBooking()" class="site-btn red">Submit Request</button>
                                             </div>
-                                        </form>
-                                    </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -175,6 +173,8 @@
         </div>
     </div>
     <!-- contact area end -->
+    </div>
+
 
 
     <!-- footer start -->

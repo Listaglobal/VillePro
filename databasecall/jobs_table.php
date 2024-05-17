@@ -70,6 +70,7 @@ class Jobs_Table extends Config\DB_Connect
                 $fullDate = Utility_Functions::gettheTimeAndDate(strtotime($row['created_at']));
 
                 $row['created_at'] = $fullDate;
+                $row['details'] = Utility_Functions::showpost($row['details']);
 
                 unset($row['updated_at']);
 

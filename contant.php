@@ -205,6 +205,7 @@
     <!-- footer end -->
 
     <!--========= Footer Link =========-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIJ_QKHN-bi6_1C9f5eYE3pZs1zhQIo5o"></script>
     <?php include 'includes/footer_link.php'; ?>
     
 </body>

@@ -49,10 +49,11 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col">S/N</th>
-                                                    <th scope="col">Name</th>
-                                                    <th scope="col">Location Of the Job</th>
-                                                    <th scope="col">Details</th>
-                                                    <th scop="col">Added By</th>
+                                                    <th scope="col">Full Name</th>
+                                                    <th scope="col">Email</th>
+                                                    <th scope="col">Phone Number</th>
+                                                    <th scope="col">Availability</th>
+                                                    <th scop="col">Cerification</th>
                                                     <th scope="col">Status</th>
                                                 </tr>
                                             </thead>

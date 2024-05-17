@@ -1,6 +1,6 @@
 <?php
 
-require_once '../../../config/bootstrap_file.php';
+require_once '../../../../config/bootstrap_file.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 

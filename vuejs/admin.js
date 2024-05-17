@@ -294,6 +294,32 @@ let app = Vue.createApp({
                 } 
             }, 2);
         },
+
+         // staff
+        async getAllStaff(load = 1) {
+            let search = (this.search) ? `&search=${this.search}` : "";
+            let page = (this.currentPage) ? this.currentPage : 1;
+            let per_page = (this.per_page) ? this.per_page : 20;
+            let limit = (this.limit) ? `&limit=${this.limit}` : '';
+            const url = `staff/getAllStaff.php?page=${page}&per_page=${per_page}${search}${limit}`;
+            let headers = {
+                "Content-type": "application/json",
+                "Authorization": `Bearer ${this.token}`
+            };
+
+            await this.callGetRequest(url, headers, (successStatus, successData) => {
+
+                if (!successData) {
+                    return;
+                }
+                this.staff = successData.staff;
+                this.currentPage = successData.page;
+                this.totalPage = successData.totalPage;
+                this.per_page = successData.per_page;
+                this.totalData = successData.total_data;
+
+            });
+        },
         
     },
     async beforeMount() {
@@ -321,6 +347,14 @@ let app = Vue.createApp({
 
         if (webPage === 'vancacy.php' || webPage === 'vancacy') {
             await this.getAllJobs();
+        }
+
+        if (webPage === 'booking.php' || webPage === 'booking') {
+            await this.getAllBooking();
+        }
+        
+        if (webPage === 'user.php' || webPage === 'user') {
+            await this.getAllStaff();
         }
 
 

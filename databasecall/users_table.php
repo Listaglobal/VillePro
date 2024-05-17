@@ -401,7 +401,7 @@ class Users_Table extends Config\DB_Connect
 
         //SELECT `id`, `trackid`, `email`, `fname`, `lname`, `businessname`, `businessnumber`, `address`, `username`, `phoneno`, `country`, `image`, `image_type`, `password`, `userpubkey`, `user_type`, `status`, `email_verified`, `deleted`, `profile_pic`, `created_at`, `updated_at` FROM `users` WHERE 1
         //get all data in database
-        $query = "SELECT * FROM `users` WHERE users.id > ? $searchQuery $sortQuery";
+        $query = "SELECT * FROM `staff` WHERE staff.id > ? $searchQuery $sortQuery";
         $stmt = $connect->prepare($query);
         $stmt->bind_param("s$paramString", self::$minId,...$params);
         $stmt->execute();

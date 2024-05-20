@@ -130,7 +130,7 @@ class Jobs_Table extends Config\DB_Connect
             $paramString .= "s";
         }
 
-        $query = "INSERT INTO `requestjob`(`trackid`, `status`, `name` ,`email`, `job_id`, `phonenumber`, `availabilty`, `file`, `location`, `message`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO `requestjob`(`trackid`, `status`, `name` ,`email`, `job_id`, `phonenumber`, `availabilty`, `file`, `location`, `message`, `resume`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $connect->prepare($query);
         $stmt->bind_param("ss$paramString", $trackid, $status, ...$params);
         $executed = $stmt->execute();

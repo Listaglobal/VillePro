@@ -127,7 +127,7 @@
                                                     <span class="icon"><i class="fal fa-calander"></i></span>
                                                 </div>
                                             </div>
-                                            <!-- <div class="col-lg-4">
+                                            <div class="col-lg-4">
                                                 <div class="form-group">
                                                     <select v-model="job">
                                                         <option value="null">Select Jobs</option>
@@ -137,7 +137,8 @@
                                                         <option value="Domicillary Care">Domicillary Care</option>
                                                     </select>
                                                 </div>
-                                            </div> -->
+                                            </div>
+
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-4">
@@ -147,9 +148,14 @@
                                                     <small class="form-text text-muted">Upload your Certificate</small>
                                                 </div>
                                             </div>
-                                            
+                                            <div class="col-lg-4">
+                                                <div class="form-group">
+                                                    <input type="file"  @change='uploadImage' placeholder="Upload Resume">
+                                                    <span class="icon"><i class="fal fa-upload"></i></span>
+                                                    <small class="form-text text-muted">Upload your Resume</small>
+                                                </div>
+                                            </div>
                                         </div>
-                                        
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="form-group">

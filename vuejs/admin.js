@@ -305,6 +305,7 @@ let app = Vue.createApp({
            console.log({
             "name" : this.name,
             "file" : this.imageSent,
+            "resume" : this.imageSent,
             "email" : this.email,
             "location" : this.locations, 
             "job" : this.job,
@@ -320,6 +321,7 @@ let app = Vue.createApp({
             let data = {
                 "name" : this.name,
                 "file" : this.imageSent,
+                "resume" : this.imageSent,
                 "email" : this.email,
                 "location" : this.locations, 
                 "job" : this.job,

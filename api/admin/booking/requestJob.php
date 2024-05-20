@@ -45,6 +45,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $certificate = $_FILES['certificate'];
     }
 
+    $resume = " ";
+    if (isset($_FILES['resume'])) {
+        $resume = $_FILES['resume'];
+    }
+
 
     // checking all paramater are passed
     if (
@@ -59,7 +64,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     $imageUploaded = "";
-    if (!is_array($certificate)) {
+    if (!is_array($certificate) ) {
+        $text = $api_response_class_call::$imageNotSent;
+        $errorcode = $api_error_code_class_call::$internalUserWarning;
+        $maindata = [];
+        $hint = ["Ensure to the right user with right access add forum."];
+        $linktosolve = "https://";
+        $api_status_code_class_call->respondBadRequest($maindata, $text, $hint, $linktosolve, $errorcode);
+    }
+
+    $resumeUploaded = "";
+    if (!is_array($resume) ) {
         $text = $api_response_class_call::$imageNotSent;
         $errorcode = $api_error_code_class_call::$internalUserWarning;
         $maindata = [];
@@ -73,6 +88,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $imageUploaded = $utility_class_call::uploadDocumentFile($file, $path);
     }
 
+    if ($resume) {
+        $path = $bookingDBCall::$imagePath;
+        $imageUploaded = $utility_class_call::uploadDocumentFile($resume, $path);
+    }
+
     //inserting into Database 
     $data = [
         "name" => $name,
@@ -81,9 +101,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         "phonenumber" => $phoneNumber,
         "availability" => $availability,
         "file" => $imageUploaded['name'],
+        "resume" => $resumeUploaded['name'],
         "location" => $location,
         "message" => $message
-        
     ];
 
     $StaffReview = $jobsDBCall::requestJobs($data);

@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $AllReview = $bookingDBCall::getAllBooking($page_no, $offset, $noPerPage, $searchQuery, $sortQuery, $paramString, $params);
 
     if ($AllReview) {
-        $maindata = $AllStaff;
+        $maindata = $AllReview;
         $text = $api_response_class_call::$getRequestFetched;
         $api_status_code_class_call->respondOK($maindata, $text);
     } else {

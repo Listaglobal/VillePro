@@ -42,7 +42,7 @@ class Booking_Table extends Config\DB_Connect
 
         // SELECT * FROM `jobs` WHERE 1
 
-        $query = "SELECT $tableName.*, admin.fullname as fullname, admin.profile_pic as profile_pic  FROM $tableName LEFT JOIN admin ON $tableName.admin_id = admin.user_id WHERE $tableName.id > ? $sortQuery $searchQuery";
+        $query = "SELECT $tableName.*, admin.fullname as fullname, admin.profile_pic as profile_pic  FROM $tableName LEFT JOIN admin ON $tableName.admin_id = admin.user_id  WHERE $tableName.id > ? $sortQuery $searchQuery";
         $checkdata = $connect->prepare($query);
         $checkdata->bind_param("s$paramString", self::$minId, ...$params);
         $checkdata->execute();
@@ -106,6 +106,30 @@ class Booking_Table extends Config\DB_Connect
         }
 
         $query = "INSERT INTO `jobs`(`trackid`, `status`, `admin_id`, `name`, `details`, `location`, ) VALUES (?, ?, ?, ?, ?, ?)";
+        $stmt = $connect->prepare($query);
+        $stmt->bind_param("ss$paramString", $trackid, $status, ...$params);
+        $executed = $stmt->execute();
+        if ($executed) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static function requestShift($data)
+    {
+        $connect = static::getDB();
+        $trackid =  Utility_Functions::generateUniqueShortKey("booking", "trackid");
+        $status = 1;
+
+        $params = [];
+        $paramString = "";
+        foreach ($data as $key => $val) {
+            $params[] = $val;
+            $paramString .= "s";
+        }
+
+        $query = "INSERT INTO `booking`(`trackid`, `status`, `user_id`, `admin_id`, `jobs_id`) VALUES (?, ?, ?, ?, ?)";
         $stmt = $connect->prepare($query);
         $stmt->bind_param("ss$paramString", $trackid, $status, ...$params);
         $executed = $stmt->execute();

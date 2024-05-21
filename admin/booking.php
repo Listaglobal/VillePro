@@ -49,11 +49,11 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col">S/N</th>
-                                                    <th scope="col">Full Name</th>
-                                                    <th scope="col">Email</th>
+                                                    <th scope="col">Staf Name</th>
+                                                    <th scope="col">Staff Email</th>
                                                     <th scope="col">Phone Number</th>
                                                     <th scope="col">Availability</th>
-                                                    <th scop="col">Cerification</th>
+                                                    <th scop="col">Job Title</th>
                                                     <th scope="col">Status</th>
                                                 </tr>
                                             </thead>
@@ -92,7 +92,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="verticalCenterTitle">Add Jobs</h5>
+                        <h5 class="modal-title" id="verticalCenterTitle">Schedule Shift</h5>
                         <button type="submit" class="close" id="_closedisco" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -101,23 +101,26 @@
                     <div class="col-xl-12">
                         <div class="card card-statistics">
                             <div class="card-body">
-                                <form @submit.prevent="addJobs">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Name</label>
-                                        <input type="text" v-model="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Location of the job</label>
-                                        <input type="text" v-model="details" class="form-control" id="exampleInputPassword1" placeholder="Location of the job">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Details</label>
-                                        <input type="text" v-model="locations" class="form-control" id="exampleInputPassword1" placeholder="Details of the job">
+                                <form @submit.prevent="requestShift">
+                                    <div v-if="jobs" class="form-group">
+                                        <label for="exampleInputEmail1">Job</label>
+                                        <select class="form-control" aria-label="Default select example">
+                                            <option v-model="jobs_id" value="null">Select Jobs Available</option>
+                                            <option v-for="(item, index) in jobs" :value="item.trackid">{{item.name}}</option>
+                                        </select>
                                     </div>
                                     
+                                    <div v-if="staff" class="form-group">
+                                        <label for="exampleInputPassword1">Staff</label>
+                                        <select class="form-control" aria-label="Default select example">
+                                            <option v-model="user_id" value="null" >Select Staff Available</option>
+                                            <option v-for="(item, index) in staff" :value="item.staff_id">{{item.fullname}}</option>
+                                            
+                                        </select>
+                                    </div>
                                     <div class="modal-footer">
                                         <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
-                                        <button type="submit" class="btn btn-success">Add jobs</button>
+                                        <button type="submit" class="btn btn-success">Schedule Shift</button>
                                     </div>
                                 </form>
                             </div>

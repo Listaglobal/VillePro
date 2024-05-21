@@ -85,6 +85,9 @@ let app = Vue.createApp({
 
             //booking 
             bookings: null,
+            user_id: null,
+            admin_id: null,
+            jobs_id: null,
 
 
         }
@@ -171,7 +174,7 @@ let app = Vue.createApp({
 
         // AUTH
         async Login() {
-            console.log("login")
+           
             if (!this.email || !this.password) {
                 this.generalFunctions.swalToast("error", "Kindly Enter all Fields")
                 return
@@ -284,6 +287,27 @@ let app = Vue.createApp({
               this.bookings = successData.bookings;
             })
 
+        },
+
+        async requestShift() {
+            let data = {
+                "user_id" : this.user_id,
+                "admin_id" : this.admin_id,
+                "jobs_id" : this.jobs_id
+            }
+            const url = `booking/scheduleShift.php`;
+
+            const headers = {
+                "Authorization": `Bearer ${this.token}`
+            }
+
+            await this.callPostRequest(data, url, headers, async (successStatus, successData) => {
+                if (successStatus) {
+                    await this.getAllBooking();
+                    document.getElementById("_closedisco").click();
+                    this.user_id = this.admin_id = this.jobs_id = null;
+                } 
+            }, 2);
         },
 
         // jobs
@@ -431,6 +455,8 @@ let app = Vue.createApp({
 
         if (webPage === 'booking.php' || webPage === 'booking') {
             await this.getAllBooking();
+            await this.getAllStaff();
+            await this.getAllJobs();
         }
         
         if (webPage === 'user.php' || webPage === 'user') {

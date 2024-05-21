@@ -100,7 +100,7 @@ let app = Vue.createApp({
         },
         logout() {
             window.localStorage.removeItem("token");
-            window.location = this.baseUrl + "staff-login.php";
+            window.location = this.baseUrl + "login.php";
         },
         async nextPage() {
             this.currentPage = parseInt(this.currentPage) + 1;

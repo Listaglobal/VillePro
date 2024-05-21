@@ -94,7 +94,7 @@ let app = Vue.createApp({
     data() {
         return {
             // General utilites
-            generalFunctions: new GeneralFunction({ apiPath: "user" , logoutUrl : "login.php" }),
+            generalFunctions: new GeneralFunction({ apiPath: "user" , logoutUrl : "staffLogin.php" }),
             images: null,
             loading: null,
             currentPage: null,
@@ -151,7 +151,7 @@ let app = Vue.createApp({
         },
         logout() {
             window.localStorage.removeItem("token");
-            window.location = this.baseUrl + "staff-login.php";
+            window.location = this.baseUrl + "staffLogin.php";
         },
         async nextPage() {
             this.currentPage = parseInt(this.currentPage) + 1;
@@ -166,12 +166,6 @@ let app = Vue.createApp({
         async setNoPerPage(no) {
             this.per_page = no;
             this.class_active = true;
-        },
-        async getIndex(index) {
-
-        },
-        async getItemIndex(index) {
-
         },
         swalToast(icon, title) {
             const Toast = Swal.mixin({
@@ -243,7 +237,7 @@ let app = Vue.createApp({
                 }
                 let token = successData.token;
                 window.localStorage.setItem("token", token);
-                window.location = `${this.baseUrl}admin/index.php`;
+                window.location = `${this.baseUrl}staff/index.php`;
             }, 2);
         },
 

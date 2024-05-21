@@ -38,7 +38,7 @@
                 <div class="row">
                     <div class="col-lg-8 offset-lg-2">
                         <div class="basic-login">
-                            <h3 class="text-center mb-60">Login From Here</h3>
+                            <h3 class="text-center mb-60">Login From Here As Admin</h3>
                             <form @submit.prevent="Login">
                                 <label for="name">Email Address </label>
                                     <input id="name" type="text" v-model="email" placeholder="Enter Email address..." />
@@ -46,6 +46,11 @@
                                     <input id="pass" type="password" v-model="password" placeholder="Enter password..." />
                                 <button class="site-btn red w-100" type="submit">Login Now</button>
                             </form>
+                            <div class="login-action mt-20 fix">
+                                <span class="forgot-login f-right">
+                                    <a href="staffLogin.php">Are you a Staff, Login here!</a>
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>

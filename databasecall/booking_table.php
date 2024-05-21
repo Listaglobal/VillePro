@@ -42,7 +42,7 @@ class Booking_Table extends Config\DB_Connect
 
         // SELECT * FROM `jobs` WHERE 1
 
-        $query = "SELECT $tableName.*, admin.fullname as fullname, admin.profile_pic as profile_pic  FROM $tableName LEFT JOIN admin ON $tableName.admin_id = admin.user_id  WHERE $tableName.id > ? $sortQuery $searchQuery";
+        $query = "SELECT * FROM `booking` LEFT JOIN staff on staff.staff_id = booking.user_id LEFT JOIN admin on admin.user_id = booking.admin_id LEFT JOIN jobs ON jobs.trackid = booking.jobs_id WHERE booking.user_id > ? $sortQuery $searchQuery";
         $checkdata = $connect->prepare($query);
         $checkdata->bind_param("s$paramString", self::$minId, ...$params);
         $checkdata->execute();
@@ -83,7 +83,7 @@ class Booking_Table extends Config\DB_Connect
                 'per_page' => $noPerPage,
                 'total_data' => $total_numRow,
                 'totalPage' => $total_pages,
-                'booking' => $alldata
+                'bookings' => $alldata
             ];
 
             return $results;

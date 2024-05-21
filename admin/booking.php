@@ -44,7 +44,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <div v-for="booking" class="table-responsive">
+                                    <div v-for="bookings" class="table-responsive">
                                         <table class="table table-hover mb-0">
                                             <thead>
                                                 <tr>
@@ -54,16 +54,19 @@
                                                     <th scope="col">Phone Number</th>
                                                     <th scope="col">Availability</th>
                                                     <th scop="col">Job Title</th>
+                                                    <th scop="col">Job Location</th>
                                                     <th scope="col">Status</th>
                                                 </tr>
                                             </thead>
                                             <tbody >
-                                                <tr v-for="(item, index) in booking">
+                                                <tr v-for="(item, index) in bookings">
                                                     <th scope="row">{{index + 1}}</th>
-                                                    <td>{{item.name}}</td>
-                                                    <td>{{item.location}}</td>
-                                                    <td>{{item.details}}</td>
                                                     <td>{{item.fullname}}</td>
+                                                    <td>{{item.email}}</td>
+                                                    <td>{{item.phoneno}}</td>
+                                                    <td>{{item.availablity}}</td>
+                                                    <td>{{item.name}}</td>
+                                                    <td>{{item.details}}</td>
                                                     <td>
                                                         <p class="text-right text-success" v-if="item.status == 1">Active</p>
                                                         <p class="text-right text-danger" v-if="item.status == 2">Inactive</p>
@@ -104,16 +107,16 @@
                                 <form @submit.prevent="requestShift">
                                     <div v-if="jobs" class="form-group">
                                         <label for="exampleInputEmail1">Job</label>
-                                        <select class="form-control" aria-label="Default select example">
-                                            <option v-model="jobs_id" value="null">Select Jobs Available</option>
+                                        <select v-model="jobs_id" class="form-control" aria-label="Default select example">
+                                            <option  value="null">Select Jobs Available</option>
                                             <option v-for="(item, index) in jobs" :value="item.trackid">{{item.name}}</option>
                                         </select>
                                     </div>
                                     
                                     <div v-if="staff" class="form-group">
                                         <label for="exampleInputPassword1">Staff</label>
-                                        <select class="form-control" aria-label="Default select example">
-                                            <option v-model="user_id" value="null" >Select Staff Available</option>
+                                        <select v-model="user_id" class="form-control" aria-label="Default select example">
+                                            <option value="null" >Select Staff Available</option>
                                             <option v-for="(item, index) in staff" :value="item.staff_id">{{item.fullname}}</option>
                                             
                                         </select>

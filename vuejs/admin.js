@@ -292,7 +292,6 @@ let app = Vue.createApp({
         async requestShift() {
             let data = {
                 "user_id" : this.user_id,
-                "admin_id" : this.admin_id,
                 "jobs_id" : this.jobs_id
             }
             const url = `booking/scheduleShift.php`;
@@ -303,6 +302,7 @@ let app = Vue.createApp({
 
             await this.callPostRequest(data, url, headers, async (successStatus, successData) => {
                 if (successStatus) {
+                    window.location.reload();
                     await this.getAllBooking();
                     document.getElementById("_closedisco").click();
                     this.user_id = this.admin_id = this.jobs_id = null;

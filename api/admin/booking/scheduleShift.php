@@ -3,6 +3,19 @@
 require_once '../../../config/bootstrap_file.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $decodedToken = $api_status_code_class_call->ValidateAPITokenSentIN();
+    $admin_pubkey = $decodedToken->usertoken;
+
+    $adminManager = $api_admin_table_class_call::checkIfIsAdmin($admin_pubkey);
+
+    if (!$adminManager) {
+        $text = $api_response_class_call::$unauthorized_token;
+        $errorcode = $api_error_code_class_call::$internalHackerFatal;
+        $maindata = [];
+        $hint = ["Only registered user can access this route"];
+        $linktosolve = "https://";
+        $api_status_code_class_call->respondUnauthorized($maindata, $text, $hint, $linktosolve, $errorcode);
+    }
 
     // data sent in the request
     $user_id = " ";
@@ -10,10 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $user_id = $utility_class_call::escape($_POST['user_id']);
     }
 
-    $admin_id = " ";
-    if (isset($_POST['admin_id'])) {
-        $admin_id = $utility_class_call::escape($_POST['admin_id']);
-    }
+    $admin_id = $adminManager;
 
     $jobs_id = " ";
     if (isset($_POST['jobs_id'])) {

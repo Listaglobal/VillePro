@@ -197,6 +197,69 @@ class Utility_Functions  extends DB_Connect
         
     }
 
+    public static function uploadImage($file, $path){
+        $img_name = $file['name'];
+        $img_size = $file['size'];
+        $tmp_name = $file['tmp_name'];
+        $error = $file['error'];
+
+        $status_code = new API_Status_Code;       
+
+
+        if ($error === 0){
+            if ($img_size > 2097152) {
+
+                $text = API_User_Response::$imageTooLarge;
+                $errorcode = API_Error_Code::$internalUserWarning;
+                $maindata = [];
+                $hint = ["Ensure to send valid data to the API fields."];
+                $linktosolve = "https://";
+                $status_code->respondBadRequest($maindata,$text,$hint,$linktosolve,$errorcode);
+
+            }else{
+                $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
+                $img_ex_lc = strtolower($img_ex);
+
+
+                $allowed_exs = array('jpg','jpeg','svg','png','gif','webp','jiff');
+                
+
+               
+                if (in_array($img_ex_lc, $allowed_exs)) {
+                    $folderPath = realpath(dirname(__DIR__));
+                    $path = $folderPath."/assets/images/$path/";
+                    // if ( !is_dir($path) ){
+                    //     mkdir("$path", 0777, true);
+                    // }
+                    $new_img_name = uniqid( self::$systemInitials. "-", true). "." . $img_ex_lc;
+                    $img_upload_path =  $path. $new_img_name;
+                    move_uploaded_file($tmp_name, $img_upload_path);
+
+                   
+                    return $new_img_name;
+                }else{
+
+                    $text = API_User_Response::$imageTypeNotAllowed;
+                    $errorcode = API_Error_Code::$internalUserWarning;
+                    $maindata = [];
+                    $hint = ["Ensure to send valid data to the API fields."];
+                    $linktosolve = "https://";
+                    $status_code->respondBadRequest($maindata,$text,$hint,$linktosolve,$errorcode);
+
+                }
+            }
+        }else{
+
+            $text = API_User_Response::$unknownErrorImgeUpload;
+            $errorcode = API_Error_Code::$internalUserWarning;
+            $maindata = [];
+            $hint = ["Ensure to send valid data to the API fields."];
+            $linktosolve = "https://";
+            $status_code->respondBadRequest($maindata,$text,$hint,$linktosolve,$errorcode);
+
+        }
+    }
+
     public static function uploadDocumentFile($file, $path, $checkExt = true){
         $file_name = $file['name'];
         $file_size = $file['size'];

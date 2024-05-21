@@ -60,6 +60,7 @@ let app = Vue.createApp({
             job: null,
             message: null,
             availability: null,
+            skills: null,
 
             // login details
             email: null,
@@ -237,6 +238,34 @@ let app = Vue.createApp({
             }
               this.staff = successData.staff;
           });
+        },
+
+        async addStaff() {
+            let data = {
+                "name" : this.name,
+                "image" : this.imageSent,
+                "phoneNumber" : this.phoneNumber,
+                "location": this.location,
+                "skills": this.skills,
+                "availability": this.availability,
+                "email": this.email,
+                "password": this.password
+            }
+
+                
+            const url = `staff/addStaff.php`;
+
+            const headers = {
+                "Authorization": `Bearer ${this.token}`
+            }
+
+            await this.callPostRequest(data, url, headers, async (successStatus, successData) => {
+                if (successStatus) {
+                    await this.getAllStaff();
+                    document.getElementById("_closedisco").click();
+                    this.name = this.imageSent = this.phoneNumber = this.location = this.skills = this.availability = this.email = this.password = null;
+                } 
+            }, 2);
         },
 
         //booking 

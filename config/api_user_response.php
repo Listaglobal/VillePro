@@ -61,6 +61,11 @@ class API_User_Response
     public static $fileTooLarge = "File too large";
     public static $fileTypeNotAllowed = "File type not allowed";
     public static $unknownErrorFileUpload = "Unable to upload file";
+    public static $staffCreated = "Staff created successfully";
+    public static $imageTypeNotAllowed = "Image type not allowed";
+    public static $unknownErrorImgeUpload = "Unable to upload image";
+    public static $imageTooLarge = "Image too large";
+
 
 
     // login status

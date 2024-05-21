@@ -39,9 +39,9 @@
                                     <div class="card-heading">
                                         <h4 class="card-title">All User</h4>
                                     </div>
-                                    <!-- <div>
+                                    <div>
                                         <button class="btn btn-primary" data-toggle="modal" data-target="#verticalCenter">Add Experts</button>
-                                    </div> -->
+                                    </div>
                                 </div>
                                 <div class="card-body">
                                     <div v-for="staff" class="table-responsive">
@@ -95,7 +95,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="verticalCenterTitle">Add Jobs</h5>
+                        <h5 class="modal-title" id="verticalCenterTitle">Add Experts</h5>
                         <button type="submit" class="close" id="_closedisco" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -104,23 +104,42 @@
                     <div class="col-xl-12">
                         <div class="card card-statistics">
                             <div class="card-body">
-                                <form @submit.prevent="addJobs">
+                                <form @submit.prevent="addStaff">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Name</label>
                                         <input type="text" v-model="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name">
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">Location of the job</label>
-                                        <input type="text" v-model="details" class="form-control" id="exampleInputPassword1" placeholder="Location of the job">
+                                        <label for="exampleInputEmail1">Email</label>
+                                        <input type="text" v-model="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">Details</label>
-                                        <input type="text" v-model="locations" class="form-control" id="exampleInputPassword1" placeholder="Details of the job">
+                                        <label for="exampleInputEmail1">Phone Number</label>
+                                        <input type="text" v-model="phoneNumber" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Phone Number">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Location</label>
+                                        <input type="text" v-model="location" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Location">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Skills</label>
+                                        <input type="text" v-model="skills" class="form-control" id="exampleInputPassword1" placeholder="Skills">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Avaliability</label>
+                                        <input type="text" v-model="availability" class="form-control" id="exampleInputPassword1" placeholder="Avaliability">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Password</label>
+                                        <input type="text" v-model="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Upload Image</label>
+                                        <input type="file" @change='uploadImage' class="form-control" id="inputGroupFile01">>
                                     </div>
                                     
                                     <div class="modal-footer">
-                                        <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
-                                        <button type="submit" class="btn btn-success">Add jobs</button>
+                                        <button type="submit" class="btn btn-success">Add Experts</button>
                                     </div>
                                 </form>
                             </div>

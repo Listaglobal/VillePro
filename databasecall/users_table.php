@@ -115,9 +115,9 @@ class Users_Table extends Config\DB_Connect
     }
     public static function addStaff($data)
     {
-        $user_id =  Utility_Functions::generateUniqueShortKey("users", "user_id");
+        $staff_id =  Utility_Functions::generateUniqueShortKey("staff", "staff_id");
         $hashPassword = Utility_Functions::Password_encrypt($data["password"]);
-        $user_pub_key =  Utility_Functions::generateUniquePubKey("users", "userpubkey");
+        $user_pub_key =  Utility_Functions::generateUniquePubKey("staff", "userpubkey");
         $status = 1;
 
         unset($data["password"]);
@@ -129,10 +129,11 @@ class Users_Table extends Config\DB_Connect
             $paramString .= "s";
         }
 
-        $data = "INSERT INTO `users`( `user_id`, `password`, `userpubkey`, `status`, `fname`, `lname`, `dob`,`sex`, `class`, `profile_pic`, `phoneno`, `email`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        $data = "INSERT INTO `staff`( `staff_id`, `password`, `userpubkey`, `status`, `email`, `profile_pic`,`fullname`,`skills`, `availablity`,`phoneno`, `location`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $connect = static::getDB();
         $stmt = $connect->prepare($data);
-        $stmt->bind_param("ssssssssssss", $user_id, $hashPassword, $user_pub_key, $status , ...$params );
+        $stmt->bind_param("sssssssssss", $staff_id, $hashPassword, $user_pub_key, $status , ...$params );
         $executed = $stmt->execute();
         if ($executed) {
             return true;

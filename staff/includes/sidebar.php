@@ -38,5 +38,11 @@
               <span class="menu-title">Booking</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="booking.php">
+              <i class="mdi mdi-switch menu-icon"></i>
+              <span class="menu-title">Log Out</span>
+            </a>
+          </li>
         </ul>
       </nav>

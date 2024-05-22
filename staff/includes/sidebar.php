@@ -1,10 +1,10 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="text-center sidebar-brand-wrapper d-flex align-items-center">
           <a class="sidebar-brand brand-logo" href="index.php">
-            <img src="assets/images/logo.svg" alt="logo" />
+            <img src="assets/images/logo.jpg" alt="logo" />
           </a>
           <a class="sidebar-brand brand-logo-mini pl-4 pt-3" href="index.php">
-            <img src="assets/images/logo.svg" alt="logo" />
+            <img src="assets/images/logo.jpg" alt="logo" />
           </a>
         </div>
         <ul class="nav">
@@ -21,7 +21,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="index.php">
               <i class="mdi mdi-home menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>

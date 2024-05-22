@@ -36,7 +36,7 @@
                         <div class="d-flex justify-content-between align-items-start">
                           <div class="color-card">
                             <p class="mb-0 color-card-head">Margin</p>
-                            <h2 class="text-white"> $5,300.<span class="h5">00</span>
+                            <h2 class="text-white">300</span>
                             </h2>
                           </div>
                           <i class="card-icon-indicator mdi mdi-cube-outline bg-inverse-icon-danger"></i>
@@ -51,7 +51,7 @@
                         <div class="d-flex justify-content-between align-items-start">
                           <div class="color-card">
                             <p class="mb-0 color-card-head">Orders</p>
-                            <h2 class="text-white"> $1,753.<span class="h5">00</span>
+                            <h2 class="text-white"> 17</span>
                             </h2>
                           </div>
                           <i class="card-icon-indicator mdi mdi-briefcase-outline bg-inverse-icon-primary"></i>
@@ -66,7 +66,7 @@
                         <div class="d-flex justify-content-between align-items-start">
                           <div class="color-card">
                             <p class="mb-0 color-card-head">Affiliate</p>
-                            <h2 class="text-white">2368</h2>
+                            <h2 class="text-white">238</h2>
                           </div>
                           <i class="card-icon-indicator mdi mdi-account-circle bg-inverse-icon-success"></i>
                         </div>
@@ -185,27 +185,6 @@
         </div>
       </div>
     </div>
-    <!-- container-scroller -->
-    <!-- plugins:js -->
-    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
-    <script src="assets/vendors/chart.js/Chart.min.js"></script>
-    <script src="assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-    <script src="assets/vendors/flot/jquery.flot.js"></script>
-    <script src="assets/vendors/flot/jquery.flot.resize.js"></script>
-    <script src="assets/vendors/flot/jquery.flot.categories.js"></script>
-    <script src="assets/vendors/flot/jquery.flot.fillbetween.js"></script>
-    <script src="assets/vendors/flot/jquery.flot.stack.js"></script>
-    <script src="assets/vendors/flot/jquery.flot.pie.js"></script>
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
-    <script src="assets/js/off-canvas.js"></script>
-    <script src="assets/js/hoverable-collapse.js"></script>
-    <script src="assets/js/misc.js"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page -->
-    <script src="assets/js/dashboard.js"></script>
-    <!-- End custom js for this page -->
+    <?php include 'includes/footer_link.php'; ?>
   </body>
 </html>

@@ -141,6 +141,9 @@ let app = Vue.createApp({
             superAdmin: null,
             admin_initials: null,
             admin_level: null,
+
+            //bookings
+            bookings: null,
         }
     },
     methods: {
@@ -216,7 +219,6 @@ let app = Vue.createApp({
             }, this.onError);
         },
 
-
         // AUTH
         async staffLogin() {
            console.log("hello")
@@ -242,7 +244,59 @@ let app = Vue.createApp({
             }, 2);
         },
 
-        
+        // booking
+        async getAllBooking(load = 1) {
+            const url = `booking/getAllBooking.php`;
+            let headers = {
+              "Content-type": "application/json",
+              "Authorization": `Bearer ${this.token}`
+            };
+
+            await this.callGetRequest(url, headers, (successStatus, successData) => {
+
+            if (!successData) {
+                return;
+            }
+              this.bookings = successData.bookings;
+            })
+        },
+
+        // Account
+        async getAdminDetails() {
+            const url = `account/getAdminDetails.php`;
+            let headers = {
+                "Content-type": "application/json",
+                "Authorization": `Bearer ${this.token}`
+            };
+
+            await this.callGetRequest(url, headers, (successStatus, successData) => {
+
+                if (!successData) {
+                    return;
+                }
+                this.adminDetails = successData;
+            });
+        },
+
+        async updateProfile() {
+            const url = `account/editProfile.php`;
+            let headers = {
+                "Content-type": "application/json",
+                "Authorization": `Bearer ${this.token}`
+            };
+            let data = {
+                "name": this.adminDetails.name,
+                "email": this.adminDetails.email,
+                "phoneNumber": this.adminDetails.phoneNumber
+            };
+            await this.callPostRequest(data, url, headers, (successStatus, successData) => {
+                if (!successData) {
+                    return;
+                }
+                this.adminDetails = successData;
+            });
+        },
+
         
     },
     async beforeMount() {
@@ -251,7 +305,7 @@ let app = Vue.createApp({
             window.localStorage.setItem("dorchesterServicesCurrentPage", webPage);
             this.loading = true;
             this.getToken();
-            // this.getAdminDetails();
+            this.getAdminDetails();
             if (!this.token) {
                 window.location = `${this.baseUrl}staffLogin.php`;
             }
@@ -261,7 +315,10 @@ let app = Vue.createApp({
     },
     async mounted() {
         if (webPage === 'index.php' || webPage === 'index' || webPage === '') {
-            
+            await this.getAllBooking();
+        }
+        if (webPage === 'booking.php' || webPage === 'booking') {
+            await this.getAllBooking();
         }
 
         

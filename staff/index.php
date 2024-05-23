@@ -4,8 +4,13 @@
     <!-- Required meta tags -->
     <?php include 'includes/header_link.php'; ?>
   </head>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
   <body>
-    <div class="container-scroller">
+    <div id="user" v-cloak class="container-scroller">
       <?php include 'includes/sidebar.php'; ?>
       <div class="container-fluid page-body-wrapper">
         <?php include 'includes/header.php'; ?>
@@ -77,99 +82,30 @@
                 </div>
               </div>
               <div class="col-xl-9 stretch-card grid-margin">
-              <div class="card">
+              <div  class="card">
                   <div class="card-body px-0 overflow-auto">
                     <h4 class="card-title pl-4">Booking History</h4>
                     <div class="table-responsive">
-                      <table class="table">
+                      <table v-if="bookings" class="table">
                         <thead class="bg-light">
                           <tr>
                             <th>Jobs</th>
                             <th>Location</th>
+                            <th>Job Details</th>
                             <th>Status</th>
                             
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
+                          <tr v-for="(item, index) in bookings">
                             <td>
-                              <div class="d-flex align-items-center">
-                                <img src="assets/images/faces/face1.jpg" alt="image" />
-                                <div class="table-user-name ml-3">
-                                  <p class="mb-0 font-weight-medium"> Cecelia Cooper </p>
-                                  <small> Payment on hold</small>
-                                </div>
-                              </div>
+                              <h6 class="mb-0">{{ item.name }}</h6>
                             </td>
-                            <td>Hull City</td>
+                            <td>{{ item.details }}</td>
+                            <td>{{ item.location }}</td>
                             <td>
                               <div class="badge badge-inverse-success"> Completed </div>
                             </td>
-                            
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="d-flex align-items-center">
-                                <img src="assets/images/faces/face10.jpg" alt="image" />
-                                <div class="table-user-name ml-3">
-                                  <p class="mb-0 font-weight-medium"> Victor Watkins </p>
-                                  <small>Email verified</small>
-                                </div>
-                              </div>
-                            </td>
-                            <td>London</td>
-                            <td>
-                              <div class="badge badge-inverse-success"> Completed </div>
-                            </td>
-                            
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="d-flex align-items-center">
-                                <img src="assets/images/faces/face11.jpg" alt="image" />
-                                <div class="table-user-name ml-3">
-                                  <p class="mb-0 font-weight-medium"> Ada Burgess </p>
-                                  <small>Email verified</small>
-                                </div>
-                              </div>
-                            </td>
-                            <td>Abuja </td>
-                            <td>
-                              <div class="badge badge-inverse-danger"> Completed </div>
-                            </td>
-                            
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="d-flex align-items-center">
-                                <img src="assets/images/faces/face13.jpg" alt="image" />
-                                <div class="table-user-name ml-3">
-                                  <p class="mb-0 font-weight-medium"> Dollie Lynch </p>
-                                  <small>Email verified</small>
-                                </div>
-                              </div>
-                            </td>
-                            <td>Lagos</td>
-                            <td>
-                              <div class="badge badge-inverse-success"> Declined </div>
-                            </td>
-                           
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="d-flex align-items-center">
-                                <img src="assets/images/faces/face16.jpg" alt="image" />
-                                <div class="table-user-name ml-3">
-                                  <p class="mb-0 font-weight-medium"> Harry Holloway </p>
-                                  <small>Payment on process</small>
-                                </div>
-                              </div>
-                            </td>
-                            <td>Lagos</td>
-                            <td>
-                              <div class="badge badge-inverse-danger"> Declined </div>
-                            </td>
-                            
                           </tr>
                         </tbody>
                       </table>

@@ -246,7 +246,7 @@ let app = Vue.createApp({
 
         // booking
         async getAllBooking(load = 1) {
-            const url = `booking/getAllBooking.php`;
+            const url = `booking/getUserBooking.php`;
             let headers = {
               "Content-type": "application/json",
               "Authorization": `Bearer ${this.token}`
@@ -263,7 +263,7 @@ let app = Vue.createApp({
 
         // Account
         async getAdminDetails() {
-            const url = `account/getAdminDetails.php`;
+            const url = `account/getDetails.php`;
             let headers = {
                 "Content-type": "application/json",
                 "Authorization": `Bearer ${this.token}`

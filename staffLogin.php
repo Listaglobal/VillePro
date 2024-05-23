@@ -63,7 +63,7 @@
         <!-- footer end -->
 
         <!--========= Footer Link =========-->
-        <?php include 'includes/footer_link.php'; ?>
+        <?php include 'includes/staffLoginFooterLink.php'; ?>
     </div>
 </body>
 

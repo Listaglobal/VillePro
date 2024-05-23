@@ -4,8 +4,13 @@
     <!-- Required meta tags -->
     <?php include 'includes/header_link.php'; ?>
   </head>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
   <body>
-    <div class="container-scroller">
+    <div id="user" v-cloak class="container-scroller">
       <?php include 'includes/sidebar.php'; ?>
       <div class="container-fluid page-body-wrapper">
         <?php include 'includes/header.php'; ?>
@@ -19,23 +24,29 @@
                   <div class="card-body">
                     <h4 class="card-title">All Booking and Shift</h4>
                     <div class="table-responsive">
-                      <table class="table table-striped">
+                      <table v-if="bookings" class="table table-striped">
                         <thead>
                           <tr>
                             <th>Job</th>
                             <th>Location</th>
-                            <th>Staff Name</th>
+                            <th>Job Details</th>
+                            <th>Admin Name</th>
                             <th>Availablity</th>
                             <th>Status</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>Travel Buddy</td>
-                            <td>Hull City. London</td>
-                            <td>Tunde Kilani </td>
-                            <td>21- 02- 2024</td>
-                            <td><label class="badge badge-success">Active</label></td>
+                          <tr v-for="(item, index) in bookings">
+                          <td>
+                              <h6 class="mb-0">{{ item.name }}</h6>
+                            </td>
+                            <td>{{ item.details }}</td>
+                            <td>{{ item.location }}</td>
+                            <td>{{ item.fullname }}</td>
+                            <td>{{ item.availablity }}</td>
+                            <td>
+                              <div class="badge badge-inverse-success"> Completed </div>
+                            </td>
                           </tr>
                           
                         </tbody>

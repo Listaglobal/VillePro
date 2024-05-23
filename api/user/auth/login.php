@@ -30,7 +30,8 @@ if (getenv('REQUEST_METHOD') === 'POST') {
 
     if (!$checkUser) {
         $text = $api_response_class_call::$invalidUserDetail;
-        $errorcode = $api_error_code_class_call::$internalUserWarning;
+        // $errorcode = $api_error_code_class_call::$internalUserWarning;
+        $errorcode = "Bad Attempt";
         $maindata = [];
         $hint = ["Ensure to send valid data to the API fields.", "pass in current and new password", "all fields should not be empty"];
         $linktosolve = "https://";

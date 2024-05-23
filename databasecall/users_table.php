@@ -42,7 +42,7 @@ class Users_Table extends Config\DB_Connect
         $default_url = self::$baseurl . "assets/" . self::$defaultProfilePath . "/avatar.png";
 
 
-        $checkdata = $connect->prepare("SELECT $dataToGet FROM users WHERE user_id = ? || email=? || phoneno=? || id=?");
+        $checkdata = $connect->prepare("SELECT $dataToGet FROM staff WHERE staff_id = ? || email=? || phoneno=? || id=?");
         $checkdata->bind_param("ssss", $username, $username, $username, $username);
         $checkdata->execute();
         $getresultemail = $checkdata->get_result();
@@ -202,7 +202,7 @@ class Users_Table extends Config\DB_Connect
     public static function checkIfUser($userPubKey)
     {
         $connect = static::getDB();
-        $sqlQuery = 'SELECT user_id, id, email, phoneno FROM users where userpubkey = ?';
+        $sqlQuery = 'SELECT staff_id, id, email, phoneno FROM staff where userpubkey = ?';
         $stmt = $connect->prepare($sqlQuery);
         $stmt->bind_param("s", $userPubKey);
         $stmt->execute();
@@ -212,7 +212,7 @@ class Users_Table extends Config\DB_Connect
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
 
-            $id = $row['user_id'];
+            $id = $row['staff_id'];
             return $id;
         }
         return false;

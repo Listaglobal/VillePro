@@ -8,15 +8,15 @@
           </a>
         </div>
         <ul class="nav">
-          <li class="nav-item nav-profile">
+          <li v-if="adminDetails" class="nav-item nav-profile">
             <a href="#" class="nav-link">
               <div class="nav-profile-image">
                 <img src="assets/images/faces/face1.jpg" alt="profile" />
                 <span class="login-status online"></span>
               </div>
               <div class="nav-profile-text d-flex flex-column pr-3">
-                <span class="font-weight-medium mb-2">Henry Klein</span>
-                <span class="font-weight-normal">Care Giver</span>
+                <span class="font-weight-medium mb-2">{{adminDetails.fullname}}</span>
+                <span class="font-weight-normal">{{adminDetails.skills}}</span>
               </div>
             </a>
           </li>
@@ -39,7 +39,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="booking.php">
+            <a class="nav-link" href="javascript:void();" @click="logout()">
               <i class="mdi mdi-switch menu-icon"></i>
               <span class="menu-title">Log Out</span>
             </a>

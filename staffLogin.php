@@ -39,7 +39,7 @@
                     <div class="col-lg-8 offset-lg-2">
                         <div class="basic-login">
                             <h3 class="text-center mb-60">Staff Login From Here</h3>
-                            <form @submit.prevent="Login">
+                            <form @submit.prevent="staffLogin">
                                 <label for="name">Email Address </label>
                                     <input id="name" type="text" v-model="email" placeholder="Enter Email address..." />
                                 <label for="pass">Password </label>

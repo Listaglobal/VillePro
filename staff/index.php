@@ -101,7 +101,7 @@
                                 </div>
                               </div>
                             </td>
-                            <td>Angular Admin</td>
+                            <td>Hull City</td>
                             <td>
                               <div class="badge badge-inverse-success"> Completed </div>
                             </td>
@@ -117,7 +117,7 @@
                                 </div>
                               </div>
                             </td>
-                            <td>Angular Admin</td>
+                            <td>London</td>
                             <td>
                               <div class="badge badge-inverse-success"> Completed </div>
                             </td>
@@ -133,7 +133,7 @@
                                 </div>
                               </div>
                             </td>
-                            <td>One page html</td>
+                            <td>Abuja </td>
                             <td>
                               <div class="badge badge-inverse-danger"> Completed </div>
                             </td>
@@ -149,7 +149,7 @@
                                 </div>
                               </div>
                             </td>
-                            <td>Wordpress</td>
+                            <td>Lagos</td>
                             <td>
                               <div class="badge badge-inverse-success"> Declined </div>
                             </td>
@@ -165,7 +165,7 @@
                                 </div>
                               </div>
                             </td>
-                            <td>VueJs Application</td>
+                            <td>Lagos</td>
                             <td>
                               <div class="badge badge-inverse-danger"> Declined </div>
                             </td>
@@ -174,7 +174,7 @@
                         </tbody>
                       </table>
                     </div>
-                    <a class="text-black mt-3 d-block pl-4" href="#">
+                    <a class="text-black mt-3 d-block pl-4" href="booking.php">
                       <span class="font-weight-medium h6">View All Booking History</span>
                       <i class="mdi mdi-chevron-right"></i></a>
                   </div>

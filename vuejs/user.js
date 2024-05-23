@@ -218,7 +218,8 @@ let app = Vue.createApp({
 
 
         // AUTH
-        async Login() {
+        async staffLogin() {
+           console.log("hello")
             if (!this.email || !this.password) {
                 this.generalFunctions.swalToast("error", "Kindly Enter all Fields")
                 return
@@ -241,45 +242,18 @@ let app = Vue.createApp({
             }, 2);
         },
 
-        //contact us
-        async sbtContactForm(){
-            
-            if (!this.email || !this.phoneNumber || !this.message || !this.name || !this.location || !this.team) {
-                this.generalFunctions.Toastinator("error","Kindly Enter all Fields")
-                return
-            }
-            const url = `joinUs.php`;
-            let data = {
-                "email": this.email,
-                "phone": this.phoneNumber,
-                "location": this.location,
-                "message" : this.message,
-                "team": this.team,
-                "name": this.name
-            };
-            let headers = {
-                "Content-type": "application/json",
-            };
-            let responseData = await this.callPostRequest(data, url, headers, ( successStatus, successData) => {
-                if ( !successData ){
-                   return; 
-                }
-                window.location = `${this.baseUrl}index.php`;
-                this.email = this.phoneNumber = this.message = this.name = null;
-                
-            }, 1);
-        },
+        
         
     },
     async beforeMount() {
         this.pathname = window.location.href;
-        if (!webPage.includes("login.php") && !webPage.includes("login")) {
+        if (!webPage.includes("staffLogin.php") && !webPage.includes("staffLogin")) {
             window.localStorage.setItem("dorchesterServicesCurrentPage", webPage);
             this.loading = true;
             this.getToken();
             // this.getAdminDetails();
             if (!this.token) {
-                window.location = `${this.baseUrl}login.php`;
+                window.location = `${this.baseUrl}staffLogin.php`;
             }
         }
 

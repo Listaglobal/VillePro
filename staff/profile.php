@@ -4,8 +4,14 @@
     <!-- Required meta tags -->
     <?php include 'includes/header_link.php'; ?>
   </head>
+  <style>
+    [v-cloak]  
+      { 
+        display:none; 
+      }
+  </style>
   <body>
-    <div class="container-scroller">
+    <div id="user" v-cloak class="container-scroller">
       <?php include 'includes/sidebar.php'; ?>
       <div class="container-fluid page-body-wrapper">
         <?php include 'includes/header.php'; ?>
@@ -15,22 +21,22 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Staff Details and Set Availability</h4>
-                    <form class="forms-sample">
+                    <form v-if="adminDetails" class="forms-sample">
                       <div class="form-group">
                         <label for="exampleInputName1">Name</label>
-                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" />
+                        <input type="text" v-model="adminDetails.fullname" class="form-control" id="exampleInputName1" placeholder="Name" />
                       </div>
                       <div class="form-group">
                         <label for="exampleInputEmail3">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email" />
+                        <input type="email" class="form-control" v-model="adminDetails.email" id="exampleInputEmail3" placeholder="Email" />
                       </div>
-                      <div class="form-group">
+                      <!-- <div class="form-group">
                         <label for="exampleInputPassword4">Password</label>
                         <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Password" />
-                      </div>
+                      </div> -->
                       <div class="form-group">
                         <label for="exampleSelectGender">Gender</label>
-                        <select class="form-control" id="exampleSelectGender">
+                        <select v-model="adminDetails.sex" class="form-control" id="exampleSelectGender">
                           <option>Male</option>
                           <option>Female</option>
                         </select>
@@ -47,11 +53,11 @@
                       </div>
                       <div class="form-group">
                         <label for="exampleInputCity1">City</label>
-                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location" />
+                        <input type="text" v-model="adminDetails.location" class="form-control" id="exampleInputCity1" placeholder="Location" />
                       </div>
                       <div class="form-group">
                         <label for="exampleInputCity1">Set Availability</label>
-                        <input type="date" class="form-control" id="exampleInputCity1" placeholder="Location" />
+                        <input type="date" class="form-control" v-model="adminDetails.availablity" id="exampleInputCity1" placeholder="Location" />
                       </div>
                       
                       <button type="submit" class="btn btn-primary mr-2"> Submit </button>

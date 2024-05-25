@@ -17,7 +17,7 @@
 
 <body>
     <!-- begin app -->
-    <div class="app">
+    <div id="admin" v-cloak class="app">
         <!-- begin app-wrap -->
         <div class="app-wrap">
             <!-- begin pre-loader -->
@@ -28,25 +28,189 @@
                     </div>
                 </div>
             </div>
-            <!-- end pre-loader -->
-            <!-- header -->
+            
             <header class="app-header top-bar">
-                <!-- begin navbar -->
                 <?php include('include/header.php'); ?>
-                <!-- end navbar -->
             </header>
-            <!-- end app-header -->
-            <!-- begin app-container -->
+           
             <div class="app-container">
                 <!-- begin app-nabar -->
                 <?php include('include/sidebar.php'); ?>
-                <!-- end app-navbar -->
-                <!-- begin app-main -->
+                <div class="app-main" id="main">
+                    <!-- begin container-fluid -->
+                    <div class="container-fluid">
+                        <!-- begin row -->
+                        <div class="row">
+                            <div class="col-md-12 m-b-30">
+                                <!-- begin page title -->
+                                <div class="d-block d-lg-flex flex-nowrap align-items-center">
+                                    <div class="page-title mr-4 pr-4 border-right">
+                                        <h1>Dashboard</h1>
+                                    </div>
+                                    <div class="breadcrumb-bar align-items-center">
+                                        <nav>
+                                            <ol class="breadcrumb p-0 m-b-0">
+                                                <li class="breadcrumb-item">
+                                                    <a href="index.html"><i class="ti ti-home"></i></a>
+                                                </li>
+                                                <li class="breadcrumb-item">
+                                                    Index
+                                                </li>
+                                            </ol>
+                                        </nav>
+                                    </div>
+                                    
+                                </div>
+                                <!-- end page title -->
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card card-statistics">
+                                    <div class="row no-gutters">
+                                        <div class="col-xxl-3 col-lg-6">
+                                            <div class="p-20 border-lg-right border-bottom border-xxl-bottom-0">
+                                                <div class="d-flex m-b-10">
+                                                    <p class="mb-0 font-regular text-muted font-weight-bold">Total JObs</p>
+                                                </div>
+                                                <div class="d-block d-sm-flex h-100 align-items-center">
+                                                    <div class="apexchart-wrapper">
+                                                        <h3 class="mb-0"><i class="icon-arrow-up-circle"></i> 656</h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xxl-3 col-lg-6">
+                                            <div class="p-20 border-xxl-right border-bottom border-xxl-bottom-0">
+                                                <div class="d-flex m-b-10">
+                                                    <p class="mb-0 font-regular text-muted font-weight-bold">Total Staff</p>
+                                                </div>
+                                                <div class="d-block d-sm-flex h-100 align-items-center">
+                                                    <div class="apexchart-wrapper">
+                                                        <h3 class="mb-0"><i class="icon-arrow-up-circle"></i> 1656</h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xxl-3 col-lg-6">
+                                            <div class="p-20 border-xxl-right border-bottom border-xxl-bottom-0">
+                                                <div class="d-flex m-b-10">
+                                                    <p class="mb-0 font-regular text-muted font-weight-bold">Total Booking Made</p>
+                                                </div>
+                                                <div class="d-block d-sm-flex h-100 align-items-center">
+                                                    <div class="apexchart-wrapper">
+                                                        <h3 class="mb-0"><i class="icon-arrow-up-circle"></i> 1656</h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xxl-3 col-lg-6">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xxl-12 m-b-30">
+                                <div class="card card-statistics h-100 mb-0 apexchart-tool-force-top">
+                                    <div class="card-header d-flex justify-content-between">
+                                        <div class="card-heading">
+                                            <h4 class="card-title">Recent Booking</h4>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div v-for="bookings" class="table-responsive">
+                                                <table class="table table-hover mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">S/N</th>
+                                                        <th scope="col">Staf Name</th>
+                                                        <th scope="col">Staff Email</th>
+                                                        <th scope="col">Phone Number</th>
+                                                        <th scope="col">Availability</th>
+                                                        <th scop="col">Job Title</th>
+                                                        <th scop="col">Job Location</th>
+                                                        <th scope="col">Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody >
+                                                    <tr v-for="(item, index) in bookings">
+                                                        <th scope="row">{{index + 1}}</th>
+                                                        <td>{{item.fullname}}</td>
+                                                        <td>{{item.email}}</td>
+                                                        <td>{{item.phoneno}}</td>
+                                                        <td>{{item.availablity}}</td>
+                                                        <td>{{item.name}}</td>
+                                                        <td>{{item.details}}</td>
+                                                        <td>
+                                                            <p class="text-right text-success" v-if="item.status == 1">Active</p>
+                                                            <p class="text-right text-danger" v-if="item.status == 2">Inactive</p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>    
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="row"> -->
+                            <div class="col-xxl-12 m-b-30">
+                                <div class="card card-statistics h-100 mb-0 apexchart-tool-force-top">
+                                    <div class="card-header d-flex justify-content-between">
+                                        <div class="card-heading">
+                                            <h4 class="card-title">Recent Staff</h4>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div v-for="staff" class="table-responsive">
+                                            <table class="table table-hover mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">S/N</th>
+                                                        <th scope="col">Full Name</th>
+                                                        <th scope="col">EMail</th>
+                                                        <th scope="col">Skills</th>
+                                                        <th scope="col">Phone No</th>
+                                                        <th scop="col">Location</th>
+                                                        <th scope="col">Availability</th>
+                                                        <th scope="col">Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody >
+                                                    <tr v-for="(item, index) in staff">
+                                                        <th scope="row">{{index + 1}}</th>
+                                                        <td>{{item.fullname}}</td>
+                                                        <td>{{item.email}}</td>
+                                                        <td>{{item.skills}}</td>
+                                                        <td>{{item.phoneno}}</td>
+                                                        <td>{{item.address}}</td>
+                                                        <td>{{item.availablity}}</td>
+                                                        <td>
+                                                            <p class="text-right text-success" v-if="item.status == 1">Active</p>
+                                                            <p class="text-right text-danger" v-if="item.status == 2">Inactive</p>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>    
+                                            </table>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- </div> -->
+                    </div>
+                </div>
+
                 
-                <!-- end app-main -->
+                
+                
             </div>
-            <!-- end app-container -->
-            <!-- begin footer -->
+            
             <footer class="footer">
                 <div class="row">
                     <div class="col-12 col-sm-6 text-center text-sm-left">
@@ -61,11 +225,7 @@
     </div>
     <!-- end app -->
 
-    <!-- plugins -->
-    <script src="assets/js/vendors.js"></script>
-
-    <!-- custom app -->
-    <script src="assets/js/app.js"></script>
+    <?php include('include/footer_link.php'); ?>
 </body>
 
 

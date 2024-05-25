@@ -442,7 +442,12 @@ let app = Vue.createApp({
     },
     async mounted() {
         if (webPage === 'index.php' || webPage === 'index' || webPage === '') {
-            
+            this.per_page = 5;
+            await this.getAllBooking();
+            this.per_page = 5;
+            await this.getAllStaff();
+            this.per_page = 5;
+            await this.getAllJobs();
         }
 
         if (webPage === 'jobs.php' || webPage === 'jobs') {

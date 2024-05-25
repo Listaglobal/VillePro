@@ -105,6 +105,17 @@
                         <div class="card card-statistics">
                             <div class="card-body">
                                 <form @submit.prevent="requestShift">
+                                    <div class="datepicker-form mb-3">
+                                        <div class="card-heading">
+                                            <label class="card-title">Job Date</label>
+                                        </div>
+                                        <div class='input-group date' id='datepicker-bottom-left'>
+                                            <input class="form-control" type='text' placeholder="mm/dd/yyyy" />
+                                            <span class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </span>
+                                        </div>
+                                    </div>
                                     <div v-if="jobs" class="form-group">
                                         <label for="exampleInputEmail1">Job</label>
                                         <select v-model="jobs_id" class="form-control" aria-label="Default select example">

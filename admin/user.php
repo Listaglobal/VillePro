@@ -37,10 +37,10 @@
                                 <div class="card card-statistics">
                                 <div class="card-header d-flex justify-content-between align-items-center">
                                     <div class="card-heading">
-                                        <h4 class="card-title">All User</h4>
+                                        <h4 class="card-title">All Staff</h4>
                                     </div>
                                     <div>
-                                        <button class="btn btn-primary" data-toggle="modal" data-target="#verticalCenter">Add Experts</button>
+                                        <button class="btn btn-primary" data-toggle="modal" data-target="#verticalCenter">Add Staff</button>
                                     </div>
                                 </div>
                                 <div class="card-body">
@@ -49,6 +49,7 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col">S/N</th>
+                                                    <th scope="col">Staff Image</th>
                                                     <th scope="col">Full Name</th>
                                                     <th scope="col">EMail</th>
                                                     <th scope="col">Skills</th>
@@ -61,6 +62,7 @@
                                             <tbody >
                                                 <tr v-for="(item, index) in staff">
                                                     <th scope="row">{{index + 1}}</th>
+                                                    <td><img :src="baseUrl +'/assets/images/certificate/'+item.profile_pic" alt="item.fullname" width="50" height="50"></td>
                                                     <td>{{item.fullname}}</td>
                                                     <td>{{item.email}}</td>
                                                     <td>{{item.skills}}</td>

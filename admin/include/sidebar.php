@@ -11,7 +11,7 @@
                             <li>
                                 <a href="user.php" aria-expanded="false">
                                 <i class="nav-icon ti ti-user"></i>
-                                <span class="nav-title">Our Experts</span></a> 
+                                <span class="nav-title">Staff</span></a> 
                             </li>
                             <li>
                                 <a href="jobs.php" aria-expanded="false">

@@ -98,15 +98,18 @@
                         </thead>
                         <tbody>
                           <tr v-for="(item, index) in bookings">
-                            <td>
-                              <h6 class="mb-0">{{ item.name }}</h6>
+                          <td>
+                              <h6 class="mb-0">{{ item.jobs_name }}</h6>
                             </td>
-                            <td>{{ item.details }}</td>
-                            <td>{{ item.location }}</td>
+                            <td>{{ item.jobs_details }}</td>
+                            <td>{{ item.days }}</td>
+                            <td>{{ item.admin_fullname }}</td>
+                            <td>{{ item.date }}</td>
                             <td>
                               <div class="badge badge-inverse-success"> Completed </div>
                             </td>
                           </tr>
+                          
                         </tbody>
                       </table>
                     </div>

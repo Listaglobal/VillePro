@@ -13,7 +13,7 @@
         <!-- header end -->
 
         <!-- breadcrumb area start -->
-        <section class="breadcrumb-area bg_img pb-160" data-overlay="8" data-background="assets/images/about.jpg">
+        <section class="breadcrumb-area bg_img pb-160" data-overlay="8" data-background="https://suttoninhomeseniorcare.com/elder-care/wp-content/uploads/2018/08/senior-caregiver-1000x576.jpg">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 text-center">

@@ -12,7 +12,7 @@
 
     
     <!-- breadcrumb area start -->
-    <section class="breadcrumb-area bg_img pb-160" data-overlay="8" data-background="assets/images/about.jpg">
+    <section class="breadcrumb-area bg_img pb-160" data-overlay="8" data-background="https://suttoninhomeseniorcare.com/elder-care/wp-content/uploads/2018/08/senior-caregiver-1000x576.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -58,7 +58,7 @@
                                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionFaq">
                                     <div class="card-body">
                                         <div class="thumb">
-                                            <img src="assets/images/others/faq-1.jpg" alt="">
+                                            <img src="assets/images/aboutUs.jpg" alt="">
                                         </div>
                                         <div class="content">
                                             <p>Our mission is to become the number one choice when it comes to Mental health care
@@ -80,7 +80,7 @@
                                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionFaq">
                                     <div class="card-body">
                                         <div class="thumb">
-                                            <img src="assets/images/others/faq-1.jpg" alt="">
+                                            <img src="assets/images/aboutUs.jpg" alt="">
                                         </div>
                                         <div class="content">
                                             <p>To inspire and give hope to people affected by Mental Health. </p>
@@ -99,7 +99,7 @@
                                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionFaq">
                                     <div class="card-body">
                                         <div class="thumb">
-                                            <img src="assets/images/others/faq-1.jpg" alt="">
+                                            <img src="assets/images/aboutUs.jpg" alt="">
                                         </div>
                                         <div class="content">
                                             <p>Text will about the Goal will be needed for the part  

@@ -16,25 +16,23 @@
     <!-- header end -->
 
     <!-- Hero area start -->
-    <section class="hero-area bg_img" data-background="assets/images/banner/01.jpg">
+    <section class="hero-area bg_img" data-background="https://www.specialneedsalliance.org/wp-content/uploads/2023/02/caregiver.jpeg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="hero-content">
-                        <h1 class="title">Compassionate <br>
+                        <h1 class="title text-white">Compassionate <br>
                             care for every need<span>.</span>
                         </h1>
-                        <p>We give Supported Housing and prepared staff to assist people with maintaining stable emotional well-being.</p>
+                        <p class="text-white">We give Supported Housing and prepared staff to assist people with maintaining stable emotional well-being.</p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="hero-ilustration-shape">
-            <img src="assets/images/ilustration/ilustration-1.png" alt="">
-        </div>
         <!-- <div class="hero-ilustration-shape">
-            <img src="assets/images/care.png" alt="">
+            <img src="assets/images/ilustration/ilustration-1.png" alt="">
         </div> -->
+        
     </section>
     <!-- Hero area end -->
 
@@ -54,7 +52,7 @@
                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 mt-50 text-center">
                     <div class="single-feature-box">
                         <div class="icon">
-                            <img src="assets/images/icons/feature-icon-01.png" alt="">
+                            <img src="assets/images/caregiver_talking_to_a_senior.480x0.jpg" alt="" style="border-radius: 50px;">
                         </div>
                         <div class="content">
                             <h3 class="title">Supported Living Care</h3>
@@ -65,7 +63,7 @@
                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 mt-50 text-center">
                     <div class="single-feature-box">
                         <div class="icon">
-                            <img src="assets/images/icons/feature-icon-02.png" alt="">
+                            <img src="https://media.istockphoto.com/id/1396691293/photo/medical-worker-helping-his-patient-to-move-around-the-apartment.jpg?s=612x612&w=0&k=20&c=r4aZgevNk3sWIo7J53egzcNjF1GGhVnImWJusttHLAA=" alt="" style="border-radius: 50px;">
                         </div>
                         <div class="content">
                             <h3 class="title">Domicillary Support</h3>

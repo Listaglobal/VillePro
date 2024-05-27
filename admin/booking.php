@@ -53,6 +53,7 @@
                                                     <th scope="col">Staff Email</th>
                                                     <th scope="col">Phone Number</th>
                                                     <th scope="col">Availability</th>
+                                                    <th scope="col">Day</th>
                                                     <th scop="col">Job Title</th>
                                                     <th scop="col">Job Location</th>
                                                     <th scope="col">Status</th>
@@ -61,12 +62,13 @@
                                             <tbody >
                                                 <tr v-for="(item, index) in bookings">
                                                     <th scope="row">{{index + 1}}</th>
-                                                    <td>{{item.fullname}}</td>
-                                                    <td>{{item.email}}</td>
-                                                    <td>{{item.phoneno}}</td>
-                                                    <td>{{item.availablity}}</td>
-                                                    <td>{{item.name}}</td>
-                                                    <td>{{item.details}}</td>
+                                                    <td>{{item.staff_fullname}}</td>
+                                                    <td>{{item.staff_email}}</td>
+                                                    <td>{{item.staff_phoneno}}</td>
+                                                    <td>{{item.date}}</td>
+                                                    <td>{{item.days}}</td>
+                                                    <td>{{item.jobs_name}}</td>
+                                                    <td>{{item.jobs_details}}</td>
                                                     <td>
                                                         <p class="text-right text-success" v-if="item.status == 1">Active</p>
                                                         <p class="text-right text-danger" v-if="item.status == 2">Inactive</p>
@@ -107,14 +109,27 @@
                                 <form @submit.prevent="requestShift">
                                     <div class="datepicker-form mb-3">
                                         <div class="card-heading">
-                                            <label class="card-title">Job Date</label>
+                                            <label class="card-title">Job Date {{date}}</label>
                                         </div>
-                                        <div class='input-group date' id='datepicker-bottom-left'>
-                                            <input class="form-control" type='text' placeholder="mm/dd/yyyy" />
+                                        <div class='input-group'>
+                                            <input v-model="date" class="form-control" type='date' placeholder="mm/dd/yyyy" />
                                             <span class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                 </span>
                                         </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Day</label>
+                                        <select v-model="days" class="form-control" aria-label="Default select example">
+                                            <option value="null">Select Days</option>
+                                            <option value="Monday">Monday</option>
+                                            <option value="Tuesday">Tuesday</option>
+                                            <option value="Wednesday">Wednesday</option>
+                                            <option value="Thursday">Thursday</option>
+                                            <option value="Friday">Friday</option>
+                                            <option value="Saturday">Saturday</option>
+                                            <option value="Sunday">Sunday</option>
+                                        </select>
                                     </div>
                                     <div v-if="jobs" class="form-group">
                                         <label for="exampleInputEmail1">Job</label>

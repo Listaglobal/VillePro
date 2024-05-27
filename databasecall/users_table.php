@@ -26,7 +26,6 @@ class Users_Table extends Config\DB_Connect
      */
     // APi functions
     public const  tableName = "staff";
-    public static $supportMail = "support@light.ng";
     public static $imagesPath = "staff";
     public static $defaultProfilePath = "web";
     public static $baseurl = Constants::LIVE_OR_LOCAL == "1" ? Constants::LIVE_BASE_URL : Constants::BASE_URL;

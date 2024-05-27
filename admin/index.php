@@ -3,7 +3,7 @@
 
 
 <head>
-    <title>Dorchester Health Services</title>
+    <title>Dorchester Health Services Admin DashBoard</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="Admin template that can be used to build dashboards for CRM, CMS, etc." />
@@ -69,7 +69,7 @@
                             <div class="col-sm-12">
                                 <div class="card card-statistics">
                                     <div class="row no-gutters">
-                                        <div class="col-xxl-3 col-lg-6">
+                                        <div class="col-xxl-4 col-lg-6">
                                             <div class="p-20 border-lg-right border-bottom border-xxl-bottom-0">
                                                 <div class="d-flex m-b-10">
                                                     <p class="mb-0 font-regular text-muted font-weight-bold">Total JObs</p>
@@ -81,7 +81,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-xxl-3 col-lg-6">
+                                        <div class="col-xxl-4 col-lg-6">
                                             <div class="p-20 border-xxl-right border-bottom border-xxl-bottom-0">
                                                 <div class="d-flex m-b-10">
                                                     <p class="mb-0 font-regular text-muted font-weight-bold">Total Staff</p>
@@ -93,7 +93,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-xxl-3 col-lg-6">
+                                        <div class="col-xxl-4 col-lg-6">
                                             <div class="p-20 border-xxl-right border-bottom border-xxl-bottom-0">
                                                 <div class="d-flex m-b-10">
                                                     <p class="mb-0 font-regular text-muted font-weight-bold">Total Booking Made</p>
@@ -105,9 +105,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-xxl-3 col-lg-6">
-                                            
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -139,18 +137,19 @@
                                                 <tbody >
                                                     <tr v-for="(item, index) in bookings">
                                                         <th scope="row">{{index + 1}}</th>
-                                                        <td>{{item.fullname}}</td>
-                                                        <td>{{item.email}}</td>
-                                                        <td>{{item.phoneno}}</td>
-                                                        <td>{{item.availablity}}</td>
-                                                        <td>{{item.name}}</td>
-                                                        <td>{{item.details}}</td>
+                                                        <td>{{item.staff_fullname}}</td>
+                                                        <td>{{item.staff_email}}</td>
+                                                        <td>{{item.staff_phoneno}}</td>
+                                                        <td>{{item.date}}</td>
+                                                        <td>{{item.days}}</td>
+                                                        <td>{{item.jobs_name}}</td>
+                                                        <td>{{item.jobs_details}}</td>
                                                         <td>
                                                             <p class="text-right text-success" v-if="item.status == 1">Active</p>
                                                             <p class="text-right text-danger" v-if="item.status == 2">Inactive</p>
                                                         </td>
                                                     </tr>
-                                                </tbody>    
+                                                </tbody>     
                                             </table>
                                         </div>
                                     </div>

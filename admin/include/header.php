@@ -2,9 +2,9 @@
                     <!-- begin navbar-header -->
                     <div class="navbar-header d-flex align-items-center">
                         <a href="javascript:void:(0)" class="mobile-toggle"><i class="ti ti-align-right"></i></a>
-                        <a class="navbar-brand" href="index.html">
-                            <!-- <img src="assets/img/logo.jpg" class="img-fluid logo-desktop" alt="logo" width="50px" height="50px" /> -->
-                            <!-- <img src="assets/img/logo-icon.png" class="img-fluid logo-mobile" alt="logo" /> -->
+                        <a class="navbar-brand" href="index.php">
+                            <!-- <img src="assets/img/logo.jpg" class="img-fluid logo-desktop" alt="logo" width="10px" height="50px" /> -->
+                            <!-- <img src="assets/img/logo.jpg" class="img-fluid logo-mobile" alt="logo" /> -->
                         </a>
                     </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,7 +24,7 @@
                             </ul>
                             <ul class="navbar-nav nav-right ml-auto">
                                 
-                                <li class="nav-item dropdown user-profile">
+                                <li v-if="adminDetails" class="nav-item dropdown user-profile">
                                     <a href="javascript:void(0)" class="nav-link dropdown-toggle " id="navbarDropdown4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <img src="assets/img/avtar/02.jpg" alt="avtar-img">
                                         <span class="bg-success user-status"></span>
@@ -33,11 +33,12 @@
                                         <div class="bg-gradient px-4 py-3">
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <div class="mr-1">
-                                                    <h4 class="text-white mb-0">Alice Williams</h4>
-                                                    <small class="text-white">Henry@gmail.com</small>
+                                                    <h4 class="text-white mb-0">{{adminDetails.fullname}}</h4>
+                                                    <small class="text-white">{{adminDetails.email}}</small>
                                                 </div>
-                                                <a href="#" class="text-white font-20 tooltip-wrapper" data-toggle="tooltip" data-placement="top" title="" data-original-title="Logout"> <i
-                                                                class="zmdi zmdi-power"></i></a>
+                                                <a href="#" @click="logout()" class="text-white font-20 tooltip-wrapper" data-toggle="tooltip" data-placement="top" title="" data-original-title="Logout"> 
+                                                    <i class="zmdi zmdi-power"></i>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>

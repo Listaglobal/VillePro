@@ -60,7 +60,9 @@ let app = Vue.createApp({
             job: null,
             message: null,
             availability: null,
+            date: null,
             skills: null,
+            days: null,
 
             // login details
             email: null,
@@ -290,9 +292,12 @@ let app = Vue.createApp({
         },
 
         async requestShift() {
+            
             let data = {
                 "user_id" : this.user_id,
-                "jobs_id" : this.jobs_id
+                "jobs_id" : this.jobs_id, 
+                "date" : this.date,
+                "days" : this.days
             }
             const url = `booking/scheduleShift.php`;
 
@@ -302,10 +307,10 @@ let app = Vue.createApp({
 
             await this.callPostRequest(data, url, headers, async (successStatus, successData) => {
                 if (successStatus) {
-                    window.location.reload();
+                    // window.location.reload();
                     await this.getAllBooking();
                     document.getElementById("_closedisco").click();
-                    this.user_id = this.admin_id = this.jobs_id = null;
+                    this.user_id = this.admin_id = this.jobs_id = this.date = this.days = null;
                 } 
             }, 2);
         },
@@ -354,19 +359,25 @@ let app = Vue.createApp({
             }, 2);
         },
 
-        async RequestedBooking() {
-           console.log({
-            "name" : this.name,
-            "file" : this.imageSent,
-            "resume" : this.imageSent,
-            "email" : this.email,
-            "location" : this.locations, 
-            "job" : this.job,
-            "phone" : this.phoneNumber,
-            "message" : this.message,
-            "availability" : this.availability
+        // Account
+        async getAdminDetails() {
+            const url = `auth/getDetails.php`;
+            let headers = {
+                "Content-type": "application/json",
+                "Authorization": `Bearer ${this.token}`
+            };
 
-        })
+            await this.callGetRequest(url, headers, (successStatus, successData) => {
+
+                if (!successData) {
+                    return;
+                }
+                this.adminDetails = successData;
+            });
+        },
+
+        async RequestedBooking() {
+          
             if( !this.name || !this.email || !this.locations || !this.phoneNumber || !this.message || !this.availability ){
                 this.generalFunctions.swalToast("error","Kindly Enter all Fields")
                 return
@@ -432,7 +443,7 @@ let app = Vue.createApp({
             window.localStorage.setItem("dorchesterServicesCurrentPage", webPage);
             this.loading = true;
             this.getToken();
-            // this.getAdminDetails();
+            this.getAdminDetails();
             if (!this.token) {
                 window.location = `${this.baseUrl}login.php`;
             }

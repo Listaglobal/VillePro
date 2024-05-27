@@ -62,6 +62,30 @@ class Admin_Table extends Config\DB_Connect
         return $alldata;
     }
 
+    public static function getUserByIdorEmailorUsername($username = "", $dataToGet = "*")
+    {
+        //input type checks if its from post request or just normal function call
+        $connect = static::getDB();
+        $alldata = [];
+        // $default_url = self::$baseurl . "assets/" . self::$defaultProfilePath . "/avatar.png";
+
+
+        $checkdata = $connect->prepare("SELECT $dataToGet FROM admin WHERE user_id = ? || email=? || phoneno=? || id=?");
+        $checkdata->bind_param("ssss", $username, $username, $username, $username);
+        $checkdata->execute();
+        $getresultemail = $checkdata->get_result();
+        if ($getresultemail->num_rows > 0) {
+            $getthedata = $getresultemail->fetch_assoc();
+            if (isset($getthedata['profile_pic']) && strlen($getthedata['profile_pic']) > 3) {
+                $getthedata['profileLink'] = self::$baseurl . "assets/images/" . self::$imagesPath . "/" . $getthedata['profile_pic'];
+            } else {
+                // $getthedata['profileLink'] = $default_url;
+            }
+            $alldata = $getthedata;
+        }
+        return $alldata;
+    }
+
     public static function checkIfIsAdmin($pubkey)
     {
         $connect = static::getDB();

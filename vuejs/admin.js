@@ -88,6 +88,7 @@ let app = Vue.createApp({
             //booking 
             bookings: null,
             user_id: null,
+            work_hour: null,
             admin_id: null,
             jobs_id: null,
 
@@ -292,12 +293,12 @@ let app = Vue.createApp({
         },
 
         async requestShift() {
-            
             let data = {
                 "user_id" : this.user_id,
                 "jobs_id" : this.jobs_id, 
                 "date" : this.date,
-                "days" : this.days
+                "days" : this.days,
+                "work_hour": this.work_hour
             }
             const url = `booking/scheduleShift.php`;
 
@@ -310,7 +311,7 @@ let app = Vue.createApp({
                     // window.location.reload();
                     await this.getAllBooking();
                     document.getElementById("_closedisco").click();
-                    this.user_id = this.admin_id = this.jobs_id = this.date = this.days = null;
+                    this.user_id = this.admin_id = this.jobs_id = this.date = this.days = this.work_hour = null;
                 } 
             }, 2);
         },

@@ -40,9 +40,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $days = $utility_class_call::escape($_POST['days']);
     }
 
+    $work_hour = " ";
+    if (isset($_POST['work_hour'])) {
+        $work_hour = $utility_class_call::escape($_POST['work_hour']);
+    }
+
     // checking all paramater are passed
     if (
-        $utility_class_call::validate_input($user_id) || $utility_class_call::validate_input($admin_id) || $utility_class_call::validate_input($jobs_id) || $utility_class_call::validate_input($date) || $utility_class_call::validate_input($days)
+        $utility_class_call::validate_input($user_id) || $utility_class_call::validate_input($admin_id) || $utility_class_call::validate_input($jobs_id) || $utility_class_call::validate_input($date) || $utility_class_call::validate_input($days) || $utility_class_call::validate_input($work_hour)
     ) {
         $text = $api_response_class_call::$invalidDataSent;
         $errorcode = $api_error_code_class_call::$internalUserWarning;
@@ -58,7 +63,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         "admin_id" => $admin_id,
         "jobs_id" => $jobs_id, 
         "date" => $date,
-        "days" => $days
+        "days" => $days,
+        "work_hour" => $work_hour
     ];
 
     $StaffReview = $bookingDBCall::requestShift($data);

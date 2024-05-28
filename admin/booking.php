@@ -53,6 +53,7 @@
                                                     <th scope="col">Staff Email</th>
                                                     <th scope="col">Phone Number</th>
                                                     <th scope="col">Availability</th>
+                                                    <th scope="col">Work Hour</th>
                                                     <th scope="col">Day</th>
                                                     <th scop="col">Job Title</th>
                                                     <th scop="col">Job Location</th>
@@ -66,6 +67,7 @@
                                                     <td>{{item.staff_email}}</td>
                                                     <td>{{item.staff_phoneno}}</td>
                                                     <td>{{item.date}}</td>
+                                                    <td>{{item.work_hour}}</td>
                                                     <td>{{item.days}}</td>
                                                     <td>{{item.jobs_name}}</td>
                                                     <td>{{item.jobs_details}}</td>
@@ -129,6 +131,15 @@
                                             <option value="Friday">Friday</option>
                                             <option value="Saturday">Saturday</option>
                                             <option value="Sunday">Sunday</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Work Hour</label>
+                                        <select v-model="work_hour" class="form-control" aria-label="Default select example">
+                                            <option value="null">Select Work Hour</option>
+                                            <option value="Full Day">Full Day</option>
+                                            <option value="Half Day">Half Day</option>
+                                            
                                         </select>
                                     </div>
                                     <div v-if="jobs" class="form-group">

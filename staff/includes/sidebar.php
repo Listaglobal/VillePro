@@ -40,7 +40,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="rota.php">
-              <i class="mdi mdi-file-document-box menu-icon"></i>
+              <i class="mdi mdi-chart-bar menu-icon"></i>
               <span class="menu-title">Rota</span>
             </a>
           </li>

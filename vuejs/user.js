@@ -261,6 +261,22 @@ let app = Vue.createApp({
             })
         },
 
+        async getBooking(load = 1) {
+            const url = `booking/getAllBooking.php`;
+            let headers = {
+              "Content-type": "application/json",
+              "Authorization": `Bearer ${this.token}`
+            };
+
+            await this.callGetRequest(url, headers, (successStatus, successData) => {
+
+            if (!successData) {
+                return;
+            }
+              this.bookings = successData.bookings;
+            })
+        },
+
         // Account
         async getAdminDetails() {
             const url = `account/getDetails.php`;
@@ -321,7 +337,9 @@ let app = Vue.createApp({
             await this.getAllBooking();
         }
 
-        
+        if(webPage === 'rota.php' || webPage === 'rota') {
+            await this.getBooking();
+        }
         
     }
 })

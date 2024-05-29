@@ -63,6 +63,7 @@ let app = Vue.createApp({
             date: null,
             skills: null,
             days: null,
+            job_id: null,
 
             // login details
             email: null,
@@ -75,6 +76,7 @@ let app = Vue.createApp({
             superAdmin: null,
             admin_initials: null,
             admin_level: null,
+            phoneNumber: null,
 
             //jobs
             jobs: null,
@@ -138,8 +140,19 @@ let app = Vue.createApp({
                 title: title
             })
         },
+        // async uploadImage(event) {
+        //     this.imageSent = event.target.files[0];
+        // },
+
         async uploadImage(event) {
-            this.imageSent = event.target.files[0];
+            const files = event.target.files;
+            if (files.length > 0) {
+                if (files.length === 1) {
+                    this.imageSent = files[0];
+                } else {
+                    this.imagesSent = [...files]; 
+                }
+            }
         },
 
         async onLoading() {
@@ -378,35 +391,35 @@ let app = Vue.createApp({
         },
 
         async RequestedBooking() {
+            alert("Requested");
           
-            if( !this.name || !this.email || !this.locations || !this.phoneNumber || !this.message || !this.availability ){
-                this.generalFunctions.swalToast("error","Kindly Enter all Fields")
-                return
-            }
+            // if( !this.name || !this.email || !this.location || !this.phoneNumber || !this.message || !this.availability || !this.job_id  ){
+            //     this.generalFunctions.swalToast("error","Kindly Enter all Fields")
+            //     return
+            // }
             let data = {
                 "name" : this.name,
-                "file" : this.imageSent,
+                "certificate" : this.imageSent,
                 "resume" : this.imageSent,
                 "email" : this.email,
-                "location" : this.locations, 
-                "job" : this.job,
-                "phone" : this.phoneNumber,
+                "location" : this.location, 
+                "job_id" : this.job_id,
+                "phoneNumber" : this.phoneNumber,
                 "message" : this.message,
                 "availability" : this.availability
-
             }
 
             const url = `booking/requestJob.php`;
 
             const headers = {
-                "Authorization": `Bearer ${this.token}`
+                // "Authorization": `Bearer ${this.token}`
             }
 
             await this.callPostRequest(data, url, headers, async (successStatus, successData) => {
                 if (successStatus) {
                     await this.getAllJobs();
                     window.location = `${this.baseUrl}index.php`;
-                    this.name = this.imageSent = this.email = this.locations = this.job = this.phoneNumber = this.message = null;
+                    this.name = this.imageSent = this.email = this.locations = this.job_id = this.phoneNumber = this.message = null;
                 } 
             }, 2);
         },

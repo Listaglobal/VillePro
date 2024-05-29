@@ -1,6 +1,6 @@
 <?php
 
-require_once '../../../../config/bootstrap_file.php';
+require_once '../../../config/bootstrap_file.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $email = " ";
     if (isset($_POST['email'])) {
-        $details = $utility_class_call::escape($_POST['email']);
+        $email = $utility_class_call::escape($_POST['email']);
     }
 
     $phoneNumber = " ";
@@ -30,9 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $location = $utility_class_call::escape($_POST['location']);
     }
 
-    $job = " ";
-    if (isset($_POST['job'])) {
-        $job = $utility_class_call::escape($_POST['job']);
+    $job_id = " ";
+    if (isset($_POST['job_id'])) {
+        $job_id = $utility_class_call::escape($_POST['job_id']);
     }
 
     $availability = " ";
@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // checking all paramater are passed
     if (
-        $utility_class_call::validate_input($name) || $utility_class_call::validateEmail($email) || $utility_class_call::validate_input($location) || $utility_class_call::validate_input($job) || $utility_class_call::validate_input($availability) || $utility_class_call::validate_input($phoneNumber)
+        $utility_class_call::validate_input($name) || $utility_class_call::validateEmail($email) || $utility_class_call::validate_input($location) || $utility_class_call::validate_input($job_id) || $utility_class_call::validate_input($availability) || $utility_class_call::validate_input($phoneNumber)
     ) {
         $text = $api_response_class_call::$invalidDataSent;
         $errorcode = $api_error_code_class_call::$internalUserWarning;
@@ -63,47 +63,47 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $api_status_code_class_call->respondBadRequest($maindata, $text, $hint, $linktosolve, $errorcode);
     }
 
-    $imageUploaded = "";
+    $certificateUploaded = "";
     if (!is_array($certificate) ) {
-        $text = $api_response_class_call::$imageNotSent;
+        $text = $api_response_class_call::$certificateNoTSend;
         $errorcode = $api_error_code_class_call::$internalUserWarning;
         $maindata = [];
         $hint = ["Ensure to the right user with right access add forum."];
         $linktosolve = "https://";
         $api_status_code_class_call->respondBadRequest($maindata, $text, $hint, $linktosolve, $errorcode);
+    }
+
+    if ($certificate) {
+        $path = $bookingDBCall::$imagePath;
+        $certificateUploaded = $utility_class_call::uploadDocumentFile($certificate, $path);
     }
 
     $resumeUploaded = "";
     if (!is_array($resume) ) {
-        $text = $api_response_class_call::$imageNotSent;
+        $text = $api_response_class_call::$resumeNoTSend;
         $errorcode = $api_error_code_class_call::$internalUserWarning;
         $maindata = [];
         $hint = ["Ensure to the right user with right access add forum."];
         $linktosolve = "https://";
         $api_status_code_class_call->respondBadRequest($maindata, $text, $hint, $linktosolve, $errorcode);
     }
-
-    if ($file) {
-        $path = $bookingDBCall::$imagePath;
-        $imageUploaded = $utility_class_call::uploadDocumentFile($file, $path);
-    }
-
+    
     if ($resume) {
         $path = $bookingDBCall::$imagePath;
-        $imageUploaded = $utility_class_call::uploadDocumentFile($resume, $path);
+        $resumeUploaded = $utility_class_call::uploadDocumentFile($resume, $path);
     }
 
     //inserting into Database 
     $data = [
         "name" => $name,
         "email" => $email,
-        "job_id" => $job,
+        "job_id" => $job_id,
         "phonenumber" => $phoneNumber,
         "availability" => $availability,
-        "file" => $imageUploaded['name'],
-        "resume" => $resumeUploaded['name'],
+        "certificate" => $certificateUploaded['name'],
         "location" => $location,
-        "message" => $message
+        "message" => $message,
+        "resume" => $resumeUploaded['name'],
     ];
 
     $StaffReview = $jobsDBCall::requestJobs($data);

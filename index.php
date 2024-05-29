@@ -74,7 +74,7 @@
                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 mt-50 text-center">
                     <div class="single-feature-box">
                         <div class="icon">
-                            <img src="assets/images/icons/feature-icon-03.png" alt="">
+                            <img src="https://html.rometheme.pro/seniorsy/image/image-600x400-3.jpg" alt="" style="border-radius: 50px;">
                         </div>
                         <div class="content">
                             <h3 class="title">Travel Buddy</h3>

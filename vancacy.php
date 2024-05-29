@@ -117,7 +117,7 @@
                                         <div class="row">
                                             <div class="col-lg-4">
                                                 <div class="form-group">
-                                                    <input type="text" v-model="locations" placeholder="Enter your Location">
+                                                    <input type="text" v-model="location" placeholder="Enter your Location">
                                                     <span class="icon"><i class="fal fa-map-marker"></i></span>
                                                 </div>
                                             </div>
@@ -129,7 +129,7 @@
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="form-group">
-                                                    <select v-model="job">
+                                                    <select v-model="job_id">
                                                         <option value="null">Select Jobs</option>
                                                         <option value="Supported Living Care">Supported Living Care</option>
                                                         <option value="Travel Buddy">Travel Buddy</option>

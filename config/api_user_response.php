@@ -65,6 +65,8 @@ class API_User_Response
     public static $imageTypeNotAllowed = "Image type not allowed";
     public static $unknownErrorImgeUpload = "Unable to upload image";
     public static $imageTooLarge = "Image too large";
+    public static $certificateNoTSend = "Certificate not sent";
+    public static $resumeNoTSend = "Resume not sent";
 
 
 

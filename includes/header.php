@@ -20,11 +20,12 @@
                                 <li><a href="services.php">Our Services </a></li>
                                 <li><a href="living.php">Supported Living </a></li>
                                 <li><a href="contant.php">Contact Us </a></li>
+                                <li><a href="login.php" class="yes" >Login</a></li>
                             </ul>
                         </nav>
                     </div>
                 </div>
-                <a href="login.php" class="col-lg-3 my-auto">
+                <a href="login.php" class="col-lg-3 my-auto hide">
                     <button class="site-btn" type="submit">Login</button>
                 </a>
             </div>

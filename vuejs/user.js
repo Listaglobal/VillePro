@@ -49,6 +49,20 @@ const days_difference = (day1, day2) => {
     return days_difference;
 }
 
+const calendarData = {
+    theme: 'light',
+    calendarEvents: [
+        // {
+        //     id: 'bHay68s',
+        //     badge: "Full Day", // Event's ID (required)
+        //     name: "Tunde Kilani", // Event name (required)
+        //     date: "May/28/2024", // Event date (required)
+        //     type: "birthday", // Event type (required)
+        //     everyYear: true // Same event every year (optional)
+        // },
+    ]
+}
+
 function addDays(date, days) {
     var result = new Date(date);
     result.setDate(result.getDate() + days);
@@ -101,6 +115,7 @@ let app = Vue.createApp({
             currentExportPage: null,
             totalData: null,
             totalPage: null,
+            calendarDataValues: calendarData, 
             per_page: 10,
             exportPer_page: 100,
             totalExportPage: null,
@@ -313,6 +328,33 @@ let app = Vue.createApp({
             });
         },
 
+        async updateCalendar() {
+            if ( this.bookings ){
+                let calendar = []
+                this.bookings.forEach(element => {
+                    calendar.push({
+                      id: "",  
+                      badge: element.work_hour,  
+                      name: element.staff_fullname,  
+                      date: element.date,  
+                      type: "",  
+                      description: element.jobs_details,
+                      everyYear: false  
+                    });
+                });
+
+                this.calendarDataValues = {
+                    ...this.calendarDataValues,
+                    calendarEvents: calendar
+                };
+                
+
+                $('#calendar').evoCalendar(this.calendarDataValues);
+            }
+        },
+
+        
+
         
     },
     async beforeMount() {
@@ -339,7 +381,10 @@ let app = Vue.createApp({
 
         if(webPage === 'rota.php' || webPage === 'rota') {
             await this.getBooking();
+            await this.updateCalendar();
         }
+
+
         
     }
 })

@@ -391,8 +391,18 @@ let app = Vue.createApp({
         },
 
         async RequestedBooking() {
-            alert("Requested");
-          
+            console.log ({
+                "name" : this.name,
+                "certificate" : this.imageSent,
+                "resume" : this.imageSent,
+                "email" : this.email,
+                "location" : this.location, 
+                "job_id" : this.job,
+                "phoneNumber" : this.phoneNumber,
+                "message" : this.message,
+                "availability" : this.availability
+            })
+
             // if( !this.name || !this.email || !this.location || !this.phoneNumber || !this.message || !this.availability || !this.job_id  ){
             //     this.generalFunctions.swalToast("error","Kindly Enter all Fields")
             //     return
@@ -403,7 +413,7 @@ let app = Vue.createApp({
                 "resume" : this.imageSent,
                 "email" : this.email,
                 "location" : this.location, 
-                "job_id" : this.job_id,
+                "job_id" : this.job,
                 "phoneNumber" : this.phoneNumber,
                 "message" : this.message,
                 "availability" : this.availability

@@ -72,7 +72,7 @@
                                         <div class="col-xxl-4 col-lg-6">
                                             <div class="p-20 border-lg-right border-bottom border-xxl-bottom-0">
                                                 <div class="d-flex m-b-10">
-                                                    <p class="mb-0 font-regular text-muted font-weight-bold">Total JObs</p>
+                                                    <p class="mb-0 font-regular text-muted font-weight-bold">Total Jobs</p>
                                                 </div>
                                                 <div class="d-block d-sm-flex h-100 align-items-center">
                                                     <div class="apexchart-wrapper">

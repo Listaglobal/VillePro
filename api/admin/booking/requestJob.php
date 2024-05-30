@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $utility_class_call::validate_input($name) || $utility_class_call::validateEmail($email) || $utility_class_call::validate_input($location) || $utility_class_call::validate_input($job_id) || $utility_class_call::validate_input($availability) || $utility_class_call::validate_input($phoneNumber)
     ) {
         $text = $api_response_class_call::$invalidDataSent;
-        $errorcode = $api_error_code_class_call::$internalUserWarning;
+        $errorcode = "Internal Server Error";
         $maindata = [];
         $hint = ["Ensure to the right user with right access add forum."];
         $linktosolve = "https://";

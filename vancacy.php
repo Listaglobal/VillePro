@@ -8,10 +8,6 @@
 <body>
     <div id="admin" v-cloak>
 
-    <!-- preloader  -->
-    <?php include 'includes/preloader.php'; ?>
-    <!-- preloader end -->
-
     <!-- header start -->
     <?php include 'includes/header2.php'; ?>
     <!-- header end -->
@@ -129,8 +125,8 @@
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="form-group">
-                                                    <select v-model="job_id">
-                                                        <option value="null">Select Jobs</option>
+                                                    <select v-model="job">
+                                                        <option value="null">Select Jobs {{job_id}}</option>
                                                         <option value="Supported Living Care">Supported Living Care</option>
                                                         <option value="Travel Buddy">Travel Buddy</option>
                                                         <option value="Post-Incident Assistant Team">Post-Incident Assistant Team</option>

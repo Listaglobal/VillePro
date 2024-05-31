@@ -39,6 +39,18 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="shift.php">
+              <i class="mdi mdi-table-large menu-icon"></i>
+              <span class="menu-title">Request Shift</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="timeoff.php">
+              <i class="mdi mdi-table-large menu-icon"></i>
+              <span class="menu-title">Request Time Off</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="rota.php">
               <i class="mdi mdi-chart-bar menu-icon"></i>
               <span class="menu-title">Rota</span>

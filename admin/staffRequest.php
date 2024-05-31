@@ -37,53 +37,32 @@
                                 <div class="card card-statistics">
                                 <div class="card-header d-flex justify-content-between align-items-center">
                                     <div class="card-heading">
-                                        <h4 class="card-title">All Staff</h4>
-                                    </div>
-                                    <div>
-                                        <button class="btn btn-primary" data-toggle="modal" data-target="#verticalCenter">Add Staff</button>
+                                        <h4 class="card-title">All Staff Time Off Request</h4>
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <div v-for="staff" class="table-responsive">
+                                    <div v-for="booking" class="table-responsive">
                                         <table class="table table-hover mb-0">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">S/N</th>
-                                                    <th scope="col">Staff Image</th>
-                                                    <th scope="col">Full Name</th>
-                                                    <th scope="col">EMail</th>
-                                                    <th scope="col">Skills</th>
-                                                    <th scope="col">Phone No</th>
-                                                    <th scop="col">Location</th>
-                                                    <th scope="col">Availability</th>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Location Of the Job</th>
+                                                    <th scope="col">Details</th>
+                                                    <th scop="col">Added By</th>
                                                     <th scope="col">Status</th>
-                                                    <th scope="col"></th>
                                                 </tr>
                                             </thead>
                                             <tbody >
-                                                <tr v-for="(item, index) in staff">
+                                                <tr v-for="(item, index) in booking">
                                                     <th scope="row">{{index + 1}}</th>
-                                                    <td><img :src="baseUrl +'/assets/images/certificate/'+item.profile_pic" alt="item.fullname" width="50" height="50"></td>
+                                                    <td>{{item.name}}</td>
+                                                    <td>{{item.location}}</td>
+                                                    <td>{{item.details}}</td>
                                                     <td>{{item.fullname}}</td>
-                                                    <td>{{item.email}}</td>
-                                                    <td>{{item.skills}}</td>
-                                                    <td>{{item.phoneno}}</td>
-                                                    <td>{{item.address}}</td>
-                                                    <td>{{item.availablity}}</td>
                                                     <td>
                                                         <p class="text-right text-success" v-if="item.status == 1">Active</p>
                                                         <p class="text-right text-danger" v-if="item.status == 2">Inactive</p>
-                                                    </td>
-                                                    <td>
-                                                        <div class="dropdown">
-                                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                Action
-                                                            </button>
-                                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                <a class="dropdown-item" href="#">Active</a>
-                                                                <a class="dropdown-item" href="#">Deactivactive</a>
-                                                            </div>
-                                                        </div>
                                                     </td>
                                                 </tr>
                                             </tbody>    
@@ -109,7 +88,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="verticalCenterTitle">Add Experts</h5>
+                        <h5 class="modal-title" id="verticalCenterTitle">Add Jobs</h5>
                         <button type="submit" class="close" id="_closedisco" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -118,42 +97,23 @@
                     <div class="col-xl-12">
                         <div class="card card-statistics">
                             <div class="card-body">
-                                <form @submit.prevent="addStaff">
+                                <form @submit.prevent="addJobs">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Name</label>
                                         <input type="text" v-model="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name">
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Email</label>
-                                        <input type="text" v-model="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                                        <label for="exampleInputPassword1">Location of the job</label>
+                                        <input type="text" v-model="details" class="form-control" id="exampleInputPassword1" placeholder="Location of the job">
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Phone Number</label>
-                                        <input type="text" v-model="phoneNumber" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Phone Number">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Location</label>
-                                        <input type="text" v-model="location" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Location">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Skills</label>
-                                        <input type="text" v-model="skills" class="form-control" id="exampleInputPassword1" placeholder="Skills">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Avaliability</label>
-                                        <input type="text" v-model="availability" class="form-control" id="exampleInputPassword1" placeholder="Avaliability">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Password</label>
-                                        <input type="text" v-model="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Upload Image</label>
-                                        <input type="file" @change='uploadImage' class="form-control" id="inputGroupFile01">>
+                                        <label for="exampleInputPassword1">Details</label>
+                                        <input type="text" v-model="locations" class="form-control" id="exampleInputPassword1" placeholder="Details of the job">
                                     </div>
                                     
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-success">Add Experts</button>
+                                        <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
+                                        <button type="submit" class="btn btn-success">Add jobs</button>
                                     </div>
                                 </form>
                             </div>

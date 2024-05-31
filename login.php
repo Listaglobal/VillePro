@@ -51,12 +51,61 @@
                                     <a href="staffLogin.php">Are you a Staff, Login here!</a>
                                 </span>
                             </div>
+                            <div class="login-action mt-20 fix" data-toggle="modal" data-target="#exampleModalLong">
+                                <span class="forgot-login f-left">
+                                    <a href="javascript:void(0)">Create a Super Admin</a>
+                                </span>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </section>
         <!-- login Area End-->
+
+        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLong" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Update Admin</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <!-- <label for="exampleInputEmail1">Admin Name</label> -->
+                        <select class="form-control">
+                            <option>Admin</option>
+                            <option>Staff</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Full Name</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    </div>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="customFile">
+                        <label class="custom-file-label" for="customFile">Admin Image</label>
+                    </div>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Update Admin</button>
+                </div>
+                </div>
+            </div>
+        </div>
 
         <!-- footer start -->
         <?php include 'includes/footer.php'; ?>

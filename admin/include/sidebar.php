@@ -1,12 +1,17 @@
 <aside class="app-navbar">
                     <!-- begin sidebar-nav -->
-                    <div class="sidebar-nav scrollbar scroll_light">
+                    <div v-if="adminDetails" class="sidebar-nav scrollbar scroll_light">
                         <ul class="metismenu " id="sidebarNav">
                             <li class="active">
                                 <a  href="index.php" aria-expanded="false">
                                     <i class="nav-icon ti ti-rocket"></i>
                                     <span class="nav-title">Dashboards</span>
                                 </a>
+                            </li>
+                            <li v-if="adminDetails.level == 1">
+                                <a href="admin.php" aria-expanded="false">
+                                <i class="nav-icon ti ti-user"></i>
+                                <span class="nav-title">Admin</span></a> 
                             </li>
                             <li>
                                 <a href="user.php" aria-expanded="false">
@@ -18,15 +23,20 @@
                                 <i class="nav-icon ti ti-comment"></i>
                                 <span class="nav-title">Jobs</span></a> 
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="request.php" aria-expanded="false">
                                 <i class="nav-icon ti ti-comment"></i>
                                 <span class="nav-title">Request Jobs</span></a> 
-                            </li>
+                            </li> -->
                             <li>
                                 <a href="booking.php" aria-expanded="false">
                                 <i class="nav-icon ti ti-calendar"></i>
                                 <span class="nav-title">Booking</span></a> 
+                            </li>
+                            <li>
+                                <a href="staffRequest.php" aria-expanded="false">
+                                <i class="nav-icon ti ti-email"></i>
+                                <span class="nav-title">Time Off Request</span></a> 
                             </li>
                             <li>
                                 <a href="booking.php" aria-expanded="false" @click="logout()">

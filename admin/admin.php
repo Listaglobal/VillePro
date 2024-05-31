@@ -37,14 +37,14 @@
                                 <div class="card card-statistics">
                                 <div class="card-header d-flex justify-content-between align-items-center">
                                     <div class="card-heading">
-                                        <h4 class="card-title">All Staff</h4>
+                                        <h4 class="card-title">All Admin</h4>
                                     </div>
                                     <div>
-                                        <button class="btn btn-primary" data-toggle="modal" data-target="#verticalCenter">Add Staff</button>
+                                        <button class="btn btn-primary" data-toggle="modal" data-target="#verticalCenter">Add Admin</button>
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <div v-for="staff" class="table-responsive">
+                                    <div v-for="admins" class="table-responsive">
                                         <table class="table table-hover mb-0">
                                             <thead>
                                                 <tr>
@@ -52,24 +52,21 @@
                                                     <th scope="col">Staff Image</th>
                                                     <th scope="col">Full Name</th>
                                                     <th scope="col">EMail</th>
-                                                    <th scope="col">Skills</th>
                                                     <th scope="col">Phone No</th>
-                                                    <th scop="col">Location</th>
-                                                    <th scope="col">Availability</th>
+                                                    <th scop="col">Level</th>
                                                     <th scope="col">Status</th>
                                                     <th scope="col"></th>
                                                 </tr>
                                             </thead>
                                             <tbody >
-                                                <tr v-for="(item, index) in staff">
+                                                <tr v-for="(item, index) in admins">
                                                     <th scope="row">{{index + 1}}</th>
-                                                    <td><img :src="baseUrl +'/assets/images/certificate/'+item.profile_pic" alt="item.fullname" width="50" height="50"></td>
+                                                    <td><img :src="baseUrl +'/assets/images/certificate/'+item.profile_pic" alt="Admin Image" width="50" height="50"></td>
                                                     <td>{{item.fullname}}</td>
                                                     <td>{{item.email}}</td>
-                                                    <td>{{item.skills}}</td>
                                                     <td>{{item.phoneno}}</td>
-                                                    <td>{{item.address}}</td>
-                                                    <td>{{item.availablity}}</td>
+                                                    <td v-if="item.level == 1">Super Admin</td>
+                                                    <td v-if="item.level == 2">Admin</td>
                                                     <td>
                                                         <p class="text-right text-success" v-if="item.status == 1">Active</p>
                                                         <p class="text-right text-danger" v-if="item.status == 2">Inactive</p>
@@ -80,6 +77,7 @@
                                                                 Action
                                                             </button>
                                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModalLong" >Edit Admin</a>
                                                                 <a class="dropdown-item" href="#">Active</a>
                                                                 <a class="dropdown-item" href="#">Deactivactive</a>
                                                             </div>
@@ -109,7 +107,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="verticalCenterTitle">Add Experts</h5>
+                        <h5 class="modal-title" id="verticalCenterTitle">Add Admin</h5>
                         <button type="submit" class="close" id="_closedisco" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -136,14 +134,6 @@
                                         <input type="text" v-model="location" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Location">
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">Skills</label>
-                                        <input type="text" v-model="skills" class="form-control" id="exampleInputPassword1" placeholder="Skills">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Avaliability</label>
-                                        <input type="text" v-model="availability" class="form-control" id="exampleInputPassword1" placeholder="Avaliability">
-                                    </div>
-                                    <div class="form-group">
                                         <label for="exampleInputPassword1">Password</label>
                                         <input type="text" v-model="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                                     </div>
@@ -161,7 +151,50 @@
                     </div>
                         
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- modal  -->
+        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLong" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Update Admin</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <!-- <label for="exampleInputEmail1">Admin Name</label> -->
+                        <select class="form-control">
+                            <option>Admin</option>
+                            <option>Staff</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Full Name</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    </div>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="customFile">
+                        <label class="custom-file-label" for="customFile">Admin Image</label>
+                    </div>
                     
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Update Admin</button>
+                </div>
                 </div>
             </div>
         </div>

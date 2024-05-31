@@ -157,16 +157,16 @@ class Admin_Table extends Config\DB_Connect
 
             // iterate over the result
             while ($row = $result->fetch_assoc()) {
-                $row['id'] = $row['trackid'];
+                $row['id'] = $row['user_id'];
                 $row['status_value'] = ($row['status'] == 1) ? "Active" : "Inactive";
                 // $row['can_ban'] = ($adminAccess['ban_user'] == 1 && $row['trackid'] != $adminid && $row['userlevel'] != "WYF1") ? true : false;
                 // $row['can_delete'] = ($adminAccess['delete_user'] == 1 && $row['trackid'] != $adminid && $row['userlevel'] != "WYF1") ? true : false;
-                $row['is_super_admin'] = $row['admin_level'] === "WYF1"  ? 1 : 0;
+                // $row['is_super_admin'] = $row['admin_level'] === "WYF1"  ? 1 : 0;
                 // $access = Admin_Level_Table::getAdminLevelAccess($row['trackid']);
                 // $row['access'] = ($access) ? $access : false;
 
                 unset($row['password']);
-                unset($row['trackid']);
+                unset($row['user_id']);
                 unset($row['adminpubkey']);
                 unset($row['updated_at']);
                 $data = json_decode(json_encode($row), true);

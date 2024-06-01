@@ -88,5 +88,6 @@ class API_User_Response
     public static $invalidStatus = "Invalid Status Passed";
     public static $dbUpdatingError = "Error While Updating";
     public static $statusChangedMessage = "Request Status Changed";
+    public static $statusChanged = "Admin Status Changed";
     
 }

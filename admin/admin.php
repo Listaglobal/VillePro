@@ -68,8 +68,8 @@
                                                     <td v-if="item.level == 1">Super Admin</td>
                                                     <td v-if="item.level == 2">Admin</td>
                                                     <td>
-                                                        <p class="text-success" v-if="item.status == 1">Active</p>
-                                                        <p class="text-danger" v-if="item.status == 2">Inactive</p>
+                                                        <span v-if="item.status == 2" class="badge badge-danger"> Inactive</span>
+                                                        <span v-if="item.status == 1" class="badge badge-success"> Active</span>
                                                     </td>
                                                     <td>
                                                         <div class="dropdown">
@@ -78,8 +78,8 @@
                                                             </button>
                                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                                 <a class="dropdown-item"  href="#" @click='item.id = itemDetails' data-toggle="modal" data-target="#exampleModalLong" >Edit Admin</a>
-                                                                <a class="dropdown-item" href="#">Active</a>
-                                                                <a class="dropdown-item" href="#">Deactivactive</a>
+                                                                <a class="dropdown-item" v-if="item.status != 1" @click="changeAdminStatus(item.id, 1)" href="#">Active</a>
+                                                                <a class="dropdown-item" v-if="item.status != 2" @click="changeAdminStatus(item.id, 2)" href="#">Deactivactive</a>
                                                             </div>
                                                         </div>
                                                     </td>

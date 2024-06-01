@@ -497,71 +497,28 @@ let app = Vue.createApp({
 
             
         },
+
         async changeAdminStatus(id, status) {
-
-            let data = new FormData();
-            data.append('status', status);
-            data.append('id', id);
-
-
-            const url = `${this.baseUrl}api/admin/changeAdminStatus.php`;
-
-            const options = {
-                method: "POST",
-                data: data,
-                url,
-                headers: {
-                    //"Content-type": "application/json",
-                    "Authorization": `Bearer ${this.token}`
-                }
+            let data = {
+                "user_id" : id,
+                "status" : status,
             }
 
-            try {
-                this.loading = true;
-                const response = await axios(options);
-                if (response.data.status) {
-                    this.swalToast("success", response.data.text);
-                    await this.getAllAdmin(8);
-                }
-            } catch (error) {
-                // //console.log(error);
-                if (error.response) {
-                    if (error.response.status == 400) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
+            const headers = {
+                "Authorization": `Bearer ${this.token}`,
+                "Content-Type": "application/json"
+            };
+            
+            
+            const url = `admin/changeAdminStatus.php`;
+            await this.callPostRequest(data, url, headers, async (successStatus, successData) => {
+                if (successStatus) {
+                    await this.getAllAdmin();
+                } 
+            }, 2);
 
-                    if (error.response.status == 401) {
-                        const errorMsg = "User not Authorized";
-                        this.swalToast("error", errorMsg);
-                        window.location = `${this.baseUrl}admin/login.php`;
-
-                        this.token = null;
-                        return
-                    }
-
-                    if (error.response.status == 405) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-
-                    if (error.response.status == 500) {
-                        const errorMsg = error.response.data.text;
-                        this.swalToast("error", errorMsg);
-                        return
-                    }
-                }
-
-                this.swalToast("error", error.message || "Error processing request")
-
-
-            } finally {
-                this.loading = false;
-            }
         },
-
+        
         // Account
         async getAdminDetails() {
             const url = `auth/getDetails.php`;
@@ -580,17 +537,7 @@ let app = Vue.createApp({
         },
 
         async RequestedBooking() {
-            console.log ({
-                "name" : this.name,
-                "certificate" : this.imageSent,
-                "resume" : this.imageSent,
-                "email" : this.email,
-                "location" : this.location, 
-                "job_id" : this.job,
-                "phoneNumber" : this.phoneNumber,
-                "message" : this.message,
-                "availability" : this.availability
-            })
+            
 
             // if( !this.name || !this.email || !this.location || !this.phoneNumber || !this.message || !this.availability || !this.job_id  ){
             //     this.generalFunctions.swalToast("error","Kindly Enter all Fields")
@@ -623,8 +570,6 @@ let app = Vue.createApp({
             }, 2);
         },
 
-        
-        
     },
     async beforeMount() {
         this.pathname = window.location.href;

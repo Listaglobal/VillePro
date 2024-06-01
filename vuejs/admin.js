@@ -94,6 +94,7 @@ let app = Vue.createApp({
             admin_id: null,
             jobs_id: null,
             admins: null,
+            request: null,
 
 
         }
@@ -286,6 +287,52 @@ let app = Vue.createApp({
                     this.name = this.imageSent = this.phoneNumber = this.location = this.skills = this.availability = this.email = this.password = null;
                 } 
             }, 2);
+        },
+
+        //request
+        async getAllRequest(load = 1) {
+            let search = (this.search) ? `&search=${this.search}` : "";
+            let page = (this.currentPage) ? this.currentPage : 1;
+            let per_page = (this.per_page) ? this.per_page : 20;
+            const url = `request/getAllRequest.php?page=${page}&per_page=${per_page}${search}`;
+            let headers = {
+                "Content-type": "application/json",
+                "Authorization": `Bearer ${this.token}`
+            };
+
+            await this.callGetRequest(url, headers, (successStatus, successData) => {
+
+                if (!successData) {
+                    return;
+                }
+                this.request = successData.request;
+                this.currentPage = successData.page;
+                this.totalPage = successData.totalPage;
+                this.per_page = successData.per_page;
+                this.totalData = successData.total_data;
+
+            });
+        },
+
+        async changeRequestStatus(id, status) {
+            let data = {
+                "trackid" : id,
+                "status" : status,
+            }
+
+            const headers = {
+                "Authorization": `Bearer ${this.token}`,
+                "Content-Type": "application/json"
+            };
+            
+            
+            const url = `request/changeRequestStatus.php`;
+            await this.callPostRequest(data, url, headers, async (successStatus, successData) => {
+                if (successStatus) {
+                    await this.getAllRequest();
+                } 
+            }, 2);
+
         },
 
         //booking 
@@ -499,6 +546,10 @@ let app = Vue.createApp({
 
         if (webPage === 'admin.php' || webPage === 'admin') {
             await this.getAllAdmin();
+        }
+
+        if (webPage === 'staffRequest.php' || webPage === 'staffRequest') {
+            await this.getAllRequest();
         }
 
 

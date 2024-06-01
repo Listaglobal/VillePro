@@ -60,6 +60,8 @@ $jobsDBCall = new DatabaseCall\Jobs_Table;
 $api_admin_table_class_call = new DatabaseCall\Admin_Table;
 $staffDBCall = new DatabaseCall\Users_Table;
 $bookingDBCall = new DatabaseCall\Booking_Table;
+$requestDBCall = new DatabaseCall\Request_Table;
+
 
 
 

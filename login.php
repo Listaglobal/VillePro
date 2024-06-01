@@ -51,12 +51,6 @@
                                     <a href="staffLogin.php">Are you a Staff, Login here!</a>
                                 </span>
                             </div>
-                            <div class="login-action mt-20 fix" data-toggle="modal" data-target="#exampleModalLong">
-                                <span class="forgot-login f-left">
-                                    <a href="javascript:void(0)">Create a Super Admin</a>
-                                </span>
-                            </div>
-                            
                         </div>
                     </div>
                 </div>

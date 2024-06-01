@@ -351,7 +351,11 @@ let app = Vue.createApp({
             if (!successData) {
                 return;
             }
-              this.bookings = successData.bookings;
+                this.bookings = successData.bookings;
+                this.currentPage = successData.page;
+                this.totalPage = successData.totalPage;
+                this.per_page = successData.per_page;
+                this.totalData = successData.total_data;
             })
 
         },
@@ -390,10 +394,14 @@ let app = Vue.createApp({
 
           await this.callGetRequest(url, headers, (successStatus, successData) => {
 
-              if (!successData) {
+            if (!successData) {
                   return;
-              }
-              this.jobs = successData.jobs;
+            }
+                this.jobs = successData.jobs;
+                this.currentPage = successData.page;
+                this.totalPage = successData.totalPage;
+                this.per_page = successData.per_page;
+                this.totalData = successData.total_data;
           });
         },
 
@@ -438,6 +446,10 @@ let app = Vue.createApp({
                     return;
                 }
                 this.admins = successData.admins;
+                this.currentPage = successData.page;
+                this.totalPage = successData.totalPage;
+                this.per_page = successData.per_page;
+                this.totalData = successData.total_data;
             });
         },
 
@@ -587,11 +599,11 @@ let app = Vue.createApp({
     },
     async mounted() {
         if (webPage === 'index.php' || webPage === 'index' || webPage === '') {
-            this.per_page = 5;
+            this.currentPage = 5;
             await this.getAllBooking();
-            this.per_page = 5;
+            this.currentPage = 5;
             await this.getAllStaff();
-            this.per_page = 5;
+            this.currentPage = 5;
             await this.getAllJobs();
         }
 

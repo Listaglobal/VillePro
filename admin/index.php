@@ -145,14 +145,17 @@
                                                         <td>{{item.jobs_name}}</td>
                                                         <td>{{item.jobs_details}}</td>
                                                         <td>
-                                                            <p class="text-right text-success" v-if="item.status == 1">Active</p>
-                                                            <p class="text-right text-danger" v-if="item.status == 2">Inactive</p>
+                                                            <p class="text-success" v-if="item.status == 1">Active</p>
+                                                            <p class="text-danger" v-if="item.status == 2">Inactive</p>
                                                         </td>
                                                     </tr>
                                                 </tbody>     
                                             </table>
                                         </div>
                                     </div>
+                                </div>
+                                <div>
+                                    <a href="booking.php" class="text-left">View All Booking</a>
                                 </div>
                             </div>
                         </div>
@@ -190,8 +193,8 @@
                                                         <td>{{item.address}}</td>
                                                         <td>{{item.availablity}}</td>
                                                         <td>
-                                                            <p class="text-right text-success" v-if="item.status == 1">Active</p>
-                                                            <p class="text-right text-danger" v-if="item.status == 2">Inactive</p>
+                                                            <p class="text-success" v-if="item.status == 1">Active</p>
+                                                            <p class="text-danger" v-if="item.status == 2">Inactive</p>
                                                         </td>
                                                     </tr>
                                                 </tbody>    
@@ -199,7 +202,11 @@
                                         </div>
                                         </div>
                                     </div>
+                                    <div>
+                                    <a href="user.php" class="text-right">View All Staff</a>
+                                    </div>
                                 </div>
+                                
                             </div>
                         <!-- </div> -->
                     </div>

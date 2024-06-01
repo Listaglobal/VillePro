@@ -61,7 +61,7 @@
                                             <tbody >
                                                 <tr v-for="(item, index) in admins">
                                                     <th scope="row">{{index + 1}}</th>
-                                                    <td><img :src="baseUrl +'/assets/images/certificate/'+item.profile_pic" alt="Admin Image" width="50" height="50"></td>
+                                                    <td><img :src="baseUrl +'/assets/images/staff/'+item.profile_pic" alt="Admin Image" width="50" height="50"></td>
                                                     <td>{{item.fullname}}</td>
                                                     <td>{{item.email}}</td>
                                                     <td>{{item.phoneno}}</td>
@@ -77,7 +77,7 @@
                                                                 Action
                                                             </button>
                                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModalLong" >Edit Admin</a>
+                                                                <a class="dropdown-item"  href="#" @click='item.id = itemDetails' data-toggle="modal" data-target="#exampleModalLong" >Edit Admin</a>
                                                                 <a class="dropdown-item" href="#">Active</a>
                                                                 <a class="dropdown-item" href="#">Deactivactive</a>
                                                             </div>
@@ -102,7 +102,7 @@
             </footer>
         </div>
 
-        <!-- modal  -->
+        <!-- Add modal  -->
         <div class="modal fade" id="verticalCenter" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -113,43 +113,46 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                    <div class="col-xl-12">
-                        <div class="card card-statistics">
-                            <div class="card-body">
-                                <form @submit.prevent="addStaff">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Name</label>
-                                        <input type="text" v-model="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Email</label>
-                                        <input type="text" v-model="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Phone Number</label>
-                                        <input type="text" v-model="phoneNumber" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Phone Number">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Location</label>
-                                        <input type="text" v-model="location" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Location">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Password</label>
-                                        <input type="text" v-model="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Upload Image</label>
-                                        <input type="file" @change='uploadImage' class="form-control" id="inputGroupFile01">>
-                                    </div>
-                                    
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-success">Add Experts</button>
-                                    </div>
-                                </form>
+                        <div class="col-xl-12">
+                            <div class="card card-statistics">
+                                <div class="card-body">
+                                    <form @submit.prevent="addAdmin">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Admin FullName</label>
+                                            <input type="text" v-model="fullname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Email</label>
+                                            <input type="text" v-model="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Phone Number</label>
+                                            <input type="text" v-model="phoneNumber" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Phone Number">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Password</label>
+                                            <input type="text" v-model="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Level</label>
+                                            <select v-model="level" aria-label="Default select example">
+                                                <option value="null">Select Level</option>
+                                                <option value="1">Super Admin</option>
+                                                <option value="2">Admin</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Upload Image</label>
+                                            <input type="file" @change='uploadImage' class="form-control" id="inputGroupFile01">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-success">Add Admin</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                        
                     </div>
                 </div>
             </div>
@@ -165,36 +168,47 @@
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <!-- <label for="exampleInputEmail1">Admin Name</label> -->
-                        <select class="form-control">
-                            <option>Admin</option>
-                            <option>Staff</option>
-                        </select>
+                <div class="modal-body" v-if="itemDetails">
+                    <div class="col-xl-12">
+                        <div class="card card-statistics">
+                            <div class="card-body">
+                                <form @submit.prevent="updateAdmin">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Admin FullName</label>
+                                        <input type="text" v-model="itemDetails.fullname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email</label>
+                                        <input type="text" v-model="itemDetails.email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Phone Number</label>
+                                        <input type="text" v-model="itemDetails.phoneNumber" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Phone Number">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Password</label>
+                                        <input type="text" v-model="itemDetails.password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Level</label>
+                                        <select v-model="itemDetails.level" aria-label="Default select example">
+                                            <option value="null">Select Level</option>
+                                            <option value="1">Super Admin</option>
+                                            <option value="2">Admin</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Upload Image</label>
+                                        <input type="file" @change='uploadImage' class="form-control" id="inputGroupFile01">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-success">Update Admin</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Full Name</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFile">
-                        <label class="custom-file-label" for="customFile">Admin Image</label>
-                    </div>
-                    
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Update Admin</button>
-                </div>
                 </div>
             </div>
         </div>

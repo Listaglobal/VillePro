@@ -1,9 +1,5 @@
 <?php
 
-use Config;
-use Config\Constants;
-use Config\Utility_Functions;
-
 require_once '../../../config/bootstrap_file.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -23,11 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // data sent in the request
-    $user_id = " ";
-    if (isset($_POST['user_id'])) {
-        $user_id = $utility_class_call::escape($_POST['user_id']);
-    }
-
     $fullname = " ";
     if (isset($_POST['fullname'])) {
         $fullname = $utility_class_call::escape($_POST['fullname']);
@@ -60,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     // checking all paramater are passed
-    if ( $utility_class_call::validate_input($user_id) || $utility_class_call::validate_input($fullname) || $utility_class_call::validate_input($email) ||
+    if ($utility_class_call::validate_input($fullname) || $utility_class_call::validate_input($email) ||
         $utility_class_call::validate_input($phoneNumber) ||  $utility_class_call::validate_input($level) ||  $utility_class_call::validate_input($password) ) {
         $text = $api_response_class_call::$invalidDataSent;
         $errorcode = $api_error_code_class_call::$internalUserWarning;
@@ -95,20 +86,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $imageUploaded = $utility_class_call::uploadImage($image, $path);
     }
 
-    $hashPassword = Utility_Functions::Password_encrypt($password);
     //inserting into Database 
     $data = [
-        
         "email" => $email,
         "profile_pic" => $imageUploaded,
         "fullname" => $fullname,
         "phoneno" => $phoneNumber,
         "level" => $level,
-        "password" => $password,
-        "user_id" => $user_id,
+        "password" => $password
     ];
 
-    $addStaff = $api_admin_table_class_call::updateAdmin($email, $imageUploaded, $fullname, $hashPassword, $level,$phoneNumber, $user_id);
+    $addStaff = $api_admin_table_class_call::addAdmin($data);
 
     if (!$addStaff) {
         $text = $api_response_class_call::$errorAdded;
@@ -119,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $api_status_code_class_call->respondBadRequest($maindata, $text, $hint, $linktosolve, $errorcode);
     }
     $maindata = [];
-    $text = $api_response_class_call::$adminUpdated;
+    $text = $api_response_class_call::$adminCreated;
     $api_status_code_class_call->respondOK($maindata, $text);
 } else {
     $text = $api_response_class_call::$methodUsedNotAllowed;

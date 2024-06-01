@@ -25,7 +25,7 @@ class Admin_Table extends Config\DB_Connect
      */
     // APi functions
     public const  tableName = "admin";
-    public static $imagesPath = "profile";
+    public static $imagesPath = "staff";
     public static $baseurl = Constants::LIVE_OR_LOCAL == "1" ? Constants::LIVE_BASE_URL : Constants::BASE_URL;
     public static function getAdminByEmail($email = "", $data = "*")
     {
@@ -188,19 +188,42 @@ class Admin_Table extends Config\DB_Connect
         return false;
     }
 
-    public static function addAdmin($name, $adminLevel, $email, $password)
+    public static function addAdmin($data)
     {
         $connect = static::getDB();
         // generate manger pubkey
-        $pubkey = Utility_Functions::generateUniquePubKey("admin", "adminpubkey");
-        $trackid = Utility_Functions::generateUniqueShortKey("admin", "trackid");
-        $passwordEncrypt = Utility_Functions::Password_encrypt($password);
-        $status = 1;
-        $password_updated = 0;
+        $userpubkey = Utility_Functions::generateUniquePubKey("admin", "userpubkey");
+        $user_id = Utility_Functions::generateUniqueShortKey("admin", "user_id");
+        $hashPassword = Utility_Functions::Password_encrypt($data["password"]);
 
-        $insertQuery = "INSERT INTO admin (`email`, `name`, `password`, `status`, `adminpubkey`, `userlevel`, password_updated, `trackid`) VALUES ( ?,?,?, ?, ?, ?, ?, ?)";
+        unset($data["password"]);
+        $status = 1;
+
+        $params = [];
+        $paramString = "";
+        foreach ($data as $key => $val) {
+            $params[] = $val;
+            $paramString .= "s";
+        }
+
+        $insertQuery = "INSERT INTO admin (`userpubkey`, `user_id`, `password`, `status`, `email`, `profile_pic`, `fullname`, `phoneno`,`level`) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $checkdata = $connect->prepare($insertQuery);
-        $checkdata->bind_param("ssssssss", $email, $name, $passwordEncrypt, $status, $pubkey, $adminLevel, $password_updated, $trackid);
+        $checkdata->bind_param("sssssssss", $userpubkey, $user_id, $hashPassword, $status, ...$params  );
+        $executed = $checkdata->execute();
+        if ($executed) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public static function updateAdmin( $email, $imageUploaded, $fullname, $hashPassword, $level,$phoneNumber, $user_id)
+    {
+        $connect = static::getDB();
+        // generate manger pubkey
+        $insertQuery = "UPDATE `admin` SET `email`= ?,`profile_pic`= ?,`fullname`= ?,`password`= ?,`phoneno`= ?, `level`= ? WHERE `user_id`= ?";
+        $checkdata = $connect->prepare($insertQuery);
+        $checkdata->bind_param("sssssss", $email, $imageUploaded, $fullname, $hashPassword, $level, $phoneNumber, $user_id );
         $executed = $checkdata->execute();
         if ($executed) {
             return true;

@@ -62,8 +62,10 @@ let app = Vue.createApp({
             availability: null,
             date: null,
             skills: null,
+            level: null,
             days: null,
             job_id: null,
+            id: null,
 
             // login details
             email: null,
@@ -86,6 +88,7 @@ let app = Vue.createApp({
 
             // staff
             staff: null,
+            fullname: null,
 
             //booking 
             bookings: null,
@@ -436,6 +439,127 @@ let app = Vue.createApp({
                 }
                 this.admins = successData.admins;
             });
+        },
+
+        async addAdmin() {
+            let data = {
+                "fullname" : this.fullname,
+                "image" : this.imageSent,
+                "phoneNumber" : this.phoneNumber,
+                "level": this.level,
+                "email": this.email,
+                "password": this.password
+            }
+
+                
+            const url = `admin/addAdmin.php`;
+
+            const headers = {
+                "Authorization": `Bearer ${this.token}`
+            }
+
+            await this.callPostRequest(data, url, headers, async (successStatus, successData) => {
+                if (successStatus) {
+                    await this.getAllAdmin();
+                    document.getElementById("_closedisco").click();
+                    this.fullname = this.imageSent = this.phoneNumber = this.level = this.email = this.password = null;
+                } 
+            }, 2);
+
+            
+        },
+
+        async updateAdmin() {
+            let data = {
+                "user_id" : this.id,
+                "fullname" : this.fullname,
+                "image" : this.imageSent,
+                "phoneNumber" : this.phoneNumber,
+                "level": this.level,
+                "email": this.email,
+                "password": this.password
+            }
+
+                
+            const url = `admin/editAdmin.php`;
+
+            const headers = {
+                "Authorization": `Bearer ${this.token}`
+            }
+
+            await this.callPostRequest(data, url, headers, async (successStatus, successData) => {
+                if (successStatus) {
+                    await this.getAllAdmin();
+                    document.getElementById("_closedisco").click();
+                    this.fullname = this.imageSent = this.phoneNumber = this.level = this.email = this.password = null;
+                } 
+            }, 2);
+
+            
+        },
+        async changeAdminStatus(id, status) {
+
+            let data = new FormData();
+            data.append('status', status);
+            data.append('id', id);
+
+
+            const url = `${this.baseUrl}api/admin/changeAdminStatus.php`;
+
+            const options = {
+                method: "POST",
+                data: data,
+                url,
+                headers: {
+                    //"Content-type": "application/json",
+                    "Authorization": `Bearer ${this.token}`
+                }
+            }
+
+            try {
+                this.loading = true;
+                const response = await axios(options);
+                if (response.data.status) {
+                    this.swalToast("success", response.data.text);
+                    await this.getAllAdmin(8);
+                }
+            } catch (error) {
+                // //console.log(error);
+                if (error.response) {
+                    if (error.response.status == 400) {
+                        const errorMsg = error.response.data.text;
+                        this.swalToast("error", errorMsg);
+                        return
+                    }
+
+                    if (error.response.status == 401) {
+                        const errorMsg = "User not Authorized";
+                        this.swalToast("error", errorMsg);
+                        window.location = `${this.baseUrl}admin/login.php`;
+
+                        this.token = null;
+                        return
+                    }
+
+                    if (error.response.status == 405) {
+                        const errorMsg = error.response.data.text;
+                        this.swalToast("error", errorMsg);
+                        return
+                    }
+
+                    if (error.response.status == 500) {
+                        const errorMsg = error.response.data.text;
+                        this.swalToast("error", errorMsg);
+                        return
+                    }
+                }
+
+                this.swalToast("error", error.message || "Error processing request")
+
+
+            } finally {
+                this.loading = false;
+            }
         },
 
         // Account

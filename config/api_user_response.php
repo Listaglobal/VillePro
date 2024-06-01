@@ -67,6 +67,8 @@ class API_User_Response
     public static $imageTooLarge = "Image too large";
     public static $certificateNoTSend = "Certificate not sent";
     public static $resumeNoTSend = "Resume not sent";
+    public static $adminCreated = "Admin created successfully";
+    public static $adminUpdated = "Admin Updated successfully";
 
 
 

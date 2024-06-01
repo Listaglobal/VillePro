@@ -68,8 +68,8 @@
                                                     <td v-if="item.level == 1">Super Admin</td>
                                                     <td v-if="item.level == 2">Admin</td>
                                                     <td>
-                                                        <p class="text-right text-success" v-if="item.status == 1">Active</p>
-                                                        <p class="text-right text-danger" v-if="item.status == 2">Inactive</p>
+                                                        <p class="text-success" v-if="item.status == 1">Active</p>
+                                                        <p class="text-danger" v-if="item.status == 2">Inactive</p>
                                                     </td>
                                                     <td>
                                                         <div class="dropdown">

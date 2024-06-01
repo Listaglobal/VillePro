@@ -160,6 +160,9 @@ let app = Vue.createApp({
             //bookings
             bookings: null,
             request: null,
+            reason: null, 
+            days: null, 
+            daysto: null,
         }
     },
     methods: {
@@ -382,10 +385,11 @@ let app = Vue.createApp({
         async sendRequest() {
             let data = {
                 "reason": this.reason,
-                "days": this.days
+                "daysFrom": this.days,
+                "daysto": this.daysto
             }
 
-            const url = `request/placeStaffRequest.php`;
+            const url = `request/RequestTimeoff.php`;
 
             const headers = {
                 "Authorization": `Bearer ${this.token}`
@@ -395,7 +399,7 @@ let app = Vue.createApp({
                 if (successStatus) {
                     await this.getAllRequest();
                     document.getElementById("_closedisco").click();
-                    this.reason = this.days  = null;
+                    this.reason = this.days = this.daysto = null;
                 } 
             }, 2);
         },

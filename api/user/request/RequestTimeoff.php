@@ -23,14 +23,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $reason = $utility_class_call::escape($_POST['reason']);
     }
 
-    $days = " ";
-    if (isset($_POST['days'])) {
-        $days = $utility_class_call::escape($_POST['days']);
+    $daysFrom = " ";
+    if (isset($_POST['daysFrom'])) {
+        $daysFrom = $utility_class_call::escape($_POST['daysFrom']);
+    }
+
+    $daysto = " ";
+    if (isset($_POST['daysto'])) {
+        $daysto = $utility_class_call::escape($_POST['daysto']);
     }
 
     // checking all paramater are passed
 
-    if ($utility_class_call::validate_input($userid) || $utility_class_call::validate_input($reason) || $utility_class_call::validate_input($days)) {
+    if ($utility_class_call::validate_input($userid) || $utility_class_call::validate_input($reason) || $utility_class_call::validate_input($daysFrom) || $utility_class_call::validate_input($daysto) ) {
         $text = $api_response_class_call::$invalidDataSent;
         $errorcode = $api_error_code_class_call::$internalUserWarning;
         $maindata = [];
@@ -41,9 +46,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     //inserting into Database 
     $data = [
-        "user_id" => $userid,
+        "staff_id" => $userid,
         "reason" => $reason,
-        "days" => $days,
+        "days" => $daysFrom,
+        "daysto" => $daysto
     ];
 
     $addPuPils = $requestDBCall::addRequest($data);

@@ -30,54 +30,26 @@
                   </div>
                 </div>
                 <div class="table-responsive">
-                  <table class="table">
+                  <table v-if="request" class="table">
                     <thead>
                       <tr>
-                        <th>Profile</th>
-                        <th>VatNo.</th>
-                        <th>Created</th>
+                        <th>S/N</th>
+                        <th>Request Date From</th>
+                        <th>Request Date to</th>
+                        <th>Reason</th>
                         <th>Status</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>Jacob</td>
-                        <td>53275531</td>
-                        <td>12 May 2017</td>
+                      <tr v-for="(item, index) in request">
+                        <td>{{index + 1}}</td>
+                        <td>{{item.days}}</td>
+                        <td>{{item.daysto}}</td>
+                        <td>{{item.reason}}</td>
                         <td>
-                          <label class="badge badge-danger">Pending</label>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Messsy</td>
-                        <td>53275532</td>
-                        <td>15 May 2017</td>
-                        <td>
-                          <label class="badge badge-warning">In progress</label>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>John</td>
-                        <td>53275533</td>
-                        <td>14 May 2017</td>
-                        <td>
-                          <label class="badge badge-info">Fixed</label>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Peter</td>
-                        <td>53275534</td>
-                        <td>16 May 2017</td>
-                        <td>
-                          <label class="badge badge-success">Completed</label>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Dave</td>
-                        <td>53275535</td>
-                        <td>20 May 2017</td>
-                        <td>
-                          <label class="badge badge-warning">In progress</label>
+                          <label v-if="item.status == 1" class="badge badge-danger">Awaiting Approval</label>
+                          <label v-if="item.status == 2" class="badge badge-Success">Approved</label>
+                          <label v-if="item.status == 3" class="badge badge-danger">Request Declined</label>
                         </td>
                       </tr>
                     </tbody>
@@ -95,25 +67,28 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLongTitle">Request Time Off</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close" id="_closedisco" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
             <form>
               <div class="form-group">
-                <label for="exampleFormControlInput1">Date</label>
-                <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                <label for="exampleFormControlInput1">Date From</label>
+                <input type="date" v-model="days" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Date to</label>
+                <input type="date" v-model="daysto" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
               </div>
               <div class="form-group">
                 <label for="exampleFormControlTextarea1">Reason for request</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control" v-model="reason"  id="exampleFormControlTextarea1" rows="3"></textarea>
               </div>
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="submit" @click.prevent="sendRequest()" class="btn btn-primary">Send Request</button>
           </div>
         </div>
       </div>

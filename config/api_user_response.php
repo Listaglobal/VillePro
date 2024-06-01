@@ -80,5 +80,8 @@ class API_User_Response
     public static $jobAdded = "Job added successfully";
     public static $requestedSent = "Request sent successfully, YOu will be contacted soon";
     public static $shiftRequest = "Shift request sent successfully";
+
+    // request 
+    public static $requestSent = "Request Sent, Awaiting Approval";
     
 }

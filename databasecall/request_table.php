@@ -104,7 +104,7 @@ class Request_Table extends Config\DB_Connect
             $paramString .= "s";
         }
 
-        $query = "INSERT INTO `request`(`trackid`, `status`, `user_id`, `reason`, `days` ) VALUES (?, ?, ?, ?, ?)";
+        $query = "INSERT INTO `request`(`trackid`, `status`, `staff_id`, `reason`, `days` , `daysto` ) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $connect->prepare($query);
         $stmt->bind_param("ss$paramString", $trackid, $status, ...$params);
         $executed = $stmt->execute();

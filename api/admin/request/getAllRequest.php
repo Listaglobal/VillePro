@@ -19,14 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     //pass sort params
     $params = [];
-    // $status = 1;
-    // $params[] = $status;
-    $params[] = "";
-    $paramString = "s";
-    $sortQuery = ' AND ' . $requestDBCall::tableName . '.staff_id = ?';
+    $paramString = "";
+    $sortQuery = "";
     $searchQuery = "";
     $single_post = false;
-
 
     // sort by status
     if (isset($_GET['trackid'])) {

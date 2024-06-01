@@ -47,13 +47,16 @@
                         <td>{{item.daysto}}</td>
                         <td>{{item.reason}}</td>
                         <td>
-                          <label v-if="item.status == 1" class="badge badge-danger">Awaiting Approval</label>
-                          <label v-if="item.status == 2" class="badge badge-Success">Approved</label>
+                          <label v-if="item.status == 1" class="badge badge-primary">Awaiting Approval</label>
+                          <label v-if="item.status == 2" class="badge badge-success">Approved</label>
                           <label v-if="item.status == 3" class="badge badge-danger">Request Declined</label>
                         </td>
                       </tr>
                     </tbody>
                   </table>
+                  <div>
+                    <h1 v-if="!request">No Request Yet</h1>
+                  </div>
                 </div>
               </div>
             </div>

@@ -41,28 +41,42 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <div v-for="booking" class="table-responsive">
+                                    <div v-for="request" class="table-responsive">
                                         <table class="table table-hover mb-0">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">S/N</th>
-                                                    <th scope="col">Name</th>
-                                                    <th scope="col">Location Of the Job</th>
-                                                    <th scope="col">Details</th>
-                                                    <th scop="col">Added By</th>
+                                                    <th scope="col">Staff Name</th>
+                                                    <th scope="col">Request Reason</th>
+                                                    <th scope="col">Date From</th>
+                                                    <th scope="col">Date To</th>
                                                     <th scope="col">Status</th>
+                                                    <th scope="col"></th>
                                                 </tr>
                                             </thead>
                                             <tbody >
-                                                <tr v-for="(item, index) in booking">
+                                                <tr v-for="(item, index) in request">
                                                     <th scope="row">{{index + 1}}</th>
-                                                    <td>{{item.name}}</td>
-                                                    <td>{{item.location}}</td>
-                                                    <td>{{item.details}}</td>
-                                                    <td>{{item.fullname}}</td>
+                                                    <td>{{item.staff_fullname}}</td>
+                                                    <td>{{item.reason}}</td>
+                                                    <td>{{item.days}}</td>
+                                                    <td>{{item.daysto}}</td>
                                                     <td>
-                                                        <p class="text-right text-success" v-if="item.status == 1">Active</p>
-                                                        <p class="text-right text-danger" v-if="item.status == 2">Inactive</p>
+                                                        <span v-if="item.status == 2" class="badge badge-success"> Approved</span>
+                                                        <span v-if="item.status == 1" class="badge badge-primary"> Awaiting Approval</span>
+                                                        <span v-if="item.status == 3" class="badge badge-danger"> Declined</span>
+                                                        
+                                                    </td>
+                                                    <td>
+                                                        <div class="dropdown">
+                                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                Action
+                                                            </button>
+                                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                                <a v-if="item.status != 2" @click="changeRequestStatus(item.id, 2)" class="dropdown-item" href="#">Approve</a>
+                                                                <a v-if="item.status != 3" @click="changeRequestStatus(item.id, 3)" class="dropdown-item" href="#">Declined</a>
+                                                            </div>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                             </tbody>    

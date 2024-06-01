@@ -83,5 +83,8 @@ class API_User_Response
 
     // request 
     public static $requestSent = "Request Sent, Awaiting Approval";
+    public static $invalidStatus = "Invalid Status Passed";
+    public static $dbUpdatingError = "Error While Updating";
+    public static $statusChangedMessage = "Request Status Changed";
     
 }

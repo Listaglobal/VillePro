@@ -57,10 +57,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $page_no = $_GET['page'];
     }
 
-    if (!isset($_GET['noPerPage'])) {
+    if (!isset($_GET['per_page'])) {
         $noPerPage = 100;
     } else {
-        $noPerPage = $_GET['noPerPage'];
+        $noPerPage = $_GET['per_page'];
     }
 
     $offset = ($page_no - 1) * $noPerPage;

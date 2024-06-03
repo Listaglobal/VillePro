@@ -249,7 +249,10 @@ let app = Vue.createApp({
 
         //Staff 
         async getAllStaff(load = 1) {
-            const url = `staff/getAllStaff.php`;
+            let search = (this.search) ? `&search=${this.search}` : "";
+            let page = (this.currentPage) ? this.currentPage : 1;
+            let per_page = (this.per_page) ? this.per_page : 20;
+            const url = `staff/getAllStaff.php?page=${page}&per_page=${per_page}${search}`;
             let headers = {
               "Content-type": "application/json",
               "Authorization": `Bearer ${this.token}`
@@ -340,7 +343,10 @@ let app = Vue.createApp({
 
         //booking 
         async getAllBooking(load = 1) {
-            const url = `booking/getAllBooking.php`;
+            let search = (this.search) ? `&search=${this.search}` : "";
+            let page = (this.currentPage) ? this.currentPage : 1;
+            let per_page = (this.per_page) ? this.per_page : 20;
+            const url = `booking/getAllBooking.php?page=${page}&per_page=${per_page}${search}`;
             let headers = {
               "Content-type": "application/json",
               "Authorization": `Bearer ${this.token}`
@@ -386,7 +392,11 @@ let app = Vue.createApp({
 
         // jobs
         async getAllJobs(load = 1) {
-            const url = `jobs/getAllJobs.php`;
+            let search = (this.search) ? `&search=${this.search}` : "";
+            let page = (this.currentPage) ? this.currentPage : 1;
+            let per_page = (this.per_page) ? this.per_page : 20;
+            const url = `jobs/getAllJobs.php?page=${page}&per_page=${per_page}${search}`;
+            
             let headers = {
               "Content-type": "application/json",
               "Authorization": `Bearer ${this.token}`
@@ -434,7 +444,10 @@ let app = Vue.createApp({
 
         // Admin
         async getAllAdmin() {
-            const url = `admin/getAllAdmin.php`;
+            let search = (this.search) ? `&search=${this.search}` : "";
+            let page = (this.currentPage) ? this.currentPage : 1;
+            let per_page = (this.per_page) ? this.per_page : 20;
+            const url = `admin/getAllAdmin.php?page=${page}&per_page=${per_page}${search}`;
             let headers = {
                 "Content-type": "application/json",
                 "Authorization": `Bearer ${this.token}`
@@ -599,11 +612,11 @@ let app = Vue.createApp({
     },
     async mounted() {
         if (webPage === 'index.php' || webPage === 'index' || webPage === '') {
-            this.currentPage = 5;
+            this.per_page = 5;
             await this.getAllBooking();
-            this.currentPage = 5;
+            this.per_page = 5;
             await this.getAllStaff();
-            this.currentPage = 5;
+            this.per_page = 5;
             await this.getAllJobs();
         }
 

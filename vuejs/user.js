@@ -265,7 +265,10 @@ let app = Vue.createApp({
 
         // booking
         async getAllBooking(load = 1) {
-            const url = `booking/getUserBooking.php`;
+            let search = (this.search) ? `&search=${this.search}` : "";
+            let page = (this.currentPage) ? this.currentPage : 1;
+            let per_page = (this.per_page) ? this.per_page : 20;
+            const url = `booking/getUserBooking.php?page=${page}&per_page=${per_page}${search}`;
             let headers = {
               "Content-type": "application/json",
               "Authorization": `Bearer ${this.token}`
@@ -276,12 +279,19 @@ let app = Vue.createApp({
             if (!successData) {
                 return;
             }
-              this.bookings = successData.bookings;
+                this.bookings = successData.bookings;
+                this.currentPage = successData.page;
+                this.totalPage = successData.totalPage;
+                this.per_page = successData.per_page;
+                this.totalData = successData.total_data;
             })
         },
 
         async getBooking(load = 1) {
-            const url = `booking/getAllBooking.php`;
+            let search = (this.search) ? `&search=${this.search}` : "";
+            let page = (this.currentPage) ? this.currentPage : 1;
+            let per_page = (this.per_page) ? this.per_page : 20;
+            const url = `booking/getAllBooking.php?page=${page}&per_page=${per_page}${search}`;
             let headers = {
               "Content-type": "application/json",
               "Authorization": `Bearer ${this.token}`
@@ -292,7 +302,11 @@ let app = Vue.createApp({
             if (!successData) {
                 return;
             }
-              this.bookings = successData.bookings;
+                this.bookings = successData.bookings;
+                this.currentPage = successData.page;
+                this.totalPage = successData.totalPage;
+                this.per_page = successData.per_page;
+                this.totalData = successData.total_data;
             })
         },
 
@@ -421,6 +435,7 @@ let app = Vue.createApp({
     },
     async mounted() {
         if (webPage === 'index.php' || webPage === 'index' || webPage === '') {
+            this.per_page = 5;
             await this.getAllBooking();
         }
         if (webPage === 'booking.php' || webPage === 'booking') {

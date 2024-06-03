@@ -163,6 +163,7 @@ let app = Vue.createApp({
             reason: null, 
             days: null, 
             daysto: null,
+            adminStat: null,
         }
     },
     methods: {
@@ -327,6 +328,22 @@ let app = Vue.createApp({
             });
         },
 
+        async getUserStat() {
+            const url = `account/userStat.php`;
+            let headers = {
+                "Content-type": "application/json",
+                "Authorization": `Bearer ${this.token}`
+            };
+
+            await this.callGetRequest(url, headers, (successStatus, successData) => {
+
+                if (!successData) {
+                    return;
+                }
+                this.adminStat = successData;
+            });
+        },
+
         async updateProfile() {
             const url = `account/editProfile.php`;
             let headers = {
@@ -435,8 +452,10 @@ let app = Vue.createApp({
     },
     async mounted() {
         if (webPage === 'index.php' || webPage === 'index' || webPage === '') {
+            await this.getUserStat();
             this.per_page = 5;
             await this.getAllBooking();
+           
         }
         if (webPage === 'booking.php' || webPage === 'booking') {
             await this.getAllBooking();

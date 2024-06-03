@@ -98,6 +98,7 @@ let app = Vue.createApp({
             jobs_id: null,
             admins: null,
             request: null,
+            adminStat: null,
 
 
         }
@@ -561,6 +562,22 @@ let app = Vue.createApp({
             });
         },
 
+        async getAdminStat() {
+            const url = `admin/adminStat.php`;
+            let headers = {
+                "Content-type": "application/json",
+                "Authorization": `Bearer ${this.token}`
+            };
+
+            await this.callGetRequest(url, headers, (successStatus, successData) => {
+
+                if (!successData) {
+                    return;
+                }
+                this.adminStat = successData;
+            });
+        },
+
         async RequestedBooking() {
             
 
@@ -618,6 +635,7 @@ let app = Vue.createApp({
             await this.getAllStaff();
             this.per_page = 5;
             await this.getAllJobs();
+            await this.getAdminStat();
         }
 
         if (webPage === 'jobs.php' || webPage === 'jobs') {

@@ -232,6 +232,22 @@ class Admin_Table extends Config\DB_Connect
         return false;
     }
 
+    public static function getAdminStat($adminId)
+    {
+        $connect = static::getDB();
+        $response = [
+            'Jobs' => 0,
+            'booking' => 0,
+            'staff' => 0
+        ];
+
+        $response['Jobs'] += Utility_Functions::countRow("jobs", "id");
+        $response['booking'] += Utility_Functions::countRow("booking", "id");
+        $response['staff'] += Utility_Functions::countRow("staff", "id");
+
+        return $response;
+    }
+
     public static function deleteAdmin($adminid)
     {
         $connect = static::getDB();

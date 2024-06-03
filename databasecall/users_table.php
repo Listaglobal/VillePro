@@ -112,6 +112,22 @@ class Users_Table extends Config\DB_Connect
         }
         return $alldata;
     }
+
+    public static function getUserStat($userid)
+    {
+        $connect = static::getDB();
+        $response = [
+            // 'Jobs' => 0,
+            'booking' => 0,
+           
+        ];
+
+        // $response['Jobs'] += Utility_Functions::countNumberRowWhereParams("jobs", "staff_id = ?", [$userid]);
+        $response['booking'] += Utility_Functions::countNumberRowWhereParams("booking", "user_id = ?", [$userid]);
+        
+
+        return $response;
+    }
     public static function addStaff($data)
     {
         $staff_id =  Utility_Functions::generateUniqueShortKey("staff", "staff_id");

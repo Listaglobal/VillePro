@@ -20,14 +20,14 @@
               <h3 class="mb-0"> Hi, welcome back! </h3>
             </div>
             <div class="row">
-              <div class="col-xl-3 col-lg-12 stretch-card grid-margin">
+              <div v-if="adminStat" class="col-xl-3 col-lg-12 stretch-card grid-margin">
                 <div class="row">
                   <div class="col-xl-12 col-md-6 stretch-card grid-margin grid-margin-sm-0 pb-sm-3">
                     <div class="card bg-warning">
                       <div class="card-body px-3 py-4">
                         <div class="d-flex justify-content-between align-items-start">
                           <div class="color-card">
-                            <p class="mb-0 color-card-head">Job</p>
+                            <p class="mb-0 color-card-head">Total Staff Job</p>
                             <h2 class="text-white"> 30 </h2>
                           </div>
                           <i class="card-icon-indicator mdi mdi-basket bg-inverse-icon-warning"></i>
@@ -40,8 +40,8 @@
                       <div class="card-body px-3 py-4">
                         <div class="d-flex justify-content-between align-items-start">
                           <div class="color-card">
-                            <p class="mb-0 color-card-head">Booking</p>
-                            <h2 class="text-white">3</span>
+                            <p class="mb-0 color-card-head">Total User Booking</p>
+                            <h2 class="text-white">{{adminStat.booking}}</span>
                             </h2>
                           </div>
                           <i class="card-icon-indicator mdi mdi-cube-outline bg-inverse-icon-danger"></i>

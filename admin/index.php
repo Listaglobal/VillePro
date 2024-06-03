@@ -65,7 +65,7 @@
                             </div>
                         </div>
                         
-                        <div class="row">
+                        <div v-if="adminStat" class="row">
                             <div class="col-sm-12">
                                 <div class="card card-statistics">
                                     <div class="row no-gutters">
@@ -76,7 +76,7 @@
                                                 </div>
                                                 <div class="d-block d-sm-flex h-100 align-items-center">
                                                     <div class="apexchart-wrapper">
-                                                        <h3 class="mb-0"><i class="icon-arrow-up-circle"></i> 656</h3>
+                                                        <h3 class="mb-0"><i class="icon-arrow-up-circle"></i> {{adminStat.Jobs}}</h3>
                                                     </div>
                                                 </div>
                                             </div>
@@ -88,7 +88,7 @@
                                                 </div>
                                                 <div class="d-block d-sm-flex h-100 align-items-center">
                                                     <div class="apexchart-wrapper">
-                                                        <h3 class="mb-0"><i class="icon-arrow-up-circle"></i> 1656</h3>
+                                                        <h3 class="mb-0"><i class="icon-arrow-up-circle"></i> {{adminStat.staff}}</h3>
                                                     </div>
                                                 </div>
                                             </div>
@@ -100,7 +100,7 @@
                                                 </div>
                                                 <div class="d-block d-sm-flex h-100 align-items-center">
                                                     <div class="apexchart-wrapper">
-                                                        <h3 class="mb-0"><i class="icon-arrow-up-circle"></i> 1656</h3>
+                                                        <h3 class="mb-0"><i class="icon-arrow-up-circle"></i> {{adminStat.booking}}</h3>
                                                     </div>
                                                 </div>
                                             </div>

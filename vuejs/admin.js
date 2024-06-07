@@ -391,6 +391,27 @@ let app = Vue.createApp({
             }, 2);
         },
 
+        async changeRequestStatus(id, status) {
+            let data = {
+                "trackid" : id,
+                "status" : status,
+            }
+
+            const headers = {
+                "Authorization": `Bearer ${this.token}`,
+                "Content-Type": "application/json"
+            };
+            
+            
+            const url = `booking/changeRequestStatus.php`;
+            await this.callPostRequest(data, url, headers, async (successStatus, successData) => {
+                if (successStatus) {
+                    await this.getAllBooking();
+                } 
+            }, 2);
+
+        },
+
         // jobs
         async getAllJobs(load = 1) {
             let search = (this.search) ? `&search=${this.search}` : "";

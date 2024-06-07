@@ -58,6 +58,7 @@
                                                     <th scop="col">Job Title</th>
                                                     <th scop="col">Job Location</th>
                                                     <th scope="col">Status</th>
+                                                    <th scope="col"></th>
                                                 </tr>
                                             </thead>
                                             <tbody >
@@ -72,8 +73,18 @@
                                                     <td>{{item.jobs_name}}</td>
                                                     <td>{{item.jobs_details}}</td>
                                                     <td>
-                                                        <p class="text-right text-success" v-if="item.status == 1">Active</p>
-                                                        <p class="text-right text-danger" v-if="item.status == 2">Inactive</p>
+                                                        <p class="text-success" v-if="item.status == 1">Active</p>
+                                                        <p class="text-danger" v-if="item.status == 2">Inactive</p>
+                                                    </td>
+                                                    <td>
+                                                        <div class="dropdown">
+                                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            </button>
+                                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                                <a v-if="item.status != 1" @click="changeRequestStatus(item.id, 1)" class="dropdown-item" href="#">Approve</a>
+                                                                <a v-if="item.status != 2" @click="changeRequestStatus(item.id, 2)" class="dropdown-item" href="#">Declined</a>
+                                                            </div>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                             </tbody>    

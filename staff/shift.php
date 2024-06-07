@@ -19,36 +19,38 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                  <div class="d-sm-flex justify-content-between align-items-start">
-                  <div>
                     <h4 class="card-title">Request for Unassigned shift</h4>
                   </div>
-                  <div class="template-demo">
-                    <button type="button" class="btn btn-primary btn-rounded btn-fw mb-4" data-toggle="modal" data-target="#exampleModalCenter"> Request Shift </button>
-                  </div>
-                </div>
-                      <div class="table-responsive">
-                        <table class="table">
-                          <thead>
-                                <tr>
-                                <th>Name</th>
-                                <th>Jobs.</th>
-                                <th>Date</th>
-                                <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                  <td>Jacob</td>
-                                  <td>Care Giver</td>
-                                  <td>12 May 2024</td>
-                                  <td>
-                                      <label class="badge badge-danger">Pending</label>
-                                  </td>
-                                </tr>
-                            </tbody>
-                          </table>
-                        </div>
+                    <div v-if="bookings" class="table-responsive">
+                      <table class="table">
+                        <thead>
+                              <tr>
+                              <th>Staff</th>
+                              <th>Jobs</th>
+                              <th>Date</th>
+                              <th>Work Hour</th>
+                              <th></th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr v-for="(item, index) in bookings" :key="index">
+                                <td>Staff Unassigned</td>
+                                <td>{{item.jobs_name}}</td>
+                                <td>{{item.date}}</td>
+                                <td>{{item.work_hour}}</td>
+                                <td> 
+                                  <div class="template-demo">
+                                    <button class="btn btn-primary btn-rounded btn-fw mb-4" @click="requestShift(item.id)"> Request Shift </button>
+                                  </div>
+                                </td>
+                              </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h1 v-if="!bookings">All Job Assigned</h1>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

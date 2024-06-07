@@ -311,6 +311,28 @@ let app = Vue.createApp({
             })
         },
 
+        async filteredBookings() {
+            return this.bookings.filter(booking => booking.user_id === "null");
+        },
+
+        async requestShift(id) {
+            let data = {
+                "trackid": id,
+            }
+
+            const url = `booking/requestShift.php`;
+
+            const headers = {
+                "Authorization": `Bearer ${this.token}`
+            }
+
+            await this.callPostRequest(data, url, headers, async (successStatus, successData) => {
+                if (successStatus) {
+                    await this.getBooking();
+                } 
+            }, 2);
+        },
+
         // Account
         async getAdminDetails() {
             const url = `account/getDetails.php`;
@@ -434,6 +456,8 @@ let app = Vue.createApp({
                 } 
             }, 2);
         },
+
+
         
     },
     async beforeMount() {
@@ -459,6 +483,10 @@ let app = Vue.createApp({
         }
         if (webPage === 'booking.php' || webPage === 'booking') {
             await this.getAllBooking();
+        }
+
+        if (webPage === 'shift.php' || webPage === 'shift') {
+            await this.getBooking();
         }
 
         if(webPage === 'rota.php' || webPage === 'rota') {

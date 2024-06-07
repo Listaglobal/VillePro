@@ -199,4 +199,19 @@ class Booking_Table extends Config\DB_Connect
             return false;
         }
     }
+
+    public static function addRequest($userid, $status, $trackid)
+    {
+        $connect = static::getDB();
+
+        $query = "UPDATE `booking` SET `user_id`= ?,`status`= ? WHERE `trackid`= ? ";
+        $stmt = $connect->prepare($query);
+        $stmt->bind_param("sss", $userid, $status, $trackid);
+        $executed = $stmt->execute();
+        if ($executed) {
+            return true;    
+        } else {
+            return false;
+        }
+    }
 }

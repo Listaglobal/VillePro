@@ -18,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 
     //pass sort params
+    // $status =  2;
     $params = [];
     $paramString = "";
     $sortQuery = "";

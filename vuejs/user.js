@@ -304,6 +304,7 @@ let app = Vue.createApp({
                 return;
             }
                 this.bookings = successData.bookings;
+                console.log(this.bookings);
                 this.currentPage = successData.page;
                 this.totalPage = successData.totalPage;
                 this.per_page = successData.per_page;
@@ -312,7 +313,7 @@ let app = Vue.createApp({
         },
 
         async filteredBookings() {
-            return this.bookings.filter(booking => booking.user_id === "null");
+            return this.bookings.filter(booking => booking.user_id === null || booking.user_id === undefined);
         },
 
         async requestShift(id) {

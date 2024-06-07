@@ -17,24 +17,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 
     //pass sort params
-    $status = 1;
+    // $status = 1;
     $params = [];
     $paramString = "";
     $sortQuery = "";
     $searchQuery = "";
     $single_post = false;
+    
 
 
     // sort by status
     if (isset($_GET['trackid'])) {
         $single_post = true;
         $status = $utility_class_call::escape($_GET['trackid']);
-        $sortQuery .= ' AND ' . $bookingDBCall::tableName . '.trackid = ?';
+        $sortQuery .= ' AND ' . $bookingDBCall::tableName . '.trackid = ?' . ' AND ' . $bookingDBCall::tableName . '.user_id IS NULL';
         $paramString .= "s";
         $params[] = $status;
     } else {
         $single_post = false;
     }
+    
 
     // Other sort parameters can be passed here
     if (isset($_GET['search'])) {

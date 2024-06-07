@@ -164,7 +164,7 @@
                                     <div v-if="staff" class="form-group">
                                         <label for="exampleInputPassword1">Staff</label>
                                         <select v-model="user_id" class="form-control" aria-label="Default select example">
-                                            <option value="null" >Select Staff Available</option>
+                                            <option value=" " >Select Staff Available</option>
                                             <option v-for="(item, index) in staff" :value="item.staff_id">{{item.fullname}}</option>
                                             
                                         </select>

@@ -292,7 +292,7 @@ let app = Vue.createApp({
             let search = (this.search) ? `&search=${this.search}` : "";
             let page = (this.currentPage) ? this.currentPage : 1;
             let per_page = (this.per_page) ? this.per_page : 20;
-            const url = `booking/getAllBooking.php?page=${page}&per_page=${per_page}${search}`;
+            const url = `booking/getBooking.php?page=${page}&per_page=${per_page}${search}`;
             let headers = {
               "Content-type": "application/json",
               "Authorization": `Bearer ${this.token}`

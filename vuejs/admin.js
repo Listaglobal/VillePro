@@ -342,6 +342,53 @@ let app = Vue.createApp({
 
         },
 
+        // available
+        async getAllAvailable(load = 1) {
+            let search = (this.search) ? `&search=${this.search}` : "";
+            let page = (this.currentPage) ? this.currentPage : 1;
+            let per_page = (this.per_page) ? this.per_page : 20;
+            const url = `shift/getAllShift.php?page=${page}&per_page=${per_page}${search}`;
+            let headers = {
+                "Content-type": "application/json",
+                "Authorization": `Bearer ${this.token}`
+            };
+
+            await this.callGetRequest(url, headers, (successStatus, successData) => {
+
+                if (!successData) {
+                    return;
+                }
+                this.available = successData.request;
+                this.currentPage = successData.page;
+                this.totalPage = successData.totalPage;
+                this.per_page = successData.per_page;
+                this.totalData = successData.total_data;
+
+            });
+        },
+
+        async changeAvailableStatus(id, status) {
+            let data = {
+                "trackid" : id,
+                "status" : status,
+            }
+
+            const headers = {
+                "Authorization": `Bearer ${this.token}`,
+                "Content-Type": "application/json"
+            };
+            
+            
+            const url = `shift/changeShiftStatus.php`;
+            await this.callPostRequest(data, url, headers, async (successStatus, successData) => {
+                if (successStatus) {
+                    await this.getAllAvailable();
+                } 
+            }, 2);
+
+        },
+
+
         //booking 
         async getAllBooking(load = 1) {
             let search = (this.search) ? `&search=${this.search}` : "";
@@ -633,6 +680,8 @@ let app = Vue.createApp({
             }, 2);
         },
 
+
+
     },
     async beforeMount() {
         this.pathname = window.location.href;
@@ -683,6 +732,10 @@ let app = Vue.createApp({
 
         if (webPage === 'staffRequest.php' || webPage === 'staffRequest') {
             await this.getAllRequest();
+        }
+
+        if (webPage === 'staffAvaible.php' || webPage === 'staffAvaible') {
+            await this.getAllAvailable();
         }
 
 

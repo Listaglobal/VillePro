@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // check if id sent is a valid admin
-    if (!$utility_class_call::checkIfExist("request", "trackid", $trackid)) {
+    if (!$utility_class_call::checkIfExist("available", "trackid", $trackid)) {
         $text = $api_response_class_call::$invalidTrackid;
         $errorcode = $api_error_code_class_call::$internalUserWarning;
         $maindata = [];
@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
 
-    $updateStatus = $utility_class_call::changeStatus("request", $status, "trackid", $trackid);
+    $updateStatus = $utility_class_call::changeStatus("available", $status, "trackid", $trackid);
 
     if (!$updateStatus) {
         $text = $api_response_class_call::$dbUpdatingError;

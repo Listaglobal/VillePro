@@ -41,7 +41,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <div v-for="request" class="table-responsive">
+                                    <div v-for="available" class="table-responsive">
                                         <table class="table table-hover mb-0">
                                             <thead>
                                                 <tr>
@@ -49,21 +49,22 @@
                                                     <th scope="col">Staff Name</th>
                                                     <th scope="col">Date From</th>
                                                     <th scope="col">Date To</th>
+                                                    <th scope="col">Work Day</th>
                                                     <th scope="col">Status</th>
                                                     <th scope="col"></th>
                                                 </tr>
                                             </thead>
                                             <tbody >
-                                                <tr v-for="(item, index) in request">
+                                                <tr v-for="(item, index) in available">
                                                     <th scope="row">{{index + 1}}</th>
                                                     <td>{{item.staff_fullname}}</td>
-                                                    <td>{{item.days}}</td>
+                                                    <td>{{item.daysfrom}}</td>
                                                     <td>{{item.daysto}}</td>
+                                                    <td>{{item.work_hour}}</td>
                                                     <td>
                                                         <span v-if="item.status == 2" class="badge badge-success"> Approved</span>
                                                         <span v-if="item.status == 1" class="badge badge-primary"> Awaiting Approval</span>
                                                         <span v-if="item.status == 3" class="badge badge-danger"> Declined</span>
-                                                        
                                                     </td>
                                                     <td>
                                                         <div class="dropdown">
@@ -71,8 +72,8 @@
                                                                 Action
                                                             </button>
                                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                <a v-if="item.status != 2" @click="changeRequestStatus(item.id, 2)" class="dropdown-item" href="#">Approve</a>
-                                                                <a v-if="item.status != 3" @click="changeRequestStatus(item.id, 3)" class="dropdown-item" href="#">Declined</a>
+                                                                <a v-if="item.status != 2" @click="changeAvailableStatus(item.id, 2)" class="dropdown-item" href="#">Approve</a>
+                                                                <a v-if="item.status != 3" @click="changeAvailableStatus(item.id, 3)" class="dropdown-item" href="#">Declined</a>
                                                             </div>
                                                         </div>
                                                     </td>

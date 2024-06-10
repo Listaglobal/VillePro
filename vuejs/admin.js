@@ -391,7 +391,7 @@ let app = Vue.createApp({
             }, 2);
         },
 
-        async changeRequestStatus(id, status) {
+        async changeBookingStatus(id, status) {
             let data = {
                 "trackid" : id,
                 "status" : status,

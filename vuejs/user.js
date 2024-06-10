@@ -304,7 +304,6 @@ let app = Vue.createApp({
                 return;
             }
                 this.bookings = successData.bookings;
-                console.log(this.bookings);
                 this.currentPage = successData.page;
                 this.totalPage = successData.totalPage;
                 this.per_page = successData.per_page;
@@ -330,6 +329,28 @@ let app = Vue.createApp({
             await this.callPostRequest(data, url, headers, async (successStatus, successData) => {
                 if (successStatus) {
                     await this.getBooking();
+                } 
+            }, 2);
+        },
+
+        async requestShift() {
+            let data = {
+                "reason": this.reason,
+                "daysFrom": this.days,
+                "daysto": this.daysto
+            }
+
+            const url = `request/RequestTimeoff.php`;
+
+            const headers = {
+                "Authorization": `Bearer ${this.token}`
+            }
+
+            await this.callPostRequest(data, url, headers, async (successStatus, successData) => {
+                if (successStatus) {
+                    await this.getAllRequest();
+                    document.getElementById("_closedisco").click();
+                    this.reason = this.days = this.daysto = null;
                 } 
             }, 2);
         },

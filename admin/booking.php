@@ -81,8 +81,8 @@
                                                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                             </button>
                                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                <a v-if="item.status != 1" @click="changeRequestStatus(item.id, 1)" class="dropdown-item" href="#">Approve</a>
-                                                                <a v-if="item.status != 2" @click="changeRequestStatus(item.id, 2)" class="dropdown-item" href="#">Declined</a>
+                                                                <a v-if="item.status != 1" @click="changeBookingStatus(item.id, 1)" class="dropdown-item" href="#">Approve</a>
+                                                                <a v-if="item.status != 2" @click="changeBookingStatus(item.id, 2)" class="dropdown-item" href="#">Declined</a>
                                                             </div>
                                                         </div>
                                                     </td>

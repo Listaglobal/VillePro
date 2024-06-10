@@ -27,8 +27,8 @@
                       <div class="card-body px-3 py-4">
                         <div class="d-flex justify-content-between align-items-start">
                           <div class="color-card">
-                            <p class="mb-0 color-card-head">Total Staff Job</p>
-                            <h2 class="text-white"> 30 </h2>
+                            <p class="mb-0 color-card-head">Total Unassgnied Shift</p>
+                          <h2 class="text-white"> {{adminStat.unassigned_shift}} </h2>
                           </div>
                           <i class="card-icon-indicator mdi mdi-basket bg-inverse-icon-warning"></i>
                         </div>
@@ -64,7 +64,8 @@
                             <th>Location</th>
                             <th>Job Details</th>
                             <th>Status</th>
-                            
+                            <th></th>
+                            <th></th>
                           </tr>
                         </thead>
                         <tbody>

@@ -41,13 +41,19 @@
           <li class="nav-item">
             <a class="nav-link" href="shift.php">
               <i class="mdi mdi-table-large menu-icon"></i>
-              <span class="menu-title">Request Shift</span>
+              <span class="menu-title">Shift</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="timeoff.php">
-              <i class="mdi mdi-table-large menu-icon"></i>
-              <span class="menu-title">Request Time Off</span>
+              <i class="mdi mdi-bag-personal menu-icon"></i>
+              <span class="menu-title">Time Off</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="availibility.php">
+              <i class="mdi mdi-timer-off menu-icon"></i>
+              <span class="menu-title">Send Availibilty</span>
             </a>
           </li>
           <li class="nav-item">

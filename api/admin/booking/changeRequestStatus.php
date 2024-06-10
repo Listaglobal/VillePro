@@ -6,7 +6,6 @@ require_once '../../../config/bootstrap_file.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // add try and catch
-    // Get the request body
     $request_body = file_get_contents('php://input');
     $data = json_decode($request_body);
 

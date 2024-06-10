@@ -55,6 +55,7 @@ use Firebase\JWT\JWT;
 $utility_class_call = new Config\Utility_Functions;
 $api_response_class_call = new Config\API_User_Response;
 $api_status_code_class_call = new Config\API_Status_Code;
+$api_error_code_class_call = new Config\API_Error_Code;
 $usersTableClassCall = new DatabaseCall\Users_Table;
 $jobsDBCall = new DatabaseCall\Jobs_Table;
 $api_admin_table_class_call = new DatabaseCall\Admin_Table;

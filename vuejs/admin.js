@@ -417,7 +417,7 @@ let app = Vue.createApp({
 
         async requestShift() {
             let data = {
-                "user_id" : this.user_id,
+                "user_id" : this.user_id ? this.user_id : '',
                 "jobs_id" : this.jobs_id, 
                 "date" : this.date,
                 "days" : this.days,

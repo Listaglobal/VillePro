@@ -42,7 +42,7 @@ class Booking_Table extends Config\DB_Connect
 
         // SELECT * FROM `jobs` WHERE 1
 
-        $query = "SELECT booking.*, staff.fullname as staff_fullname, staff.skills as staff_skills, staff.phoneno as staff_phoneno, staff.email as staff_email, admin.fullname as admin_fullname, jobs.name as jobs_name, jobs.details as jobs_details FROM `booking` LEFT JOIN staff on staff.staff_id = booking.user_id LEFT JOIN admin on admin.user_id = booking.admin_id LEFT JOIN jobs ON jobs.trackid = booking.jobs_id WHERE booking.user_id > ? $sortQuery $searchQuery";
+        $query = "SELECT booking.*, staff.fullname as staff_fullname, staff.skills as staff_skills, staff.phoneno as staff_phoneno, staff.email as staff_email, admin.fullname as admin_fullname, jobs.name as jobs_name, jobs.details as jobs_details FROM `booking` LEFT JOIN staff on staff.staff_id = booking.user_id LEFT JOIN admin on admin.user_id = booking.admin_id LEFT JOIN jobs ON jobs.trackid = booking.jobs_id WHERE booking.id > ? $sortQuery $searchQuery";
         $checkdata = $connect->prepare($query);
         $checkdata->bind_param("s$paramString", self::$minId, ...$params);
         $checkdata->execute();

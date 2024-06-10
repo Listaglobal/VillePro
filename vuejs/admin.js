@@ -79,7 +79,8 @@ let app = Vue.createApp({
             admin_initials: null,
             admin_level: null,
             phoneNumber: null,
-
+            available: null,
+            
             //jobs
             jobs: null,
             name : null,
@@ -358,7 +359,7 @@ let app = Vue.createApp({
                 if (!successData) {
                     return;
                 }
-                this.available = successData.request;
+                this.available = successData.available;
                 this.currentPage = successData.page;
                 this.totalPage = successData.totalPage;
                 this.per_page = successData.per_page;

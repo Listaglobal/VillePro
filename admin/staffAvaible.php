@@ -49,7 +49,7 @@
                                                     <th scope="col">Staff Name</th>
                                                     <th scope="col">Date From</th>
                                                     <th scope="col">Date To</th>
-                                                    <th scope="col">Work Day</th>
+                                                    <th scope="col">Work Hour</th>
                                                     <th scope="col">Status</th>
                                                     <th scope="col"></th>
                                                 </tr>

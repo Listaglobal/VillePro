@@ -125,7 +125,7 @@ class Users_Table extends Config\DB_Connect
 
         // $response['Jobs'] += Utility_Functions::countNumberRowWhereParams("jobs", "staff_id = ?", [$userid]);
         $response['booking'] += Utility_Functions::countNumberRowWhereParams("booking", "user_id = ?", [$userid]);
-        $response['unassigned_shift'] += Utility_Functions::countNumberRowWhereParams("booking", "user_id = ?", [$empty = NUll]);
+        $response['unassigned_shift'] += Utility_Functions::countNumberRowWhereParams("booking", "user_id = ?", [$empty = '']);
         
 
         return $response;

@@ -85,6 +85,7 @@
                             <option value="null">Select Work Hour</option>
                             <option value="Full Day">Full Day</option>
                             <option value="Half Day">Half Day</option>
+                            <option value="Full and Half Day">Both</option>
                         </select>
                     </div>
                   </form>

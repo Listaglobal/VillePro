@@ -19,40 +19,38 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="d-flex justify-content-between align-content-center card-body">
-                    <h4 class="card-title">Request for Unassigned shift</h4>
+                    <h4 class="card-title">Request for Availability</h4>
                     <div class="template-demo">
                       <button class="btn btn-primary btn-rounded btn-fw mb-4" data-toggle="modal" data-target="#exampleModalCenter"> Request Shift </button>
                     </div>
-                  </div>
+                </div>
                   
                     <div v-if="bookings" class="table-responsive">
                       <table class="table">
                         <thead>
-                              <tr>
+                            <tr>
                               <th>Staff</th>
                               <th>Jobs</th>
                               <th>Date</th>
                               <th>Work Hour</th>
-                              <th></th>
-                              </tr>
+                              <th>Status</th>
+                            </tr>
                           </thead>
                           <tbody>
-                              <tr v-for="(item, index) in bookings" :key="index">
+                              <tr v-for="(item, index) in bookings">
                                 <td>Staff Unassigned</td>
                                 <td>{{item.jobs_name}}</td>
                                 <td>{{item.date}}</td>
                                 <td>{{item.work_hour}}</td>
-                                <td> 
-                                  <div class="template-demo">
-                                    <button class="btn btn-primary btn-rounded btn-fw mb-4" @click="requestShift(item.id)"> Request Shift </button>
-                                  </div>
-                                </td>
+                                <td class="badge badge-primary">Awaiting approval</td>
+                                <td class="badge badge-danger">Approved</td>
+                                <td class="badge badge-primary">Disapproved</td>
                               </tr>
                           </tbody>
                         </table>
                       </div>
                       <div>
-                        <h1 v-if="!bookings">All Job Assigned</h1>
+                        <h1 v-if="!bookings">No Request Availability Yet</h1>
                       </div>
                     </div>
                   </div>

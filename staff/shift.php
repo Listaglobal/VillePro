@@ -20,9 +20,6 @@
                 <div class="card">
                   <div class="d-flex justify-content-between align-content-center card-body">
                     <h4 class="card-title">Request for Unassigned shift</h4>
-                    <div class="template-demo">
-                      <button class="btn btn-primary btn-rounded btn-fw mb-4" data-toggle="modal" data-target="#exampleModalCenter"> Request Shift </button>
-                    </div>
                   </div>
                   
                     <div v-if="bookings" class="table-responsive">

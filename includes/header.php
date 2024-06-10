@@ -20,7 +20,7 @@
                                 <li><a href="services.php">Our Services </a></li>
                                 <li><a href="living.php">Supported Living </a></li>
                                 <li><a href="contant.php">Contact Us </a></li>
-                                <li><a href="login.php" class="yes" >Login</a></li>
+                                <li><a href="login.php" id="yes" >Login</a></li>
                             </ul>
                         </nav>
                     </div>

@@ -18,36 +18,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // data sent in the request
-    $user_id = " ";
+    $user_id = "";
     if (isset($_POST['user_id'])) {
         $user_id = $utility_class_call::escape($_POST['user_id']);
     }
 
     $admin_id = $adminManager;
 
-    $jobs_id = " ";
+    $jobs_id = "";
     if (isset($_POST['jobs_id'])) {
         $jobs_id = $utility_class_call::escape($_POST['jobs_id']);
     }
 
-    $date = " ";
+    $date = "";
     if (isset($_POST['date'])) {
         $date = $utility_class_call::escape($_POST['date']);
     }
 
-    $days = " ";
+    $days = "";
     if (isset($_POST['days'])) {
         $days = $utility_class_call::escape($_POST['days']);
     }
 
-    $work_hour = " ";
+    $work_hour = "";
     if (isset($_POST['work_hour'])) {
         $work_hour = $utility_class_call::escape($_POST['work_hour']);
     }
 
     // checking all paramater are passed
     if (
-        $utility_class_call::validate_input($user_id) || $utility_class_call::validate_input($admin_id) || $utility_class_call::validate_input($jobs_id) || $utility_class_call::validate_input($date) || $utility_class_call::validate_input($days) || $utility_class_call::validate_input($work_hour)
+         $utility_class_call::validate_input($admin_id) || $utility_class_call::validate_input($jobs_id) || $utility_class_call::validate_input($date) || $utility_class_call::validate_input($days) || $utility_class_call::validate_input($work_hour)
     ) {
         $text = $api_response_class_call::$invalidDataSent;
         $errorcode = $api_error_code_class_call::$internalUserWarning;

@@ -7253,3 +7253,10 @@ p.checkout-coupon input[type="text"] {
     font: bold 2em "Poppins", sans-serif;
   }
 }
+
+@media screen and (min-width: 769px) {
+  
+  #yes {
+	display: none
+  }
+}

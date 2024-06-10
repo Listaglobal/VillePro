@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     // $params[] = $status;
     $params[] = $userid;
     $paramString = "s";
-    $sortQuery = ' AND ' . $requestDBCall::tableName . '.staff_id = ?';
+    $sortQuery = ' AND ' . $availableDBCall::tableName . '.user_id = ?';
     $searchQuery = "";
     $single_post = false;
 
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (isset($_GET['trackid'])) {
         $single_post = true;
         $status = $utility_class_call::escape($_GET['trackid']);
-        $sortQuery .= ' AND ' . $requestDBCall::tableName . '.trackid = ?';
+        $sortQuery .= ' AND ' . $availableDBCall::tableName . '.trackid = ?';
         $paramString .= "s";
         $params[] = $status;
     } else {
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     // Other sort parameters can be passed here
     if (isset($_GET['search'])) {
-        $tableName = $requestDBCall::tableName;
+        $tableName = $availableDBCall::tableName;
         $search = $utility_class_call::escape($_GET['search']);
         if (!empty($search) && $search != '' && $search != " ") {
             $searchValue = "%" . $search . "%";
@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     $offset = ($page_no - 1) * $noPerPage;
 
-    $AllReview = $requestDBCall::getAllRequest($page_no, $offset, $noPerPage, $searchQuery, $sortQuery, $paramString, $params);
+    $AllReview = $availableDBCall::getAllAvailable($page_no, $offset, $noPerPage, $searchQuery, $sortQuery, $paramString, $params);
 
     if ($AllReview) {
         $maindata = $AllReview;

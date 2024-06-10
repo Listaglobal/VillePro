@@ -18,11 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $api_status_code_class_call->respondUnauthorized($maindata, $text, $hint, $linktosolve, $errorcode);
     }
 
-    $reason = " ";
-    if (isset($_POST['reason'])) {
-        $reason = $utility_class_call::escape($_POST['reason']);
-    }
-
     $daysFrom = " ";
     if (isset($_POST['daysFrom'])) {
         $daysFrom = $utility_class_call::escape($_POST['daysFrom']);
@@ -33,9 +28,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $daysto = $utility_class_call::escape($_POST['daysto']);
     }
 
+    $work_hour = " ";
+    if (isset($_POST['work_hour'])) {
+        $work_hour = $utility_class_call::escape($_POST['work_hour']);
+    }
+
     // checking all paramater are passed
 
-    if ($utility_class_call::validate_input($userid) || $utility_class_call::validate_input($reason) || $utility_class_call::validate_input($daysFrom) || $utility_class_call::validate_input($daysto) ) {
+    if ($utility_class_call::validate_input($userid) || $utility_class_call::validate_input($daysFrom) || $utility_class_call::validate_input($daysto) ||  $utility_class_call::validate_input($work_hour)) {
         $text = $api_response_class_call::$invalidDataSent;
         $errorcode = $api_error_code_class_call::$internalUserWarning;
         $maindata = [];
@@ -46,13 +46,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     //inserting into Database 
     $data = [
-        "staff_id" => $userid,
-        "reason" => $reason,
-        "days" => $daysFrom,
-        "daysto" => $daysto
+        "user_id" => $userid,
+        "daysfrom" => $daysFrom,
+        "daysto" => $daysto,
+        "work_hour" => $work_hour
     ];
 
-    $addPuPils = $requestDBCall::addRequest($data);
+    $addPuPils = $availableDBCall::addRequest($data);
 
     if (!$addPuPils) {
         $text = $api_response_class_call::$errorAdded;

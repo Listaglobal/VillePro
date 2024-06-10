@@ -25,32 +25,34 @@
                     </div>
                 </div>
                   
-                    <div v-if="bookings" class="table-responsive">
+                    <div v-if="available" class="table-responsive">
                       <table class="table">
                         <thead>
                             <tr>
-                              <th>Staff</th>
-                              <th>Jobs</th>
-                              <th>Date</th>
+                              <th>Staff Name</th>
+                              <th>Date From</th>
+                              <th>Date To</th>
                               <th>Work Hour</th>
                               <th>Status</th>
                             </tr>
                           </thead>
                           <tbody>
-                              <tr v-for="(item, index) in bookings">
-                                <td>Staff Unassigned</td>
-                                <td>{{item.jobs_name}}</td>
-                                <td>{{item.date}}</td>
+                              <tr v-for="(item, index) in available">
+                                <td>{{item.staff_fullname}}</td>
+                                <td>{{item.daysfrom}}</td>
+                                <td>{{item.daysto}}</td>
                                 <td>{{item.work_hour}}</td>
-                                <td class="badge badge-primary">Awaiting approval</td>
-                                <td class="badge badge-danger">Approved</td>
-                                <td class="badge badge-primary">Disapproved</td>
+                                <td>
+                                  <label v-if="item.status == 1" class="badge badge-primary">Awaiting Approval</label>
+                                  <label v-if="item.status == 2" class="badge badge-success">Approved</label>
+                                  <label v-if="item.status == 3" class="badge badge-danger">Request Declined</label>
+                                </td>
                               </tr>
                           </tbody>
                         </table>
                       </div>
                       <div>
-                        <h1 v-if="!bookings">No Request Availability Yet</h1>
+                        <h1 v-if="!available">No Request Availability Yet</h1>
                       </div>
                     </div>
                   </div>
@@ -62,7 +64,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">Request for Shift</h5>
+                  <h5 class="modal-title" id="exampleModalLongTitle">Send Availability</h5>
                   <button type="button" class="close" id="_closedisco" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -88,7 +90,7 @@
                   </form>
                 </div>
                 <div class="modal-footer">
-                  <button type="submit" @click.prevent="sendRequest()" class="btn btn-primary">Send Request</button>
+                  <button type="submit" @click.prevent="requestShift()" class="btn btn-primary">Send Availability</button>
                 </div>
               </div>
             </div>

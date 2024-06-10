@@ -164,6 +164,8 @@ let app = Vue.createApp({
             days: null, 
             daysto: null,
             adminStat: null,
+            available: null,
+            work_hour: null,
         }
     },
     methods: {
@@ -333,14 +335,39 @@ let app = Vue.createApp({
             }, 2);
         },
 
+        // available
+        async getAllAvailable(load = 1) {
+            let search = (this.search) ? `&search=${this.search}` : "";
+            let page = (this.currentPage) ? this.currentPage : 1;
+            let per_page = (this.per_page) ? this.per_page : 20;
+            const url = `shift/getAllShift.php?page=${page}&per_page=${per_page}${search}`;
+            let headers = {
+                "Content-type": "application/json",
+                "Authorization": `Bearer ${this.token}`
+            };
+
+            await this.callGetRequest(url, headers, (successStatus, successData) => {
+
+                if (!successData) {
+                    return;
+                }
+                this.available = successData.available;
+                this.currentPage = successData.page;
+                this.totalPage = successData.totalPage;
+                this.per_page = successData.per_page;
+                this.totalData = successData.total_data;
+
+            });
+        },
+
         async requestShift() {
             let data = {
-                "reason": this.reason,
+                "work_hour": this.work_hour,
                 "daysFrom": this.days,
                 "daysto": this.daysto
             }
 
-            const url = `request/RequestTimeoff.php`;
+            const url = `shift/requestshift.php`;
 
             const headers = {
                 "Authorization": `Bearer ${this.token}`
@@ -350,7 +377,7 @@ let app = Vue.createApp({
                 if (successStatus) {
                     await this.getAllRequest();
                     document.getElementById("_closedisco").click();
-                    this.reason = this.days = this.daysto = null;
+                    this.work_hour = this.days = this.daysto = null;
                 } 
             }, 2);
         },
@@ -518,6 +545,10 @@ let app = Vue.createApp({
 
         if(webPage === 'timeoff.php' || webPage === 'timeoff') {
             await this.getAllRequest();
+        }
+
+        if(webPage === 'availibility.php' || webPage === 'availibility') {
+            await this.getAllAvailable();
         }
 
 

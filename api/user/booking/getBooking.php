@@ -25,17 +25,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $single_post = false;
     
 
-
     // sort by status
     if (isset($_GET['trackid'])) {
         $single_post = true;
         $status = $utility_class_call::escape($_GET['trackid']);
-        $sortQuery .= ' AND ' . $bookingDBCall::tableName . '.trackid = ?' . ' AND ' . $bookingDBCall::tableName . '.user_id IS NULL';
-        $paramString .= "s";
+        $sortQuery .= ' AND ' . $bookingDBCall::tableName . '.trackid = ?' . ' AND (' . $bookingDBCall::tableName . '.user_id = ? OR ' . $bookingDBCall::tableName . '.user_id IS NULL)';
+        $paramString .= "ss";
         $params[] = $status;
+        $params[] = ''; // Adding an empty string to match empty user_id
     } else {
         $single_post = false;
     }
+
     
 
     // Other sort parameters can be passed here

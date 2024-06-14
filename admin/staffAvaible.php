@@ -35,112 +35,131 @@
                         <div class="row">
                             <div class="col-12 col-lg-12">
                                 <div class="card card-statistics">
-                                <div class="card-header d-flex justify-content-between align-items-center">
-                                    <div class="card-heading">
-                                        <h4 class="card-title">All Staff Available Request</h4>
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <div class="card-heading">
+                                            <h4 class="card-title">All Staff Available Request</h4>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="card-body">
-                                    <div v-for="available" class="table-responsive">
-                                        <table class="table table-hover mb-0">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">S/N</th>
-                                                    <th scope="col">Staff Name</th>
-                                                    <th scope="col">Date From</th>
-                                                    <th scope="col">Date To</th>
-                                                    <th scope="col">Work Hour</th>
-                                                    <th scope="col">Status</th>
-                                                    <th scope="col"></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody >
-                                                <tr v-for="(item, index) in available">
-                                                    <th scope="row">{{index + 1}}</th>
-                                                    <td>{{item.staff_fullname}}</td>
-                                                    <td>{{item.daysfrom}}</td>
-                                                    <td>{{item.daysto}}</td>
-                                                    <td>{{item.work_hour}}</td>
-                                                    <td>
-                                                        <span v-if="item.status == 2" class="badge badge-success"> Approved</span>
-                                                        <span v-if="item.status == 1" class="badge badge-primary"> Awaiting Approval</span>
-                                                        <span v-if="item.status == 3" class="badge badge-danger"> Declined</span>
-                                                    </td>
-                                                    <td>
-                                                        <div class="dropdown">
-                                                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                Action
-                                                            </button>
-                                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                <a v-if="item.status != 2" @click="changeAvailableStatus(item.id, 2)" class="dropdown-item" href="#">Approve</a>
-                                                                <a v-if="item.status != 3" @click="changeAvailableStatus(item.id, 3)" class="dropdown-item" href="#">Declined</a>
+                                    <div class="card-body">
+                                        <div v-for="available" class="table-responsive">
+                                            <table class="table table-hover mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">S/N</th>
+                                                        <th scope="col">Staff Name</th>
+                                                        <th scope="col">Date From</th>
+                                                        <th scope="col">Date To</th>
+                                                        <th scope="col">Work Hour</th>
+                                                        <th scope="col">Status</th>
+                                                        <th scope="col"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr v-for="(item, index) in available">
+                                                        <th scope="row">{{index + 1}}</th>
+                                                        <td>{{item.staff_fullname}}</td>
+                                                        <td>{{item.daysfrom}}</td>
+                                                        <td>{{item.daysto}}</td>
+                                                        <td>{{item.work_hour}}</td>
+                                                        <td>
+                                                            <span v-if="item.status == 2" class="badge badge-success"> Approved</span>
+                                                            <span v-if="item.status == 1" class="badge badge-primary"> Awaiting Approval</span>
+                                                            <span v-if="item.status == 3" class="badge badge-danger"> Declined</span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="dropdown">
+                                                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    Action
+                                                                </button>
+                                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                                    <a v-if="item.status != 2" @click="changeAvailableStatus(item.id, 2)" class="dropdown-item" href="#">Approve</a>
+                                                                    <a v-if="item.status != 3" @click="changeAvailableStatus(item.id, 3)" class="dropdown-item" href="#">Declined</a>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>    
-                                        </table>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="d-flex justify-content-end">
+                                                <div class="pagination-wrap hstack gap-2">
+                                                    <a v-if="currentPage == 1" class="page-item pagination-prev disabled" href="javascrpit:void(0)">
+                                                        Previous
+                                                    </a>
+                                                    <a v-if="currentPage > 1" class="page-item pagination-prev" @click.prevent="currentPage = parseInt(currentPage) - 1; getAllAvailable(2)" href="javascrpit:void(0)">
+                                                        Previous
+                                                    </a>
+                                                    <ul class="pagination listjs-pagination mb-0">
+                                                        <li class="active"><a class="page" href="#" :data-i="currentPage" :data-page="totalPage">{{currentPage}}</a></li>
+                                                    </ul>
+                                                    <a v-if="currentPage != totalPage" @click.prevent="currentPage = parseInt(currentPage) + parseInt(1); getAllAvailable(2)" class="page-item pagination-next" href="javascrpit:void(0)">
+                                                        Next
+                                                    </a>
+                                                    <a v-if="currentPage == totalPage" class="page-item pagination-next disabled" href="javascrpit:void(0)">
+                                                        Next
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <footer class="footer">
-                <div class="row">
-                    <div class="col-12 col-sm-6 text-center text-sm-left">
-                    </div>
-                   
-                </div>
-            </footer>
-        </div>
-
-        <!-- modal  -->
-        <div class="modal fade" id="verticalCenter" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="verticalCenterTitle">Add Jobs</h5>
-                        <button type="submit" class="close" id="_closedisco" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                    <div class="col-xl-12">
-                        <div class="card card-statistics">
-                            <div class="card-body">
-                                <form @submit.prevent="addJobs">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Name</label>
-                                        <input type="text" v-model="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Location of the job</label>
-                                        <input type="text" v-model="details" class="form-control" id="exampleInputPassword1" placeholder="Location of the job">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Details</label>
-                                        <input type="text" v-model="locations" class="form-control" id="exampleInputPassword1" placeholder="Details of the job">
-                                    </div>
-                                    
-                                    <div class="modal-footer">
-                                        <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
-                                        <button type="submit" class="btn btn-success">Add jobs</button>
-                                    </div>
-                                </form>
-                            </div>
+                <footer class="footer">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 text-center text-sm-left">
                         </div>
+
                     </div>
-                        
+                </footer>
+            </div>
+
+            <!-- modal  -->
+            <div class="modal fade" id="verticalCenter" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="verticalCenterTitle">Add Jobs</h5>
+                            <button type="submit" class="close" id="_closedisco" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col-xl-12">
+                                <div class="card card-statistics">
+                                    <div class="card-body">
+                                        <form @submit.prevent="addJobs">
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Name</label>
+                                                <input type="text" v-model="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1">Location of the job</label>
+                                                <input type="text" v-model="details" class="form-control" id="exampleInputPassword1" placeholder="Location of the job">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputPassword1">Details</label>
+                                                <input type="text" v-model="locations" class="form-control" id="exampleInputPassword1" placeholder="Details of the job">
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
+                                                <button type="submit" class="btn btn-success">Add jobs</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
                     </div>
-                    
                 </div>
             </div>
         </div>
-    </div>
-    <?php include('include/footer_link.php'); ?>
-    
+        <?php include('include/footer_link.php'); ?>
+
 </body>
 
 

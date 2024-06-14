@@ -265,7 +265,11 @@ let app = Vue.createApp({
             if (!successData) {
                 return;
             }
-              this.staff = successData.staff;
+                this.staff = successData.staff;
+                this.currentPage = successData.page;
+                this.totalPage = successData.totalPage;
+                this.per_page = successData.per_page;
+                this.totalData = successData.total_data;
           });
         },
 
@@ -706,6 +710,8 @@ let app = Vue.createApp({
             await this.getAllStaff();
             this.per_page = 5;
             await this.getAllJobs();
+            this.per_page = 5;
+            await this.getAllRequest();
             await this.getAdminStat();
         }
 
